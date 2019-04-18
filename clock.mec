@@ -1,10 +1,10 @@
 # Clock
 
 Create a timer that ticks every second. This is the time source.
-  #system/timer = [resolution: 1000, tick: 0, hours: 0, minutes: 0, seconds: 0]
+  #time/timer = [resolution: 1000, tick: 0, hours: 0, minutes: 0, seconds: 0]
 
 Let's make sure the timer is working
-  block/view = #system/timer.seconds
+  block/view = #time/timer.seconds
 
 Set up a clock hands table. Degrees is the deflection from noon.
   #clock-hands = [|degrees x y stroke|
@@ -15,7 +15,7 @@ Set up a clock hands table. Degrees is the deflection from noon.
 ## Update the clock
 
 Calculate clock hand angles based on the current time.
-  time = [#system/timer.hours; #system/timer.minutes; #system/timer.seconds]
+  time = [#time/timer.hours; #time/timer.minutes; #time/timer.seconds]
   multiplier = [30; 6; 6]
   #clock-hands.degrees := multiplier * time
   
