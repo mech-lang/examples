@@ -1,7 +1,7 @@
 # Clock
 
 Create a timer that ticks every second. This is the time source.
-  #time/timer = [resolution: 1000, tick: 0, hours: 0, minutes: 0, seconds: 0]
+  #time/timer = [period: 1000, tick: 0, hours: 0, minutes: 0, seconds: 0]
 
 Let's make sure the timer is working
   block/view = #time/timer.seconds
