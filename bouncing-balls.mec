@@ -6,6 +6,31 @@ Define the environment
   #time/timer = [period: 15, tick: 0, hours: 0, minutes: 0, seconds: 0]
   #gravity = 1
   #boundary = [width: 500 height: 500]
+  #html/event/click = [|x y|
+                        0 0]
+  #html/event/mousemove = [|x y|
+                            0 0]
+  #html/event/mousedown = [|x y|
+                            0 0]
+
+On mouse down, set the launch point
+  ~ #html/event/mousedown
+  #line-switch = 1
+  #launch-point = [x: #html/event/mousedown.x y: #html/event/mousedown.y]
+  #end-point = [x: #html/event/mousedown.x y: #html/event/mousedown.y]
+
+Draw a line between the set point and cursor
+  ~ #html/event/mousemove
+  #end-point{#line-switch == 1,:} := [x: #html/event/mousemove.x y: #html/event/mousemove.y]
+
+Create new balls
+  ~ #html/event/click
+  #line-switch = 0
+  vx = (#launch-point.x - #end-point.x) / 10
+  vy = (#launch-point.y - #end-point.y) / 10
+  #ball += [x: #launch-point.x y: #launch-point.y vx: vx vy: vy]
+  #end-point := [x: 0 y: 0]
+  #launch-point := [x: 0 y: 0]
 
 ## Update condition
 
@@ -35,5 +60,6 @@ Keep the balls within the boundary width
 
 Set up clock drawing elements
   ball = [shape: "circle" parameters: [cx: #ball.x cy: #ball.y radius: 10 fill: "#000000"]]
-  canvas = [type: "canvas" class: _ contains: [ball] parameters: [width: #boundary.width height: #boundary.height]]
+  line = [shape: "line" parameters: [x1: #launch-point.x, y1: #launch-point.y, x2: #end-point.x, y2: #end-point.y, stroke: "#000000"]]
+  canvas = [type: "canvas" class: _ contains: [ball; line] parameters: [width: #boundary.width height: #boundary.height]]
   #app/main = [root: "drawing" direction: "column" contains: [canvas]]
