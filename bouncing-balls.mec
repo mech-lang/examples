@@ -15,17 +15,17 @@ Define the environment
 
 On mouse down, set the launch point
   ~ #html/event/mousedown
-  #line-switch = 1
+  #line-switch = true
   #launch-point = [x: #html/event/mousedown.x y: #html/event/mousedown.y]
   #end-point = [x: #html/event/mousedown.x y: #html/event/mousedown.y]
 
 Draw a line between the set point and cursor
-  ~ #html/event/mousemove
-  #end-point{#line-switch == 1,:} := [x: #html/event/mousemove.x y: #html/event/mousemove.y]
+  ~ #html/event/mousemove & #line-switch
+  #end-point := [x: #html/event/mousemove.x y: #html/event/mousemove.y]
 
 Create new balls
   ~ #html/event/click
-  #line-switch = 0
+  #line-switch = false
   vx = (#launch-point.x - #end-point.x) / 10
   vy = (#launch-point.y - #end-point.y) / 10
   #ball += [x: #launch-point.x y: #launch-point.y vx: vx vy: vy]
@@ -35,7 +35,7 @@ Create new balls
 ## Update condition
 
 Update the block positions on each tick of the timer
-  ~ #time/timer.tick
+  ~ #time/timer.tick 
   #ball.x := #ball.x + #ball.vx
   #ball.y := #ball.y + #ball.vy
   #ball.vy := #ball.vy + #gravity
