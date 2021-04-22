@@ -3,15 +3,9 @@
 Define the environment
   #ball = [|x   y   vx vy|
             10  10  20  0]
-  #time/timer = [period: 15, tick: 0, hours: 0, minutes: 0, seconds: 0]
+  #time/timer += [period: 15, ticks: 0]
   #gravity = 1
   #boundary = [width: 500 height: 500]
-  #html/event/click = [|x y|
-                        0 0]
-  #html/event/mousemove = [|x y|
-                            0 0]
-  #html/event/mousedown = [|x y|
-                            0 0]
 
 On mouse down, set the launch point
   ~ #html/event/mousedown
@@ -35,7 +29,7 @@ Create new balls
 ## Update condition
 
 Update the block positions on each tick of the timer
-  ~ #time/timer.tick 
+  ~ #time/timer.ticks
   #ball.x := #ball.x + #ball.vx
   #ball.y := #ball.y + #ball.vy
   #ball.vy := #ball.vy + #gravity
@@ -59,7 +53,7 @@ Keep the balls within the boundary width
 ## Drawing
 
 Set up clock drawing elements
-  ball = [shape: "circle" parameters: [cx: #ball.x cy: #ball.y radius: 10 fill: "#000000"]]
-  line = [shape: "line" parameters: [x1: #launch-point.x, y1: #launch-point.y, x2: #end-point.x, y2: #end-point.y, stroke: "#000000"]]
+  ball = [shape: "circle" parameters: [cx: #ball.x cy: #ball.y radius: 10 fill: 0x000000]]
+  line = [shape: "line" parameters: [x1: #launch-point.x, y1: #launch-point.y, x2: #end-point.x, y2: #end-point.y, stroke: 0x000000]]
   canvas = [type: "canvas" class: _ contains: [ball; line] parameters: [width: #boundary.width height: #boundary.height]]
   #app/main = [root: "drawing" direction: "column" contains: [canvas]]

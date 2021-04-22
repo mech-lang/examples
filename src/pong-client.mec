@@ -20,5 +20,5 @@ draw the game area
   start = pos
   end = pos + 100
   #elements = [|shape    parameters|
-                "circle" [cx: #pong/ball.x cy: #pong/ball.y radius: 10 fill: "#000000"]
-                "line"   [x1: start y1: 350 x2: end y2: 350 stroke: "#000000"]]
+                "circle" [cx: #pong/ball.x cy: #pong/ball.y radius: 10 fill: 0x000000]
+                "line"   [x1: start y1: 350 x2: end y2: 350 stroke: 0x000000]]
