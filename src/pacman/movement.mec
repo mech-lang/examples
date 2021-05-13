@@ -1,0 +1,35 @@
+## Movement
+
+Set direction right
+  #pacman/direction{#pacman.vx > 0} := 0
+Set direction left
+  #pacman/direction{#pacman.vx < 0} := 180
+Set direction up
+  #pacman/direction{#pacman.vy > 0} := 90
+Set direction down
+  #pacman/direction{#pacman.vy < 0} := 270
+
+Set speed on keydown
+  ~ #html/event/key-down
+  up = #html/event/key-down.key == "ArrowUp"
+  down = #html/event/key-down.key == "ArrowDown"
+  left = #html/event/key-down.key == "ArrowLeft"
+  right = #html/event/key-down.key == "ArrowRight"
+  #pacman.vx{left} := -5
+  #pacman.vx{right} := 5
+  #pacman.vy{up} := -5
+  #pacman.vy{down} := 5
+
+Stop pacman on keyup
+  ~ #html/event/key-up
+  up = #html/event/key-up.key == "ArrowUp"
+  down = #html/event/key-up.key == "ArrowDown"
+  left = #html/event/key-up.key == "ArrowLeft"
+  right = #html/event/key-up.key == "ArrowRight"
+  #pacman.vx{left | right} := 0
+  #pacman.vy{up | down} := 0
+
+Move pacman at set speed
+  ~ #time/timer.ticks{1}
+  #pacman.x := #pacman.x + #pacman.vx
+  #pacman.y := #pacman.y + #pacman.vy
