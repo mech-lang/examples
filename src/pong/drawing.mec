@@ -1,0 +1,31 @@
+## Animations
+
+Add a timer
+  #time/timer += [period: 16]
+
+## Drawing
+
+Set up drawing elements 
+  #pong/circle = [
+    shape: "circle" 
+    parameters: [
+      center-x: #pong/ball.x 
+      center-y: #pong/ball.y 
+      radius: 10 
+      fill: 0xA00000 
+      line-width: 5
+    ]
+  ]
+
+Draw to canvas
+  #pong/game-board = [
+    type: "canvas" 
+    contains: [|shape parameters| #pong/circle] 
+    parameters: [width: #pong/parameters.width height: #pong/parameters.height]
+  ]
+
+Attach game to root
+  #html/app = [
+    root: "mech-root" 
+    contains: [|type contains parameters| #pong/game-board]
+  ]
