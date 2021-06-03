@@ -1,0 +1,20 @@
+## Movement
+
+Move the ball with every tick of the timer
+  ~ #time/timer.ticks{1}
+  #pong/ball.x := #pong/ball.x + #pong/ball.vx
+  #pong/ball.y := #pong/ball.y + #pong/ball.vy
+
+Bounce the ball when it hits the edges of the game area
+
+Vertical bounce
+  ~ #time/timer.ticks{1}
+  ix = #pong/ball.y > (#pong/game.width - 10) | #pong/ball.y < 10
+  #pong/ball.vy{ix} := -#pong/ball.vy
+  #pong/ball.y{ix} := #pong/game.width - 10
+
+Horizontal bounce
+  ~ #time/timer.ticks{1}
+  ix = #pong/ball.x > (#pong/game.height - 10) |  #pong/ball.x < 10
+  #pong/ball.vx{ix} := -#pong/ball.vx
+  #pong/ball.x{ix} := #pong/game.height - 10

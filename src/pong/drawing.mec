@@ -21,7 +21,7 @@ Draw to canvas
   #pong/game-board = [
     type: "canvas" 
     contains: [|shape parameters| #pong/circle] 
-    parameters: [width: #pong/parameters.width height: #pong/parameters.height]
+    parameters: [width: #pong/game.width height: #pong/game.height]
   ]
 
 Attach game to root
