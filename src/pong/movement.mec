@@ -5,31 +5,33 @@ Move the ball with every tick of the timer
   #pong/ball.x := #pong/ball.x + #pong/ball.vx
   #pong/ball.y := #pong/ball.y + #pong/ball.vy
 
-Bounce the ball when it hits the edges of the game area
+### Game Boundary Interactions
 
-Vertical bounce right
+Bounce right
   ~ #pong/ticks
   ix = #pong/ball.x > (#pong/game.width - 15)
   #pong/ball.vx{ix} := -#pong/ball.vx
   #pong/ball.x{ix} := #pong/game.width - 15
 
-Vertical bounce left
+Bounce left
   ~ #pong/ticks
   ix = #pong/ball.x < 15
   #pong/ball.vx{ix} := -#pong/ball.vx
   #pong/ball.x{ix} := 15
 
-Horizontal bounce bottom
+Bounce bottom
   ~ #pong/ticks
   ix = #pong/ball.y > (#pong/game.height - 15)
   #pong/ball.vy{ix} := -#pong/ball.vy
   #pong/ball.y{ix} := #pong/game.height - 15
 
-Vertical bounce top
+Bounce top
   ~ #pong/ticks
   ix = #pong/ball.y < 15
   #pong/ball.vy{ix} := -#pong/ball.vy
   #pong/ball.y{ix} := 15
+
+### Paddle Interactions
 
 Move the desired paddle width the mouse cursor
   #pong/players.y{#control} := #html/event/pointer-move.y
