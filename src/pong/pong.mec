@@ -6,6 +6,7 @@ Game elements
   #pong/players = [|x   y|
                     50  250
                     940 300]
+  #pong/score = [left: 0 right: 0]
   #control = 1
 
 Add a game timer
