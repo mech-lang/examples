@@ -2,6 +2,20 @@
 
 Game elements
   #pong/game = [width: 1000 height: 500]
-  #pong/ball = [x: 500 y: 250 vx: 10 vy: 10]
-  #pong/player-one = [x: 100 y: 250]
-  #pong/player-two = [x: 900 y: 250]
+  #pong/ball = [x: 500 y: 250 vx: 5 vy: 5]
+  #pong/players = [|x   y|
+                    50  250
+                    940 300]
+  #control = 1
+
+Add a game timer
+  #time/timer += [period: 16]
+
+Alias the timer
+  #pong/ticks = #time/timer.ticks{1}
+
+Switch player
+  left = #html/event/pointer-move.x < 500
+  right = !left
+  #control{left} := 1
+  #control{right} := 2

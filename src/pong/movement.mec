@@ -1,32 +1,49 @@
 ## Movement
 
 Move the ball with every tick of the timer
-  ~ #time/timer.ticks{1}
+  ~ #pong/ticks
   #pong/ball.x := #pong/ball.x + #pong/ball.vx
   #pong/ball.y := #pong/ball.y + #pong/ball.vy
 
 Bounce the ball when it hits the edges of the game area
 
 Vertical bounce right
-  ~ #time/timer.ticks{1}
+  ~ #pong/ticks
   ix = #pong/ball.x > (#pong/game.width - 15)
   #pong/ball.vx{ix} := -#pong/ball.vx
   #pong/ball.x{ix} := #pong/game.width - 15
 
 Vertical bounce left
-  ~ #time/timer.ticks{1}
+  ~ #pong/ticks
   ix = #pong/ball.x < 15
   #pong/ball.vx{ix} := -#pong/ball.vx
   #pong/ball.x{ix} := 15
 
 Horizontal bounce bottom
-  ~ #time/timer.ticks{1}
+  ~ #pong/ticks
   ix = #pong/ball.y > (#pong/game.height - 15)
   #pong/ball.vy{ix} := -#pong/ball.vy
   #pong/ball.y{ix} := #pong/game.height - 15
 
 Vertical bounce top
-  ~ #time/timer.ticks{1}
+  ~ #pong/ticks
   ix = #pong/ball.y < 15
   #pong/ball.vy{ix} := -#pong/ball.vy
   #pong/ball.y{ix} := 15
+
+Move the desired paddle width the mouse cursor
+  #pong/players.y{#control} := #html/event/pointer-move.y
+
+Bounce the ball off the left paddle
+  ~ #pong/ticks
+  ix = #pong/ball.x < (#pong/players.x{1} + 20)
+  iy = (#pong/ball.y > (#pong/players.y{1} - 50)) & (#pong/ball.y < (#pong/players.y{1} + 50))
+  #pong/ball.vx{ix & iy} := -#pong/ball.vx
+  #pong/ball.x{ix & iy} := (#pong/players.x{1} + 20)
+
+Bounce the ball off the right paddle
+  ~ #pong/ticks
+  ix = #pong/ball.x > (#pong/players.x{2} - 10)
+  iy = (#pong/ball.y > (#pong/players.y{2} - 50)) & (#pong/ball.y < (#pong/players.y{2} + 50))
+  #pong/ball.vx{ix & iy} := -#pong/ball.vx
+  #pong/ball.x{ix & iy} := (#pong/players.x{2} - 10)

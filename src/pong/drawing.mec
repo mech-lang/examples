@@ -1,8 +1,3 @@
-## Animations
-
-Add a timer
-  #time/timer += [period: 16]
-
 ## Drawing
 
 Set up drawing elements 
@@ -14,6 +9,18 @@ Set up drawing elements
       radius: 10 
       fill: 0x222222 
       line-width: 5
+    ]
+  ]
+
+Draw the left paddle
+  #pong/paddles = [
+    shape: "rectangle"
+    parameters: [
+      x: #pong/players.x
+      y: #pong/players.y - 50
+      width: 10
+      height: 100
+      fill: 0x222222
     ]
   ]
 
@@ -32,7 +39,7 @@ Draw to canvas
   ]
   #pong/game-board = [
     type: "canvas" 
-    contains: [|shape parameters| background; #pong/circle] 
+    contains: [|shape parameters| background; #pong/paddles; #pong/circle] 
     parameters: [width: #pong/game.width height: #pong/game.height]
   ]
 
