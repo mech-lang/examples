@@ -12,15 +12,27 @@ Set up drawing elements
       center-x: #pong/ball.x 
       center-y: #pong/ball.y 
       radius: 10 
-      fill: 0xA00000 
+      fill: 0x222222 
       line-width: 5
     ]
   ]
 
 Draw to canvas
+  background = [
+    shape: "rectangle"
+    parameters: [
+      x: 0
+      y: 0
+      width: #pong/game.width
+      height: #pong/game.height
+      fill: 0xEEEEEE
+      stroke: 0x444444
+      line-width: 10
+    ]
+  ]
   #pong/game-board = [
     type: "canvas" 
-    contains: [|shape parameters| #pong/circle] 
+    contains: [|shape parameters| background; #pong/circle] 
     parameters: [width: #pong/game.width height: #pong/game.height]
   ]
 

@@ -2,6 +2,6 @@
 
 Game elements
   #pong/game = [width: 1000 height: 500]
-  #pong/ball = [x: 500 y: 250 vx: 1 vy: 1]
+  #pong/ball = [x: 500 y: 250 vx: 10 vy: 10]
   #pong/player-one = [x: 100 y: 250]
   #pong/player-two = [x: 900 y: 250]
