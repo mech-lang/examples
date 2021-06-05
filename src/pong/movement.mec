@@ -35,9 +35,6 @@ Bounce top
 
 ### Paddle Interactions
 
-Move the desired paddle width the mouse cursor
-  #pong/players.y{#control} := #html/event/pointer-move.y
-
 Bounce the ball off the left paddle
   ~ #pong/ticks
   ix = #pong/ball.x < (#pong/players.x{1} + 20)

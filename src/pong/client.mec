@@ -1,3 +1,19 @@
+# Client
+
+## Control
+
+Default to player one
+  #pong/control = 1
+
+Set the player player
+  left = #html/location.hash == "2"
+  right = !left
+  #pong/control{left} := 1
+  #pong/control{right} := 2
+
+Move the desired paddle width the mouse cursor
+  #pong/players.y{#pong/control} := #html/event/pointer-move.y
+
 ## Drawing
 
 Set up drawing elements 

@@ -14,9 +14,3 @@ Add a game timer
 
 Alias the timer
   #pong/ticks = #time/timer.ticks{1}
-
-Switch player
-  left = #html/event/pointer-move.x < 500
-  right = !left
-  #control{left} := 1
-  #control{right} := 2
