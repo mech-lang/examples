@@ -40,11 +40,11 @@ Bounce the ball off the left paddle
   ix = #pong/ball.x < (#pong/players.x{1} + 20)
   iy = (#pong/ball.y > (#pong/players.y{1} - 50)) & (#pong/ball.y < (#pong/players.y{1} + 50))
   #pong/ball.vx{ix & iy} := -#pong/ball.vx
-  #pong/ball.x{ix & iy} := (#pong/players.x{1} + 20)
+  #pong/ball.x{ix & iy} := #pong/players.x{1} + 20
 
 Bounce the ball off the right paddle
   ~ #pong/ticks
   ix = #pong/ball.x > (#pong/players.x{2} - 10)
   iy = (#pong/ball.y > (#pong/players.y{2} - 50)) & (#pong/ball.y < (#pong/players.y{2} + 50))
   #pong/ball.vx{ix & iy} := -#pong/ball.vx
-  #pong/ball.x{ix & iy} := (#pong/players.x{2} - 10)
+  #pong/ball.x{ix & iy} := #pong/players.x{2} - 10
