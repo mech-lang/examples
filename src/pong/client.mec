@@ -6,7 +6,7 @@ Default to player one
   #pong/control = 1
 
 Set the player player
-  left = #html/location.hash == "2"
+  left = #html/location.hash == "1"
   right = ¬left
   #pong/control{left} := 1
   #pong/control{right} := 2
