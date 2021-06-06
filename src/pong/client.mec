@@ -4,15 +4,16 @@
 
 Default to player one
   #pong/control = 1
+  #pong/players = [|position| 200; 200]
 
 Set the player player
   left = #html/location.hash == "1"
-  right = ¬left
+  right = #html/location.hash == "2"
   #pong/control{left} := 1
   #pong/control{right} := 2
 
 Move the desired paddle width the mouse cursor
-  #pong/players.y{#pong/control} := #html/event/pointer-move.y
+  #pong/players.position{#pong/control} := #html/event/pointer-move.y
 
 ## Drawing
 
@@ -29,18 +30,18 @@ Set up drawing elements
   ]
 
 Draw the left paddle
-  #pong/paddles = [
+
+Draw to canvas
+  paddles = [
     shape: "rectangle"
     parameters: [
-      x: #pong/players.x
-      y: #pong/players.y - 50
+      x: #pong/paddles.x
+      y: #pong/paddles.y - 50
       width: 10
       height: 100
       fill: 0x222222
     ]
   ]
-
-Draw to canvas
   background = [
     shape: "rectangle"
     parameters: [
@@ -55,7 +56,7 @@ Draw to canvas
   ]
   #pong/game-board = [
     type: "canvas" 
-    contains: [|shape parameters| background; #pong/paddles; #pong/circle] 
+    contains: [|shape parameters| background; paddles; #pong/circle] 
     parameters: [width: #pong/game.width height: #pong/game.height]
   ]
 

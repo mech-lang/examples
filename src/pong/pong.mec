@@ -3,7 +3,7 @@
 Game elements
   #pong/game = [width: 1000 height: 500]
   #pong/ball = [x: 500 y: 250 vx: 5 vy: 5]
-  #pong/players = [|x   y|
+  #pong/paddles = [|x   y|
                     50  250
                     940 300]
   #pong/score = [left: 0 right: 0]
@@ -52,16 +52,19 @@ Bounce top
 
 ### Paddle Interactions
 
+Map player position to paddle position
+  #pong/paddles.y := #pong/players.position
+
 Bounce the ball off the left paddle
   ~ #pong/ticks
-  ix = #pong/ball.x < (#pong/players.x{1} + 20)
-  iy = (#pong/ball.y > (#pong/players.y{1} - 50)) & (#pong/ball.y < (#pong/players.y{1} + 50))
+  ix = #pong/ball.x < (#pong/paddles.x{1} + 20)
+  iy = (#pong/ball.y > (#pong/paddles.y{1} - 50)) & (#pong/ball.y < (#pong/paddles.y{1} + 50))
   #pong/ball.vx{ix & iy} := -#pong/ball.vx
-  #pong/ball.x{ix & iy} := #pong/players.x{1} + 20
+  #pong/ball.x{ix & iy} := #pong/paddles.x{1} + 20
 
 Bounce the ball off the right paddle
   ~ #pong/ticks
-  ix = #pong/ball.x > (#pong/players.x{2} - 10)
-  iy = (#pong/ball.y > (#pong/players.y{2} - 50)) & (#pong/ball.y < (#pong/players.y{2} + 50))
+  ix = #pong/ball.x > (#pong/paddles.x{2} - 10)
+  iy = (#pong/ball.y > (#pong/paddles.y{2} - 50)) & (#pong/ball.y < (#pong/paddles.y{2} + 50))
   #pong/ball.vx{ix & iy} := -#pong/ball.vx
-  #pong/ball.x{ix & iy} := #pong/players.x{2} - 10
+  #pong/ball.x{ix & iy} := #pong/paddles.x{2} - 10
