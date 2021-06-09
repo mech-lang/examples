@@ -17,8 +17,8 @@ Move the desired paddle width the mouse cursor
 
 ## Drawing
 
-Set up drawing elements 
-  #pong/circle = [
+Compose the scene
+  circle = [
     shape: "circle" 
     parameters: [
       center-x: #pong/ball.x 
@@ -28,8 +28,6 @@ Set up drawing elements
       line-width: 5
     ]
   ]
-
-Compose the scene
   paddles = [
     shape: "rectangle"
     parameters: [
@@ -54,7 +52,7 @@ Compose the scene
   ]
   #pong/game-board = [
     type: "canvas" 
-    contains: [|shape parameters| background; paddles; #pong/circle] 
+    contains: [|shape parameters| background; paddles; circle] 
     parameters: [width: #pong/game.width height: #pong/game.height]
   ]
 
