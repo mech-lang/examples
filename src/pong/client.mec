@@ -6,7 +6,7 @@ Default to player one
   #pong/control = 1
   #pong/players = [|position| 200; 200]
 
-Set the player player
+Set the player using the url hash string
   left = #html/location.hash == "1"
   right = #html/location.hash == "2"
   #pong/control{left} := 1
@@ -29,9 +29,7 @@ Set up drawing elements
     ]
   ]
 
-Draw the left paddle
-
-Draw to canvas
+Compose the scene
   paddles = [
     shape: "rectangle"
     parameters: [
