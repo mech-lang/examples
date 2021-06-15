@@ -1,26 +1,26 @@
 # Pointer
 
 Keep track of which balls are clicked
-  ~ #gravity
-  #clicked = #balls.x != #balls.x
+  #clicked = logic/false(rows: 3, columns: 1)
 
-Determine if the pointer is within the ball's hitbox
-  ~ #html/event/pointer-move
-  dx = #html/event/pointer-move.x - #balls.x
-  dy = #html/event/pointer-move.y - #balls.y
+Determine if the pointer is within the ball's area
+  ~ #timer
+  dx = #io/pointer.x - #balls.x
+  dy = #io/pointer.y - #balls.y
   #hover = ((dx ^ 2 + dy ^ 2) ^ 0.5) < #balls.radius
 
 Click the circle
-  ~ #html/event/pointer-down
+  ~ #io/pointer-down
   #clicked{#hover} := true
 
 Un-click the circle
-  ~ #html/event/pointer-up
+  ~ #io/pointer-up
   #clicked{#hover} := false
 
 Move the circle to the pointer if it's clicked
-  ~ #html/event/pointer-move
-  #balls.vx{#clicked} := 0
-  #balls.vy{#clicked} := 0
-  #balls.x{#clicked} := #html/event/pointer-move.x
-  #balls.y{#clicked} := #html/event/pointer-move.y
+  #balls{#clicked} := [
+    x: #io/pointer.x 
+    y: #io/pointer.y 
+    vx: 0 
+    vy: 0
+  ]
