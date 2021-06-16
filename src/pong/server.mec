@@ -1,0 +1,10 @@
+Add a client timer
+  #time/timer += [period: 100]
+
+Alias the timer
+  #pong/client/ticks = #time/timer.ticks{2}
+
+Create the client packet
+  ~ #pong/client/ticks
+  #pong/client = [|x y vx vy left right| #pong/ball #pong/paddles.y{1} #pong/paddles.y{2}]
+
