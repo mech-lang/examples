@@ -1,19 +1,19 @@
-# Client
+# Pong
 
 ## Control
 
 Default to player one
-  #pong/control = 1
-  #pong/players = [|position| 200; 200]
+  #control = 1
+  #players = [|position| 200; 200]
 
 Set the player using the url hash string
   left = #html/location.hash == "1"
   right = #html/location.hash == "2"
-  #pong/control{left} := 1
-  #pong/control{right} := 2
+  #control{left} := 1
+  #control{right} := 2
 
 Move the desired paddle width the mouse cursor
-  #pong/players.position{#pong/control} := #html/event/pointer-move.y
+  #players.position{#control} := #html/event/pointer-move.y
 
 ## Drawing
 
@@ -21,8 +21,8 @@ Compose the scene
   circle = [
     shape: "circle" 
     parameters: [
-      center-x: #pong/ball.x 
-      center-y: #pong/ball.y 
+      center-x: #ball.x 
+      center-y: #ball.y 
       radius: 10 
       fill: 0x222222 
       line-width: 5
@@ -31,8 +31,8 @@ Compose the scene
   paddles = [
     shape: "rectangle"
     parameters: [
-      x: #pong/paddles.x
-      y: #pong/paddles.y - 50
+      x: #paddles.x
+      y: #paddles.y - 50
       width: 10
       height: 100
       fill: 0x222222
@@ -43,21 +43,21 @@ Compose the scene
     parameters: [
       x: 0
       y: 0
-      width: #pong/game.width
-      height: #pong/game.height
+      width: #game.width
+      height: #game.height
       fill: 0xEEEEEE
       stroke: 0x444444
       line-width: 10
     ]
   ]
-  #pong/game-board = [
+  #game-board = [
     type: "canvas" 
     contains: [|shape parameters| background; paddles; circle] 
-    parameters: [width: #pong/game.width height: #pong/game.height]
+    parameters: [width: #game.width height: #game.height]
   ]
 
 Attach game to root
   #html/app = [
     root: "mech-root" 
-    contains: [|type contains parameters| #pong/game-board]
+    contains: [|type contains parameters| #game-board]
   ]

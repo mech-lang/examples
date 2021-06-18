@@ -1,56 +1,51 @@
 # Pong
 
 Game elements
-  #pong/game = [width: 1000 height: 500]
-  #pong/ball = [x: 500 y: 250 vx: 5 vy: 5]
-  #pong/paddles = [|x   y|
-                    50  250
-                    940 300]
-  #pong/score = [left: 0 right: 0]
-
-Add a game timer
-  #time/timer += [period: 16]
-
-Alias the timer
-  #pong/ticks = #time/timer.ticks{1}
+  #game = [width: 1000 height: 500]
+  #ball = [x: 500 y: 250 vx: 5 vy: 5]
+  #paddles = [|x   y|
+               50  250
+               940 300]
+  #score = [left: 0 right: 0]
 
 ## Movement
 
 Move the ball with every tick of the timer
-  ~ #pong/ticks
-  #pong/ball := [x: #pong/ball.x + #pong/ball.vx 
-                 y: #pong/ball.y + #pong/ball.vy]
+  ~ 60Hz
+  #ball := [x: #ball.x + #ball.vx
+            y: #ball.y + #ball.vy]
 
 ### Game Boundary Interactions
 
 Bounce right
-  ix = #pong/ball.x > (#pong/game.width - 15)
-  #pong/ball{ix} := [x: #pong/game.width - 15 vx: -#pong/ball.vx]
-  #pong/score.right{ix} := #pong/score.right + 1
+  ix = #ball.x > (#game.width - 15)
+  #ball{ix} := [x: #game.width - 15, vx: -#ball.vx]
+  #score.right{ix} := #score.right + 1
 
 Bounce left
-  ix = #pong/ball.x < 15
-  #pong/ball{ix} := [x: 15 vx: -#pong/ball.vx]
-  #pong/score.left{ix} := #pong/score.left + 1
+  ix = #ball.x < 15
+  #ball{ix} := [x: 15 vx: -#ball.vx]
+  #score.left{ix} := #score.left + 1
 
 Bounce bottom
-  ix = #pong/ball.y > (#pong/game.height - 15)
-  #pong/ball{ix} := [y: #pong/game.height - 15 vy: -#pong/ball.vy]
+  #ball{.y > (#game.height - 15)} := [y: #game.height - 15 vy: -#ball.vy]
   
 Bounce top
-  #pong/ball{#pong/ball.y < 15} := [y: 15 vy: -#pong/ball.vy]
+  #ball{.y < 15} := [y: 15 vy: -#ball.vy]
 
 ### Paddle Interactions
 
-Map player position to paddle position
-  #pong/paddles.y := #pong/players.position
+Map player position to paddle position. The player position comes from the client.
+  #paddles.y := #players.position
 
 Bounce the ball off the left paddle
-  ix = #pong/ball.x < (#pong/paddles.x{1} + 20)
-  iy = (#pong/ball.y > (#pong/paddles.y{1} - 50)) & (#pong/ball.y < (#pong/paddles.y{1} + 50))
-  #pong/ball{ix & iy} := [x: #pong/paddles.x{1} + 20, vx: -#pong/ball.vx]
+  ix = #ball.x < (#paddles.x{1} + 20)
+  iy = (#ball.y > (#paddles.y{1} - 50)) & (#ball.y < (#paddles.y{1} + 50))
+  #ball{ix & iy} := [x: #paddles.x{1} + 20
+                     vx: -#ball.vx]
 
 Bounce the ball off the right paddle
-  ix = #pong/ball.x > (#pong/paddles.x{2} - 10)
-  iy = (#pong/ball.y > (#pong/paddles.y{2} - 50)) & (#pong/ball.y < (#pong/paddles.y{2} + 50))
-  #pong/ball{ix & iy} := [x: #pong/paddles.x{2} - 10, vx: -#pong/ball.vx]
+  ix = #ball.x > (#paddles.x{2} - 10)
+  iy = (#ball.y > (#paddles.y{2} - 50)) & (#ball.y < (#paddles.y{2} + 50))
+  #ball{ix & iy} := [x: #paddles.x{2} - 10
+                     vx: -#ball.vx]
