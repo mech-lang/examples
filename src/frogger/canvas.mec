@@ -1,9 +1,25 @@
-canvas = [
+  canvas = [
     type: "canvas"
-    contains: [|shape parameters| line]
-    parameters: [width: 500 height: 500]
+    contains: [
+      shape: "rectangle"
+      parameters: [
+        fill: 0xAFFF00
+        x: 100
+        y: 10
+        width: 100
+        height: 100
+      ]
+    ]
+    parameters: [
+      width: 500
+      height: 500
+    ]
   ]
   #html/app = [
     root: "mech-root"
-    contains: [|type contains parameters| canvas]
+    contains: [
+      type: canvas
+      contains: _
+      parameters: _
+    ]
   ]
