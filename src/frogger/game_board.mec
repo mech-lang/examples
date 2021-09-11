@@ -3,7 +3,8 @@
     contains: [
       |shape parameters|
       "rectangle" [x: 10 y: 10 width: 650 height: 650 fill: 0xFFFFFF line-width: 7]
-      "image"     [x: 200 y: 200 rotate: 0 source: "https://e7.pngegg.com/pngimages/834/248/png-clipart-green-and-yellow-frog-pixel-artwork-frogger-ancient-shadow-frogger-s-adventures-temple-of-the-frog-arcade-game-pixel-miscellaneous-game.png"]
+      "rectangle" [x: 10 y: 10 width: 650 height: 650 fill: 0x1834A5]
+      "rectangle" [x: 10 y: 370 width: 650 height: 240 fill: 0x000000]
     ]
     parameters: [
       width: 700
