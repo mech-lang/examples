@@ -1,19 +1,13 @@
   canvas = [
     type: "canvas"
     contains: [
-      shape: "rectangle"
-      parameters: [
-        fill: 0xFFFFFF
-        x: 0
-        y: 0
-        width: 700
-        height: 700
-        line-width: 7
-      ]
+      |shape parameters|
+      "rectangle" [fill: 0xFFFFFF x: 10 y: 10 width: 700 height: 700 line-width: 7]
+      "image"     [x: 200 y: 200 rotate: 0 source: "https://e7.pngegg.com/pngimages/834/248/png-clipart-green-and-yellow-frog-pixel-artwork-frogger-ancient-shadow-frogger-s-adventures-temple-of-the-frog-arcade-game-pixel-miscellaneous-game.png"]
     ]
     parameters: [
-      width: 700
-      height: 700
+      width: 750
+      height: 750
     ]
   ]
   #html/app = [
