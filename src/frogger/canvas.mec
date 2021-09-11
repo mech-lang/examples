@@ -2,7 +2,7 @@
     type: "canvas"
     contains: [
       |shape parameters|
-      "rectangle" [fill: 0xFFFFFF x: 10 y: 10 width: 700 height: 700 line-width: 7]
+      "rectangle" [x: 10 y: 10 width: 700 height: 700 fill: 0xFFFFFF line-width: 7]
       "image"     [x: 200 y: 200 rotate: 0 source: "https://e7.pngegg.com/pngimages/834/248/png-clipart-green-and-yellow-frog-pixel-artwork-frogger-ancient-shadow-frogger-s-adventures-temple-of-the-frog-arcade-game-pixel-miscellaneous-game.png"]
     ]
     parameters: [
