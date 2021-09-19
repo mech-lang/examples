@@ -1,0 +1,27 @@
+  board-boundary = [
+    "rectangle" [x: 10 y: 10 width: 650 height: 650 fill: 0xFFFFFF line-width: 7]
+  ]
+  water = [
+    "rectangle" [x: 10 y: 10 width: 650 height: 650 fill: 0x1834A5]
+  ]
+  road = [
+    "rectangle" [x: 10 y: 370 width: 650 height: 240 fill: 0x000000]
+  ]
+  sidewalks = [
+    "rectangle" [x: 10 y: 610 width: 650 height: 50 fill: 0x4297E3]
+    "rectangle" [x: 10 y: 320 width: 650 height: 50 fill: 0x4297E3]
+  ]
+  grass-land = [
+    "rectangle" [x: 10 y: 10 width: 650 height: 70 fill: 0x5BBD38]
+  ]
+  frogger = [
+    "rectangle" [x: 50 y: 50 width: 50 height: 50 fill: 0xE1DF49]
+  ]
+  #canvas-elements = [
+    board-boundary
+    water
+    road
+    sidewalks
+    grass-land
+    frogger
+  ]
