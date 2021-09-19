@@ -1,14 +1,15 @@
+  canvas-elements = [
+    "rectangle" [x: 10 y: 10 width: 650 height: 650 fill: 0xFFFFFF line-width: 7]
+    "rectangle" [x: 10 y: 10 width: 650 height: 650 fill: 0x1834A5]
+    "rectangle" [x: 10 y: 370 width: 650 height: 240 fill: 0x000000]
+    "rectangle" [x: 10 y: 610 width: 650 height: 50 fill: 0x4297E3]
+    "rectangle" [x: 10 y: 320 width: 650 height: 50 fill: 0x4297E3]
+    "rectangle" [x: 10 y: 10 width: 650 height: 70 fill: 0x5BBD38]
+    "rectangle" [x: 50 y: 50 width: 50 height: 50 fill: 0xE1DF49]
+  ]
   canvas = [
     type: "canvas"
-    contains: [
-      |shape parameters|
-      "rectangle" [x: 10 y: 10 width: 650 height: 650 fill: 0xFFFFFF line-width: 7]
-      "rectangle" [x: 10 y: 10 width: 650 height: 650 fill: 0x1834A5]
-      "rectangle" [x: 10 y: 370 width: 650 height: 240 fill: 0x000000]
-      "rectangle" [x: 10 y: 610 width: 650 height: 50 fill: 0x4297E3]
-      "rectangle" [x: 10 y: 320 width: 650 height: 50 fill: 0x4297E3]
-      "rectangle" [x: 10 y: 10 width: 650 height: 70 fill: 0x5BBD38]
-    ]
+    contains: [|shape parameters| canvas-elements]
     parameters: [
       width: 700
       height: 700
