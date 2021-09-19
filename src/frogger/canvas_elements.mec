@@ -5,11 +5,11 @@
     "rectangle" [x: 10 y: 10 width: 650 height: 650 fill: 0x1834A5]
   ]
   road = [
-    "rectangle" [x: 10 y: 370 width: 650 height: 240 fill: 0x000000]
+    "rectangle" [x: 10 y: 360 width: 650 height: 250 fill: 0x000000]
   ]
   sidewalks = [
     "rectangle" [x: 10 y: 610 width: 650 height: 50 fill: 0x4297E3]
-    "rectangle" [x: 10 y: 320 width: 650 height: 50 fill: 0x4297E3]
+    "rectangle" [x: 10 y: 310 width: 650 height: 50 fill: 0x4297E3]
   ]
   grass-land = [
     "rectangle" [x: 10 y: 10 width: 650 height: 70 fill: 0x5BBD38]

@@ -1,4 +1,4 @@
-  #time/timer += [period: 16]
+  #time/timer += [period: 200]
 
   canvas = [
     type: "canvas"

@@ -8,10 +8,10 @@
   down = #html/event/key-down.key == "ArrowDown"
   left = #html/event/key-down.key == "ArrowLeft"
   right = #html/event/key-down.key == "ArrowRight"
-  #frogger.vx{left} := -5
-  #frogger.vx{right} := 5
-  #frogger.vy{up} := -5
-  #frogger.vy{down} := 5
+  #frogger.vx{left} := -50
+  #frogger.vx{right} := 50
+  #frogger.vy{up} := -50
+  #frogger.vy{down} := 50
 
   ~ #html/event/key-up
   up = #html/event/key-up.key == "ArrowUp"
