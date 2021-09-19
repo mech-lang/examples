@@ -1,0 +1,26 @@
+  #frogger/direction{#frogger.vx > 0} := 0
+  #frogger/direction{#frogger.vx < 0} := 180
+  #frogger/direction{#frogger.vy > 0} := 90
+  #frogger/direction{#frogger.vy < 0} := 270
+
+  ~ #html/event/key-down
+  up = #html/event/key-down.key == "ArrowUp"
+  down = #html/event/key-down.key == "ArrowDown"
+  left = #html/event/key-down.key == "ArrowLeft"
+  right = #html/event/key-down.key == "ArrowRight"
+  #frogger.vx{left} := -5
+  #frogger.vx{right} := 5
+  #frogger.vy{up} := -5
+  #frogger.vy{down} := 5
+
+  ~ #html/event/key-up
+  up = #html/event/key-up.key == "ArrowUp"
+  down = #html/event/key-up.key == "ArrowDown"
+  left = #html/event/key-up.key == "ArrowLeft"
+  right = #html/event/key-up.key == "ArrowRight"
+  #frogger.vx{left | right} := 0
+  #frogger.vy{up | down} := 0
+
+  ~ #time/timer.ticks{1}
+  #frogger.x := #frogger.x + #frogger.vx
+  #frogger.y := #frogger.y + #frogger.vy
