@@ -12,7 +12,7 @@
     "rectangle" [x: 10 y: 310 width: 650 height: 50 fill: 0x4297E3]
   ]
   grass-land = [
-    "rectangle" [x: 10 y: 10 width: 650 height: 70 fill: 0x5BBD38]
+    "rectangle" [x: 10 y: 10 width: 650 height: 50 fill: 0x5BBD38]
   ]
   #canvas-elements = [
     board-boundary
