@@ -14,14 +14,10 @@
   grass-land = [
     "rectangle" [x: 10 y: 10 width: 650 height: 70 fill: 0x5BBD38]
   ]
-  frogger = [
-    "rectangle" [x: 50 y: 50 width: 50 height: 50 fill: 0xE1DF49]
-  ]
   #canvas-elements = [
     board-boundary
     water
     road
     sidewalks
     grass-land
-    frogger
   ]
