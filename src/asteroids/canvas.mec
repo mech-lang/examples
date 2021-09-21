@@ -1,0 +1,7 @@
+  board-boundary = [
+    "rectangle" [x: 10 y: 10 width: 1000 height: 1000 fill: 0x000000 line-width: 10]
+  ]
+
+  #canvas-elements = [
+    board-boundary
+  ]

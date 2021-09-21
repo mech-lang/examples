@@ -1,0 +1,23 @@
+  #time/timer += [period: 16]
+
+  canvas = [
+    type: "canvas"
+    contains: [
+      |shape parameters|
+      #canvas-elements
+      "rectangle" [x: #spaceship.x y: #spaceship.y width: 50 height: 50 fill: 0xFFFFFF]
+    ]
+      "arc" [center-x: #asteroid.x center-y: #asteroid.y radius: #asteroid.size starting-angle: 0 ending-angle: 360]
+    parameters: [
+      width: 1000
+      height: 1000
+    ]
+  ]
+  #html/app = [
+    root: "mech-root"
+    contains: [
+      type: canvas
+      contains: _
+      parameters: _
+    ]
+  ]

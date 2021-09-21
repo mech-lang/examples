@@ -1,0 +1,47 @@
+## Movement
+
+Turn spaceship
+~ #html/event/key-down
+ left = #html/event/key-down.key == "ArrowLeft"
+ right = #html/event/key-down.key == "ArrowRight"
+  #spaceship.orientation{left} :=   #spaceship.orientation + 1
+  #spaceship.orientation{right} :=   #spaceship.orientation -1
+
+Increase/decrease acceleration on keydown
+~ #html/event/key-down
+  up = #html/event/key-down.key == "ArrowUp"
+  down = #html/event/key-down.key == "ArrowDown”
+  #spaceship.ay{up} :=  #spaceship.ay + (.25 * math/sin(angle: #spaceship.orientation))
+  #spaceship.ax{up} := #spaceship.ax + (.25 * math/cos(angle: #spaceship.orientation))
+  #spaceship.ay{down} :=  #spaceship.vy - (.125 * math/sin(angle: #spaceship.orientation))
+  #spaceship.ax{down} :=  #spaceship.vx - (.125 * math/cos(angle: #spaceship.orientation))
+
+Increase/Decrease Speed in turn with acceleration 
+~ #time/timer.ticks{1}
+  #spaceship.vy :=  #spaceship.vy + #spaceship.ay 
+  #spaceship.vx := #spaceship.vx + #spaceship.ax
+
+Stop acceleration on keyup
+~ #html/event/key-up
+up = #html/event/key-up.key == "ArrowUp"
+down = #html/event/key-up.key == "ArrowDown”
+ #spaceship.ay{up} := 0
+ #spaceship.ax{up} := 0
+ #spaceship.ay{down} := 0
+ #spaceship.ax{down} := 0
+
+Lower acceleration
+~ #time/timer.ticks{1}
+  #spaceship.ay :=  #spaceship.vy - (.0625 * math/sin(angle: #spaceship.orientation))
+  #spaceship.ax :=  #spaceship.vx - (.0625 * math/cos(angle: #spaceship.orientation))
+
+Slow down ship
+~ #time/timer.ticks{1}
+ #spaceship.vy :=  #spaceship.vy * #spaceship/friction
+ #spaceship.vx := #spaceship.vx * #spaceship/friction
+
+
+Move spaceship at set speed
+~ #time/timer.ticks{1}
+  #spaceship.x := #spaceship.x + #spaceship.vx
+  #spaceship.y := #spaceship.y + #spaceship.vy
