@@ -4,4 +4,11 @@
     vx: 0
     vy: 0
   ]
+
   #frogger/direction = 0
+
+  frog-x = #frogger.x
+  frog-y = #frogger.y
+  #the-frog = [
+    "rectangle" [x: frog-x y: frog-y width: 50 height: 50 fill: 0xE1DF49 stroke: 0x5CBF38 line-width: 3]
+  ]
