@@ -5,7 +5,7 @@
     contains: [
       |shape parameters|
       #canvas-elements
-      "rectangle" [x: #spaceship.x y: #spaceship.y width: 50 height: 50 fill: 0xFFFFFF]
+      "rectangle" [x: #spaceship.x y: #spaceship.y width: 50 height: 50 fill: 0xFFFFFF stroke: 0x000000 line-width: 15]
     ]
       "arc" [center-x: #asteroid.x center-y: #asteroid.y radius: #asteroid.size starting-angle: 0 ending-angle: 360]
     parameters: [
