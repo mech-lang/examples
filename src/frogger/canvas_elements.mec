@@ -11,7 +11,7 @@
     "rectangle" [x: 10 y: 610 width: 650 height: 50 fill: 0x4297E3]
     "rectangle" [x: 10 y: 310 width: 650 height: 50 fill: 0x4297E3]
   ]
-  grass-land = [
+  grassland = [
     "rectangle" [x: 10 y: 10 width: 650 height: 50 fill: 0x5BBD38]
   ]
   #canvas-elements = [
@@ -19,5 +19,5 @@
     water
     road
     sidewalks
-    grass-land
+    grassland
   ]
