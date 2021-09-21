@@ -1,0 +1,20 @@
+
+Define Player
+
+  #spaceship = [
+    x: 500
+    y: 300
+    vx: 0
+    vy: 0
+    ax: 0
+    ay: 0
+    orientation: 90
+  ]
+  #spaceship/thruster = 0
+  #spaceship/direction = 90
+  #spaceship/lives = 3
+  #spaceship/friction = .97
+  #spaceship/maxSpeed= 100
+  #spaceship/maxAcceleration = 5
+  #spaceship/minSpeed= 0
+  #spaceship/maxAcceleration = -5

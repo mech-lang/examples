@@ -1,0 +1,30 @@
+Add a timer
+  #time/timer += [period: 16]
+
+## Drawing
+
+Set up drawing elements 
+  x = #spaceship.x
+  y = #spaceship.y
+  shapes = [|shape   parameters|
+            "rectangle" [x: 0 y: 0 width: 50 height: 50 fill: 0x000000 stroke: 0xFFFFFF line-width: 5]
+  #spaceship/drawing = [
+    shape: "path" 
+    parameters: [
+      start-point: [x: 0 y: 0] 
+      contains: [|shape parameters| shapes] 
+      translate: [x: x y: y]
+      rotate: #spaceship/direction
+    ]
+  ]
+
+Draw Spaceship
+canvas = [
+    type: "canvas"
+    contains: [|shape parameters| #spaceship.drawing]
+    parameters: [width: 800 height: 800]
+  ]
+  #html/app = [
+    root: "mech-root"
+    contains: [[|type contains parameters| canvas]]
+  ]

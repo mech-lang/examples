@@ -1,0 +1,26 @@
+## Movement
+
+Increase/decrease acceleration on keydown
+~ #html/event/key-down
+  up = #html/event/key-down.key == "ArrowUp"
+  down = #html/event/key-down.key == "ArrowDown”
+  left = #html/event/key-down.key == "ArrowLeft"
+  right = #html/event/key-down.key == "ArrowRight"
+  #spaceship.vy{up} :=  5
+  #spaceship.vx{right} := 5
+  #spaceship.vy{down} :=  -5
+  #spaceship.vx{left} :=  -5
+
+Stop spaceship on keyup
+  ~ #html/event/key-up
+  up = #html/event/key-up.key == "ArrowUp"
+  down = #html/event/key-up.key == "ArrowDown"
+  left = #html/event/key-up.key == "ArrowLeft"
+  right = #html/event/key-up.key == "ArrowRight"
+  #spaceship.vx{left | right} := 0
+  #spaceship.vy{up | down} := 0
+
+Move spaceship at set speed
+~ #time/timer.ticks{1}
+  #spaceship.x := #spaceship.x + #spaceship.vx
+  #spaceship.y := #spaceship.y + #spaceship.vy
