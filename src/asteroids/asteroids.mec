@@ -7,8 +7,6 @@ Define Asteroid Objects
     y: 500
     vx: 0
     vy: 0
-    ax: 0
-    ay: 0
     size: 50
     orientation: 180
   ]
