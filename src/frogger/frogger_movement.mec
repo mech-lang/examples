@@ -3,21 +3,34 @@
   #frogger/direction{#frogger.vy > 0} := 90
   #frogger/direction{#frogger.vy < 0} := 270
 
+  #is-up = false
+  #is-down = false
+  #is-left = false
+  #is-right = false
+
   ~ #html/event/key-down
   up = #html/event/key-down.key == "ArrowUp"
+  #is-up{up} := true
   down = #html/event/key-down.key == "ArrowDown"
+  #is-down{down} := true
   left = #html/event/key-down.key == "ArrowLeft"
+  #is-left{left} := true
   right = #html/event/key-down.key == "ArrowRight"
-  #frogger.vx{left} := -50
-  #frogger.vx{right} := 50
-  #frogger.vy{up} := -50
-  #frogger.vy{down} := 50
+  #is-right{right} := true
+  #frogger.vx{left & !#is-up & !#is-down} := -50
+  #frogger.vx{right & !#is-up & !#is-down} := 50
+  #frogger.vy{up & !#is-left & !#is-right} := -50
+  #frogger.vy{down & !#is-left & !#is-right} := 50
 
   ~ #html/event/key-up
   up = #html/event/key-up.key == "ArrowUp"
+  #is-up{up} := false
   down = #html/event/key-up.key == "ArrowDown"
+  #is-down{down} := false
   left = #html/event/key-up.key == "ArrowLeft"
+  #is-left{left} := false
   right = #html/event/key-up.key == "ArrowRight"
+  #is-right{right} := false
   #frogger.vx{left | right} := 0
   #frogger.vy{up | down} := 0
 
