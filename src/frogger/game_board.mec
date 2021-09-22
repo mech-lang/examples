@@ -12,11 +12,23 @@
       height: 700
     ]
   ]
+  canvas2 = [
+    type: "canvas"
+    contains: [
+      |shape parameters|
+      "text" [x: 10 y: 100 text: #frogger.x font: [size: 60 face: "Chiller"]]
+      "text" [x: 10 y: 150 text: #frogger.y font: [size: 60 face: "Chiller"]]
+    ]
+    parameters: [
+      width: 700
+      height: 700
+    ]
+  ]
   #html/app = [
     root: "mech-root"
     contains: [
-      type: canvas
-      contains: _
-      parameters: _
+      |type contains parameters|
+      canvas _ _
+      canvas2 _ _
     ]
   ]
