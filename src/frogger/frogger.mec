@@ -7,8 +7,6 @@
 
   #frogger/direction = 0
 
-  frogger-x = #frogger.x
-  frogger-y = #frogger.y
   #the-frog = [
-    "rectangle" [x: frogger-x y: frogger-y width: 50 height: 50 fill: 0xE1DF49 stroke: 0x5CBF38 line-width: 3]
+    "rectangle" [x: #frogger.x y: #frogger.y width: 50 height: 50 fill: 0xE1DF49 stroke: 0x5CBF38 line-width: 3]
   ]

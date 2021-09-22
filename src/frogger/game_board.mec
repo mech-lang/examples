@@ -5,6 +5,7 @@
     contains: [
       |shape parameters|
       #canvas-elements
+      #cars
       #the-frog
     ]
     parameters: [
