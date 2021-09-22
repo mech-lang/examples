@@ -4,7 +4,7 @@
     type: "canvas"
     contains: [
       |shape parameters|
-      #canvas-elements
+      #field
       #the-frog
       #cars
     ]

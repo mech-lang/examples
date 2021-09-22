@@ -14,7 +14,7 @@
   grassland = [
     "rectangle" [x: 10 y: 10 width: 650 height: 50 fill: 0x5BBD38]
   ]
-  #canvas-elements = [
+  #field = [
     board-boundary
     water
     road
