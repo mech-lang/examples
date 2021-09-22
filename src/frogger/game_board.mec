@@ -5,8 +5,8 @@
     contains: [
       |shape parameters|
       #canvas-elements
-      #cars
       #the-frog
+      #cars
     ]
     parameters: [
       width: 700
