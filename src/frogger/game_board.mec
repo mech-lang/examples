@@ -5,6 +5,7 @@
     contains: [
       |shape parameters|
       #field
+      #river-stuff
       #the-frog
       #cars
     ]

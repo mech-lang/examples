@@ -1,0 +1,7 @@
+  ~ #time/timer.ticks{1}
+  #turtle-1-data.vx{#turtle-1-data.x > 660} := -50
+  #turtle-1-data.vx{#turtle-1-data.x < -90} := 50
+  #turtle-1-data.x := #turtle-1-data.x + #turtle-1-data.vx
+  #log-1-data.vx{#log-1-data.x > 660} := -50
+  #log-1-data.vx{#log-1-data.x < -90} := 50
+  #log-1-data.x := #log-1-data.x + #log-1-data.vx
