@@ -1,0 +1,9 @@
+  #car-1-collided = false
+
+  #car-1-collided{#frogger.x < (#vehicle-1-data.x + #vehicle-1-data.width) & (#frogger.x + #frogger.width) > #vehicle-1-data.x & #frogger.y < (#vehicle-1-data.y + #vehicle-1-data.height) & (#frogger.y + #frogger.height) > #vehicle-1-data.y} := true
+
+  #frogger.x{#car-1-collided} := 310
+  #frogger.y{#car-1-collided} := 610
+
+  ~ #car-1-collided
+  #car-1-collided{#car-1-collided} := false
