@@ -5,3 +5,12 @@
   #log-1-data.vx{#log-1-data.x > 660} := -50
   #log-1-data.vx{#log-1-data.x < -90} := 50
   #log-1-data.x := #log-1-data.x + #log-1-data.vx
+  #log-2-data.vx{#log-2-data.x > 660} := -50
+  #log-2-data.vx{#log-2-data.x < -90} := 50
+  #log-2-data.x := #log-2-data.x + #log-2-data.vx
+  #turtle-2-data.vx{#turtle-2-data.x > 660} := -50
+  #turtle-2-data.vx{#turtle-2-data.x < -90} := 50
+  #turtle-2-data.x := #turtle-2-data.x + #turtle-2-data.vx
+  #log-3-data.vx{#log-3-data.x > 660} := -50
+  #log-3-data.vx{#log-3-data.x < -90} := 50
+  #log-3-data.x := #log-3-data.x + #log-3-data.vx
