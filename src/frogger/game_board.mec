@@ -1,5 +1,5 @@
 Update the timer
-  #time/timer += [period: 200]
+  #time/timer += [period: 175]
 
 Draw the game
   game-canvas = [
