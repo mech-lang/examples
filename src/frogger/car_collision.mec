@@ -1,15 +1,29 @@
 Reset Frogger to the starting position if he touches the first car that's going right
-  #frogger.x{#vehicle-1-data.vx == 50 & #frogger.x < #vehicle-1-data.x & #frogger.y == #vehicle-1-data.y} := 310
   #frogger.y{#vehicle-1-data.vx == 50 & #frogger.x < #vehicle-1-data.x & #frogger.y == #vehicle-1-data.y} := 610
 
 Reset Frogger to the starting position if he touches the first car that's going left
-  #frogger.x{#vehicle-1-data.vx == -50 & #frogger.x > #vehicle-1-data.x & #frogger.y == #vehicle-1-data.y} := 310
   #frogger.y{#vehicle-1-data.vx == -50 & #frogger.x > #vehicle-1-data.x & #frogger.y == #vehicle-1-data.y} := 610
 
 Reset Frogger to the starting position if he touches the second car that's going right
-  #frogger.x{#vehicle-2-data.vx == 50 & #frogger.x < #vehicle-2-data.x & #frogger.y == #vehicle-2-data.y} := 310
   #frogger.y{#vehicle-2-data.vx == 50 & #frogger.x < #vehicle-2-data.x & #frogger.y == #vehicle-2-data.y} := 610
 
 Reset Frogger to the starting position if he touches the second car that's going left
-  #frogger.x{#vehicle-2-data.vx == -50 & #frogger.x > #vehicle-2-data.x & #frogger.y == #vehicle-2-data.y} := 310
   #frogger.y{#vehicle-2-data.vx == -50 & #frogger.x > #vehicle-2-data.x & #frogger.y == #vehicle-2-data.y} := 610
+
+Reset Frogger to the starting position if he touches the third car that's going right
+  #frogger.y{#vehicle-3-data.vx == 50 & #frogger.x < #vehicle-3-data.x & #frogger.y == #vehicle-3-data.y} := 610
+
+Reset Frogger to the starting position if he touches the third car that's going left
+  #frogger.y{#vehicle-3-data.vx == -50 & #frogger.x > #vehicle-3-data.x & #frogger.y == #vehicle-3-data.y} := 610
+
+Reset Frogger to the starting position if he touches the fourth car that's going right
+  #frogger.y{#vehicle-4-data.vx == 50 & #frogger.x < #vehicle-4-data.x & #frogger.y == #vehicle-4-data.y} := 610
+
+Reset Frogger to the starting position if he touches the fourth car that's going left
+  #frogger.y{#vehicle-4-data.vx == -50 & #frogger.x > #vehicle-4-data.x & #frogger.y == #vehicle-4-data.y} := 610
+
+Reset Frogger to the starting position if he touches the fifth car that's going right
+  #frogger.y{#vehicle-5-data.vx == 50 & #frogger.x < #vehicle-5-data.x & #frogger.y == #vehicle-5-data.y} := 610
+
+Reset Frogger to the starting position if he touches the fifth car that's going left
+  #frogger.y{#vehicle-5-data.vx == -50 & #frogger.x > #vehicle-5-data.x & #frogger.y == #vehicle-5-data.y} := 610
