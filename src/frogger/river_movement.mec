@@ -1,3 +1,4 @@
+Update the positions of all the turtles and logs on the river per tick
   ~ #time/timer.ticks{1}
   #turtle-1-data.vx{#turtle-1-data.x > 660} := -50
   #turtle-1-data.vx{#turtle-1-data.x < -90} := 50

@@ -1,3 +1,4 @@
+Reset Frogger to the starting position if he touches the first car
   ix = #frogger.x < (#vehicle-1-data.x + #vehicle-1-data.width) & (#frogger.x + #frogger.width) > #vehicle-1-data.x
   iy = #frogger.y < (#vehicle-1-data.y + #vehicle-1-data.height) & (#frogger.y + #frogger.height) > #vehicle-1-data.y
   #frogger.x{ix & iy} := 310

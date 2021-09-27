@@ -1,3 +1,4 @@
+Create attributes for the second car
   #vehicle-2-data = [
       width: 100
       height: 50
@@ -6,6 +7,7 @@
       vx: 50
   ]
 
+Create the second car
   #vehicle-2 = [
     "rectangle" [x: #vehicle-2-data.x y: #vehicle-2-data.y width: #vehicle-2-data.width height: #vehicle-2-data.height fill: 0xFFFD54 line-width: 2]
   ]

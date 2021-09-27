@@ -1,7 +1,8 @@
-#river-stuff = [
+Create the element that composes the river
+  #river-stuff = [
     #turtle-1
     #log-1
     #log-2
     #turtle-2
     #log-3
-]
+  ]

@@ -1,3 +1,4 @@
+Create attributes for the fifth car
   #vehicle-5-data = [
       width: 150
       height: 50
@@ -6,6 +7,7 @@
       vx: -50
   ]
 
+Create the fifth car
   #vehicle-5 = [
     "rectangle" [x: #vehicle-5-data.x y: #vehicle-5-data.y width: #vehicle-5-data.width height: #vehicle-5-data.height fill: 0x4F82CF line-width: 2]
   ]

@@ -1,13 +1,16 @@
+Values indicating where Frogger is facing
   #frogger/direction{#frogger.vx > 0} := 0
   #frogger/direction{#frogger.vx < 0} := 180
   #frogger/direction{#frogger.vy > 0} := 90
   #frogger/direction{#frogger.vy < 0} := 270
 
+Booleans to avoid diagonal movement
   #is-up = false
   #is-down = false
   #is-left = false
   #is-right = false
 
+Execute Frogger's movement when an arrow key is pressed
   ~ #html/event/key-down
   up = #html/event/key-down.key == "ArrowUp"
   #is-up{up} := true
@@ -22,6 +25,7 @@
   #frogger.vy{up & !#is-left & !#is-right} := -50
   #frogger.vy{down & !#is-left & !#is-right} := 50
 
+Stop Frogger's movement when an arrow key is released
   ~ #html/event/key-up
   up = #html/event/key-up.key == "ArrowUp"
   #is-up{up} := false
@@ -34,6 +38,7 @@
   #frogger.vx{left | right} := 0
   #frogger.vy{up | down} := 0
 
+Update Frogger's position per tick
   ~ #time/timer.ticks{1}
   #frogger.x := #frogger.x + #frogger.vx
   #frogger.y := #frogger.y + #frogger.vy
