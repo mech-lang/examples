@@ -1,0 +1,9 @@
+  ix = #frogger.x < 10
+  ixx = #frogger.x > 610
+  #frogger.x{ix} := 10
+  #frogger.x{ixx} := 610
+
+  iy = #frogger.y > 610
+  iyy = #frogger.y < 10
+  #frogger.y{iy} := 610
+  #frogger.y{iyy} := 10
