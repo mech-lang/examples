@@ -1,10 +1,10 @@
 Create attributes for the second log
   #log-2-data = [
-      width: 200
-      height: 50
-      x: 10
-      y: 160
-      vx: 50
+    width: 200
+    height: 50
+    x: 10
+    y: 160
+    vx: 50
   ]
 
 Create the second log

@@ -1,10 +1,10 @@
 Create attributes for the first car
   #vehicle-1-data = [
-      width: 100
-      height: 50
-      x: 560
-      y: 560
-      vx: -50
+    width: 100
+    height: 50
+    x: 560
+    y: 560
+    vx: -50
   ]
 
 Create the first car

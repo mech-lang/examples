@@ -1,10 +1,10 @@
 Create attributes for the first log
   #log-1-data = [
-      width: 100
-      height: 50
-      x: 60
-      y: 210
-      vx: 50
+    width: 100
+    height: 50
+    x: 60
+    y: 210
+    vx: 50
   ]
 
 Create the first log

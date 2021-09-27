@@ -1,10 +1,10 @@
 Create attributes for the first turtle
   #turtle-1-data = [
-      width: 150
-      height: 50
-      x: 510
-      y: 260
-      vx: -50
+    width: 150
+    height: 50
+    x: 510
+    y: 260
+    vx: -50
   ]
 
 Create the first turtle

@@ -1,10 +1,10 @@
 Create attributes for the fifth car
   #vehicle-5-data = [
-      width: 150
-      height: 50
-      x: 560
-      y: 360
-      vx: -50
+    width: 150
+    height: 50
+    x: 560
+    y: 360
+    vx: -50
   ]
 
 Create the fifth car
