@@ -1,7 +1,7 @@
-Update the timer
+## Update the timer
   #time/timer += [period: 175]
 
-Draw the game
+## Draw the game
   game-canvas = [
     type: "canvas"
     contains: [

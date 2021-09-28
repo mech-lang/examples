@@ -1,10 +1,10 @@
-Prevent Frogger from going past the width of the game board
+## Prevent Frogger from going past the width of the game board
   ix = #frogger.x < 10
   ixx = #frogger.x > 610
   #frogger.x{ix} := 10
   #frogger.x{ixx} := 610
 
-Prevent Frogger from going past the height of the game board
+## Prevent Frogger from going past the height of the game board
   iy = #frogger.y > 610
   iyy = #frogger.y < 10
   #frogger.y{iy} := 610

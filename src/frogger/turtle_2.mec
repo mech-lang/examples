@@ -1,4 +1,4 @@
-Create attributes for the second turtle
+## Create attributes for the second turtle
   #turtle-2-data = [
     width: 100
     height: 50
@@ -7,7 +7,7 @@ Create attributes for the second turtle
     vx: -50
   ]
 
-Create the second turtle
+## Create the second turtle
   #turtle-2 = [
     "rectangle" [x: #turtle-2-data.x y: #turtle-2-data.y width: #turtle-2-data.width height: #turtle-2-data.height fill: 0xCE2B1E stroke: 0x61B837 line-width: 2]
   ]

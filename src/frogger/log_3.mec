@@ -1,4 +1,4 @@
-Create attributes for the third log
+## Create attributes for the third log
   #log-3-data = [
     width: 150
     height: 50
@@ -7,7 +7,7 @@ Create attributes for the third log
     vx: 50
   ]
 
-Create the third log
+## Create the third log
   #log-3 = [
     "rectangle" [x: #log-3-data.x y: #log-3-data.y width: #log-3-data.width height: #log-3-data.height fill: 0xB7614B line-width: 2]
   ]

@@ -1,4 +1,4 @@
-Create attributes for the first car
+## Create attributes for the first car
   #vehicle-1-data = [
     width: 100
     height: 50
@@ -7,7 +7,7 @@ Create attributes for the first car
     vx: -50
   ]
 
-Create the first car
+## Create the first car
   #vehicle-1 = [
     "rectangle" [x: #vehicle-1-data.x y: #vehicle-1-data.y width: #vehicle-1-data.width height: #vehicle-1-data.height fill: 0xEC57F1 line-width: 2]
   ]

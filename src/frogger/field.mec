@@ -1,4 +1,4 @@
-Create the elements that compose the map of the game
+## Create the elements that compose the map of the game
   board-boundary = [
     "rectangle" [x: 10 y: 10 width: 650 height: 650 fill: 0xFFFFFF line-width: 7]
   ]
