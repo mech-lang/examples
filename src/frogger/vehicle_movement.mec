@@ -1,17 +1,12 @@
-Update the positions of all the cars on the road per tick
+## Update the positions of all the cars on the road per tick
   ~ #time/timer.ticks{1}
-  #vehicle-1-data.vx{#vehicle-1-data.x > 660} := -50
-  #vehicle-1-data.vx{#vehicle-1-data.x < -90} := 50
+  #vehicle-1-data.x{#vehicle-1-data.x < -90} := 660
   #vehicle-1-data.x := #vehicle-1-data.x + #vehicle-1-data.vx
-  #vehicle-2-data.vx{#vehicle-2-data.x > 660} := -50
-  #vehicle-2-data.vx{#vehicle-2-data.x < -90} := 50
+  #vehicle-2-data.x{#vehicle-2-data.x > 660} := -90
   #vehicle-2-data.x := #vehicle-2-data.x + #vehicle-2-data.vx
-  #vehicle-3-data.vx{#vehicle-3-data.x > 660} := -50
-  #vehicle-3-data.vx{#vehicle-3-data.x < -90} := 50
+  #vehicle-3-data.x{#vehicle-3-data.x < -90} := 660
   #vehicle-3-data.x := #vehicle-3-data.x + #vehicle-3-data.vx
-  #vehicle-4-data.vx{#vehicle-4-data.x > 660} := -50
-  #vehicle-4-data.vx{#vehicle-4-data.x < -90} := 50
+  #vehicle-4-data.x{#vehicle-4-data.x > 660} := -90
   #vehicle-4-data.x := #vehicle-4-data.x + #vehicle-4-data.vx
-  #vehicle-5-data.vx{#vehicle-5-data.x > 660} := -50
-  #vehicle-5-data.vx{#vehicle-5-data.x < -90} := 50
+  #vehicle-5-data.x{#vehicle-5-data.x < -90} := 660
   #vehicle-5-data.x := #vehicle-5-data.x + #vehicle-5-data.vx
