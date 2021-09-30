@@ -1,17 +1,23 @@
+## Check if the turtles or the logs reach the board boundaries
+  #turtle-1-data.vx{#turtle-1-data.x > 460} := -50
+  #turtle-1-data.vx{#turtle-1-data.x < 60} := 50
+
+  #log-1-data.vx{#log-1-data.x > 510} := -50
+  #log-1-data.vx{#log-1-data.x < 60} := 50
+
+  #log-2-data.vx{#log-2-data.x > 410} := -50
+  #log-2-data.vx{#log-2-data.x < 60} := 50
+
+  #turtle-2-data.vx{#turtle-2-data.x > 510} := -50
+  #turtle-2-data.vx{#turtle-2-data.x < 60} := 50
+
+  #log-3-data.vx{#log-3-data.x > 460} := -50
+  #log-3-data.vx{#log-3-data.x < 60} := 50
+
 ## Update the positions of all the turtles and logs on the river per tick
   ~ #time/timer.ticks{1}
-  #turtle-1-data.vx{#turtle-1-data.x > 410} := -50
-  #turtle-1-data.vx{#turtle-1-data.x < 110} := 50
   #turtle-1-data.x := #turtle-1-data.x + #turtle-1-data.vx
-  #log-1-data.vx{#log-1-data.x > 460} := -50
-  #log-1-data.vx{#log-1-data.x < 110} := 50
   #log-1-data.x := #log-1-data.x + #log-1-data.vx
-  #log-2-data.vx{#log-2-data.x > 360} := -50
-  #log-2-data.vx{#log-2-data.x < 110} := 50
   #log-2-data.x := #log-2-data.x + #log-2-data.vx
-  #turtle-2-data.vx{#turtle-2-data.x > 460} := -50
-  #turtle-2-data.vx{#turtle-2-data.x < 110} := 50
   #turtle-2-data.x := #turtle-2-data.x + #turtle-2-data.vx
-  #log-3-data.vx{#log-3-data.x > 410} := -50
-  #log-3-data.vx{#log-3-data.x < 110} := 50
   #log-3-data.x := #log-3-data.x + #log-3-data.vx
