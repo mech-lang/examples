@@ -1,6 +1,16 @@
-game-board = [
-    "rectangle" [x: 10 y: 10 width: 1190 height: 690 fill: 0x000000 stroke: 0xACACAC line-width: 10]
-]
-#canvas-elements = [
+  game-board = [
+    "rectangle" [x: 10 y: 10 width: 580 height: 330 fill: 0x000000 stroke: 0xACACAC line-width: 10]
+  ]
+  point-info = [
+    "text" [x: 440 y: 370 text: "POINTS:" font: [size: 25 face: "Arial"]]
+    "text" [x: 550 y: 370 text: #spaceship.points font: [size: 25 face: "Arial"]]
+  ]
+  lives-info = [
+    "text" [x: 10 y: 370 text: "LIVES:" font: [size: 25 face: "Arial"]]
+    "text" [x: 100 y: 370 text: #spaceship.lives font: [size: 25 face: "Arial"]]
+  ]
+  #canvas-elements = [
     game-board
-]
+    point-info
+    lives-info
+  ]

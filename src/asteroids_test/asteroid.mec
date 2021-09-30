@@ -1,9 +1,9 @@
   #asteroid = [
-    x: 600
-    y: 500
+    x: 300
+    y: 250
     vx: 0
     vy: 0
-    size: 50
+    size: 25
     orientation: 180
   ]
 
@@ -11,5 +11,5 @@
   asteroid-y = #asteroid.y  
   asteroid-size = #asteroid.size
   #asteroid-drawing = [
-      "arc" [center-x: 600 center-y: 600 radius: asteroid-size starting-angle: 0 ending-angle: 360 fill: 0x000000 stroke: 0xFFFFFF line-width: 3]
+      "arc" [center-x: asteroid-x center-y: asteroid-y radius: asteroid-size starting-angle: 0 ending-angle: 360 fill: 0x000000 stroke: 0xFFFFFF line-width: 3]
   ]

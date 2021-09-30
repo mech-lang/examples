@@ -1,24 +1,26 @@
   #spaceship = [
-    x: 500
-    y: 300
+    x: 250
+    y: 150
     vx: 0
     vy: 0
     ax: 0
     ay: 0
     orientation: 90
+    lives: 3
+    points: 0
   ]
   
   #spaceship/thruster = 0
   #spaceship/direction = 90
   #spaceship/lives = 3
-  #spaceship/friction = .97
-  #spaceship/maxSpeed= 100
+  #spaceship/friction = 0.97
+  #spaceship/maxSpeed = 100
   #spaceship/maxAcceleration = 5
-  #spaceship/minSpeed= 0
-  #spaceship/maxAcceleration = -5
+  #spaceship/minSpeed = 0
+  #spaceship/minAcceleration = -5
 
   spaceship-x = #spaceship.x
   spaceship-y = #spaceship.y
   #user = [
-    "rectangle" [x: spaceship-x y: spaceship-y width: 50 height: 50 fill: 0x000000 stroke: 0xFFFFFF line-width: 5]
+    "rectangle" [x: spaceship-x y: spaceship-y width: 20 height: 20 fill: 0x000000 stroke: 0xFFFFFF line-width: 5]
   ]
