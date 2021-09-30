@@ -1,0 +1,34 @@
+## Check if Frogger is on any of the objects on the river
+  #is-colliding = false
+
+## Attach Frogger to the first log if he touches it
+  ix = #frogger.x < (#log-1-data.x + #log-1-data.width) & (#frogger.x + #frogger.width) > #log-1-data.x
+  iy = #frogger.y < (#log-1-data.y + #log-1-data.height) & (#frogger.y + #frogger.height) > #log-1-data.y
+  #is-colliding{ix & iy} := true
+  #frogger.vx{#is-colliding} := #log-1-data.vx
+
+## Attach Frogger to the second log if he touches it
+  ix = #frogger.x < (#log-2-data.x + #log-2-data.width) & (#frogger.x + #frogger.width) > #log-2-data.x
+  iy = #frogger.y < (#log-2-data.y + #log-2-data.height) & (#frogger.y + #frogger.height) > #log-2-data.y
+  #is-colliding{ix & iy} := true
+  #frogger.vx{#is-colliding} := #log-2-data.vx
+
+## Allow Frogger to move horizontally on the objects of the river
+  ~ #html/event/key-down
+  left = #html/event/key-down.key == "ArrowLeft"
+  right = #html/event/key-down.key == "ArrowRight"
+  #frogger.x{left & #is-colliding} := #frogger.x - 50
+  #frogger.x{right & #is-colliding} := #frogger.x + 50
+
+## Reset the collision boolean
+  ~ #html/event/key-up
+  up = #html/event/key-up.key == "ArrowUp"
+  down = #html/event/key-up.key == "ArrowDown"
+  left = #html/event/key-up.key == "ArrowLeft"
+  right = #html/event/key-up.key == "ArrowRight"
+  #frogger.y{up & #is-colliding} := #frogger.y - 50
+  #frogger.y{down & #is-colliding} := #frogger.y + 50
+  #is-colliding{(up | down | left | right) & #is-colliding} := false
+
+## Reset Frogger if he is in the water
+  #frogger.y{#frogger.y < 260 & !#is-colliding} := 610
