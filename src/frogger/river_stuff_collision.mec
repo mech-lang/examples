@@ -13,7 +13,7 @@
   #is-colliding{ix & iy} := true
   #frogger.vx{ix & iy} := #log-2-data.vx
 
-## Allow Frogger to move horizontally on the objects of the river
+## Allow Frogger to move horizontally and vertically on the objects of the river
   ~ #html/event/key-down
   up = #html/event/key-up.key == "ArrowUp"
   down = #html/event/key-up.key == "ArrowDown"
