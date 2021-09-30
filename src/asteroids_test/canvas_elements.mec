@@ -1,0 +1,6 @@
+game-board = [
+    "rectangle" [x: 10 y: 10 width: 1190 height: 690 fill: 0x000000 stroke: 0xACACAC line-width: 10]
+]
+#canvas-elements = [
+    game-board
+]

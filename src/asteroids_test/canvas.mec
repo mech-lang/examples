@@ -1,21 +1,23 @@
+  #time/timer += [period: 16]
+  
   canvas = [
     type: "canvas"
     contains: [
-      |shape parameters|
-      "rectangle" [x: 10 y: 10 width: 1190 height: 690 fill: 0x000000 stroke: 0xACACAC line-width: 10]
-      "rectangle" [x: 400 y:400 width: 50 height: 50 fill: 0x000000 stroke: 0xFFFFFF line-width: 5]
-      "arc" [center-x: 600 center-y: 600 radius: 50 starting-angle: 0 ending-angle: 360 fill: 0x000000 stroke: 0xFFFFFF line-width: 3]
+     |shape parameters|
+     #canvas-elements
+     #user
+     #asteroid-drawing
     ]
     parameters: [
       width: 1200
       height: 700
     ]
-  ]
+  ] 
   #html/app = [
-    root: "mech-root"
-    contains: [
-      type: canvas
-      contains: _
-      parameters: _
+   root: "mech-root"
+   contains: [
+     type: canvas
+     contains: _
+     parameters: _
     ]
   ]
