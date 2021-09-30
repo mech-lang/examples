@@ -1,9 +1,9 @@
 ## Check if the cars reach the board boundaries
-  #vehicle-1-data.x{#vehicle-1-data.x < -90} := 660
-  #vehicle-2-data.x{#vehicle-2-data.x > 660} := -90
-  #vehicle-3-data.x{#vehicle-3-data.x < -90} := 660
-  #vehicle-4-data.x{#vehicle-4-data.x > 660} := -90
-  #vehicle-5-data.x{#vehicle-5-data.x < -90} := 660
+  #vehicle-1-data.x{#vehicle-1-data.x < -140} := 710
+  #vehicle-2-data.x{#vehicle-2-data.x > 710} := -140
+  #vehicle-3-data.x{#vehicle-3-data.x < -140} := 710
+  #vehicle-4-data.x{#vehicle-4-data.x > 710} := -140
+  #vehicle-5-data.x{#vehicle-5-data.x < -140} := 710
 
 ## Update the positions of all the cars on the road per tick
   ~ #time/timer.ticks{1}
