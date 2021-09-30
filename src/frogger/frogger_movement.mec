@@ -13,12 +13,12 @@
 ## Execute Frogger's movement when an arrow key is pressed
   ~ #html/event/key-down
   up = #html/event/key-down.key == "ArrowUp"
-  #is-up{up} := true
   down = #html/event/key-down.key == "ArrowDown"
-  #is-down{down} := true
   left = #html/event/key-down.key == "ArrowLeft"
-  #is-left{left} := true
   right = #html/event/key-down.key == "ArrowRight"
+  #is-up{up} := true
+  #is-down{down} := true
+  #is-left{left} := true
   #is-right{right} := true
   #frogger.vx{left & !#is-up & !#is-down} := -50
   #frogger.vx{right & !#is-up & !#is-down} := 50
@@ -28,12 +28,12 @@
 ## Stop Frogger's movement when an arrow key is released
   ~ #html/event/key-up
   up = #html/event/key-up.key == "ArrowUp"
-  #is-up{up} := false
   down = #html/event/key-up.key == "ArrowDown"
-  #is-down{down} := false
   left = #html/event/key-up.key == "ArrowLeft"
-  #is-left{left} := false
   right = #html/event/key-up.key == "ArrowRight"
+  #is-up{up} := false
+  #is-down{down} := false
+  #is-left{left} := false
   #is-right{right} := false
   #frogger.vx{left | right} := 0
   #frogger.vy{up | down} := 0
