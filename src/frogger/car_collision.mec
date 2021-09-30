@@ -1,14 +1,24 @@
 ## Reset Frogger to the starting position if he touches the first car
-  #frogger.y{#frogger.x > #vehicle-1-data.x & #frogger.y == #vehicle-1-data.y} := 610
+  ix = #frogger.x < (#vehicle-1-data.x + #vehicle-1-data.width) & (#frogger.x + #frogger.width) > #vehicle-1-data.x
+  iy = #frogger.y < (#vehicle-1-data.y + #vehicle-1-data.height) & (#frogger.y + #frogger.height) > #vehicle-1-data.y
+  #frogger.y{ix & iy} := 610
 
 ## Reset Frogger to the starting position if he touches the second car
-  #frogger.y{#frogger.x < (#vehicle-2-data.x + #vehicle-2-data.width) & #frogger.y == #vehicle-2-data.y} := 610
+  ix = #frogger.x < (#vehicle-2-data.x + #vehicle-2-data.width) & (#frogger.x + #frogger.width) > #vehicle-2-data.x
+  iy = #frogger.y < (#vehicle-2-data.y + #vehicle-2-data.height) & (#frogger.y + #frogger.height) > #vehicle-2-data.y
+  #frogger.y{ix & iy} := 610
 
 ## Reset Frogger to the starting position if he touches the third car
-  #frogger.y{#frogger.x > #vehicle-3-data.x & #frogger.y == #vehicle-3-data.y} := 610
+  ix = #frogger.x < (#vehicle-3-data.x + #vehicle-3-data.width) & (#frogger.x + #frogger.width) > #vehicle-3-data.x
+  iy = #frogger.y < (#vehicle-3-data.y + #vehicle-3-data.height) & (#frogger.y + #frogger.height) > #vehicle-3-data.y
+  #frogger.y{ix & iy} := 610
 
 ## Reset Frogger to the starting position if he touches the fourth car
-  #frogger.y{#frogger.x < (#vehicle-4-data.x + #vehicle-4-data.width) & #frogger.y == #vehicle-4-data.y} := 610
+  ix = #frogger.x < (#vehicle-4-data.x + #vehicle-4-data.width) & (#frogger.x + #frogger.width) > #vehicle-4-data.x
+  iy = #frogger.y < (#vehicle-4-data.y + #vehicle-4-data.height) & (#frogger.y + #frogger.height) > #vehicle-4-data.y
+  #frogger.y{ix & iy} := 610
 
 ## Reset Frogger to the starting position if he touches the fifth car
-  #frogger.y{#frogger.x > #vehicle-5-data.x & #frogger.y == #vehicle-5-data.y} := 610
+  ix = #frogger.x < (#vehicle-5-data.x + #vehicle-5-data.width) & (#frogger.x + #frogger.width) > #vehicle-5-data.x
+  iy = #frogger.y < (#vehicle-5-data.y + #vehicle-5-data.height) & (#frogger.y + #frogger.height) > #vehicle-5-data.y
+  #frogger.y{ix & iy} := 610
