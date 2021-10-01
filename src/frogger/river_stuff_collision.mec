@@ -23,13 +23,6 @@
   #frogger.x{right & !left & !up & !down & #is-colliding} := #frogger.x + 50
   #frogger.y{up & !down & !left & !right & #is-colliding} := #frogger.y - 50
   #frogger.y{down & !up & !left & !right & #is-colliding} := #frogger.y + 50
-
-## Reset the collision boolean
-  ~ #html/event/key-up
-  up = #html/event/key-up.key == "ArrowUp"
-  down = #html/event/key-up.key == "ArrowDown"
-  left = #html/event/key-up.key == "ArrowLeft"
-  right = #html/event/key-up.key == "ArrowRight"
   #is-colliding{(up | down | left | right) & #is-colliding} := false
 
 ## Reset Frogger if he is in the water
