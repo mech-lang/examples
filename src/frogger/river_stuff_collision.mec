@@ -24,6 +24,7 @@
   #frogger.y{up & !down & !left & !right & #is-colliding} := #frogger.y - 50
   #frogger.y{down & !up & !left & !right & #is-colliding} := #frogger.y + 50
   #is-colliding{(up | down | left | right) & #is-colliding} := false
+  #frogger.vx{(up | down | left | right) & #is-colliding} := false
 
 ## Reset Frogger if he is in the water
   #frogger.vx{#frogger.y > 10 & #frogger.y < 260 & !#is-colliding} := 0
