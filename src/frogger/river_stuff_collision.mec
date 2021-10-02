@@ -24,7 +24,13 @@
   #frogger.y{up & !down & !left & !right & #is-colliding} := #frogger.y - 50
   #frogger.y{down & !up & !left & !right & #is-colliding} := #frogger.y + 50
   #is-colliding{(up | down | left | right) & #is-colliding} := false
-  #frogger.vx{(up | down | left | right) & #is-colliding} := false
+  #frogger.vx{(up | down | left | right) & #is-colliding} := 0
 
 ## Reset Frogger if he is in the water
   #frogger.y{#frogger.y > 10 & #frogger.y < 260 & !#is-colliding} := 610
+
+## Attach Frogger to the first set of turtles if he touches it
+## ix = #frogger.x < (#turtle-1-data.x + #turtle-1-data.width) & (#frogger.x + #frogger.width) > #turtle-1-data.x
+## iy = #frogger.y < (#turtle-1-data.y + #turtle-1-data.height) & (#frogger.y + #frogger.height) > #turtle-1-data.y
+## is-colliding{ix & iy} := true
+## frogger.vx{ix & iy} := #turtle-1-data.vx
