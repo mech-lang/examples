@@ -1,9 +1,3 @@
-## Values indicating where Frogger is facing
-  #frogger/direction{#frogger.vx > 0} := 0
-  #frogger/direction{#frogger.vx < 0} := 180
-  #frogger/direction{#frogger.vy > 0} := 90
-  #frogger/direction{#frogger.vy < 0} := 270
-
 ## Booleans to avoid diagonal movement
   #is-up = false
   #is-down = false

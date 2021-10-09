@@ -8,8 +8,6 @@
     vy: 0
   ]
 
-  #frogger/direction = 0
-
 ## Create Frogger
   #the-frog = [
     "rectangle" [x: #frogger.x y: #frogger.y width: #frogger.width height: #frogger.height fill: 0xE1DF49 stroke: 0x5CBF38 line-width: 3]
