@@ -1,12 +1,12 @@
   ~ #html/event/key-down
   up = #html/event/key-down.key == "ArrowUp"
-  down = #html/event/key-down.key == "ArrowDown”
+  down = #html/event/key-down.key == "ArrowDown"
   left = #html/event/key-down.key == "ArrowLeft"
   right = #html/event/key-down.key == "ArrowRight"
-  #spaceship.vy{up} :=  5
+  #spaceship.vy{up} := 5
   #spaceship.vx{right} := 5
-  #spaceship.vy{down} :=  -5
-  #spaceship.vx{left} :=  -5
+  #spaceship.vy{down} := -5
+  #spaceship.vx{left} := -5
 
   ~ #html/event/key-up
   up = #html/event/key-up.key == "ArrowUp"
