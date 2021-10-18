@@ -1,0 +1,10 @@
+  ~ #html/event/key-down
+  shoot = #html/event/key-down.key == "s"
+  #bullet.x{shoot} := #spaceship.x
+  #bullet.y{shoot} := #spaceship.y
+  #bullet.vy{shoot} := 0 - 4
+  #bullet.vx{shoot} := 0
+
+  ~ #time/timer.ticks{1}
+  #bullet.x := #bullet.x + #bullet.vx
+  #bullet.y := #bullet.y + #bullet.vy

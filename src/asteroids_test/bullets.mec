@@ -1,0 +1,12 @@
+  #bullet = [
+    x: 300
+    y: 300
+    vx: 0
+    vy: 0
+  ]
+
+  bullet-x = #bullet.x
+  bullet-y = #bullet.y
+  #bullet-drawing = [
+    "rectangle" [x: bullet-x y: bullet-y width: 2 height: 2 fill: 0xFFFFFF stroke: 0xFFFFFF line-width: 3]
+  ]

@@ -1,13 +1,17 @@
 Turn Ship and set Acceleration
   ~ #html/event/key-down
+  turnleft = #html/event/key-down.key == "a"
+  turnright = #html/event/key-down.key == "d"
   left = #html/event/key-down.key == "ArrowLeft"
   right = #html/event/key-down.key == "ArrowRight"
   up = #html/event/key-down.key == "ArrowUp"
   down = #html/event/key-down.key == "ArrowDown"
-  #spaceship.vx{left} := #spaceship.vx - 1
-  #spaceship.vx{right} := #spaceship.vx + 1
+  #spaceship.orientation{turnleft} := #spaceship.orientation - 10
+  #spaceship.orientation{turnright} := #spaceship.orientation + 10
   #spaceship.vy{up} := #spaceship.vy + 1
   #spaceship.vy{down} := #spaceship.vy - 1
+  #spaceship.vx{left} := #spaceship.vx - 1
+  #spaceship.vx{right} := #spaceship.vx + 1
 
 Set Spaceship Velocity
   ~ #time/timer.ticks{1}
@@ -34,6 +38,10 @@ Move ship and asteroid
   #spaceship.y := #spaceship.y - #spaceship.vy
   #asteroid.x := #asteroid.x + 0.5
   #asteroid.y := #asteroid.y - 0.5
+  #child.x := #child.x + 1
+  #child.y := #child.y + 1
+  #grandchild.x := #grandchild.x - 2
+  #grandchild.y := #grandchild.y - 2
 
 Change postion when ship goes off screen
   ~ #time/timer.ticks{1}
@@ -56,3 +64,19 @@ Change position when asteroid goes off screen
   #asteroid.y{ady} := #asteroid.y - 310
   auy = #asteroid.y < (10)
   #asteroid.y{auy} := #asteroid.y + 310
+  crx = #child.x > (570)
+  #child.x{crx} := #child.x - 555
+  clx = #child.x < (10)
+  #child.x{clx} := #child.x + 555
+  cdy = #child.y > (320)
+  #child.y{cdy} := #child.y - 310
+  cuy = #child.y < (10)
+  #child.y{cuy} := #child.y + 310
+  grx = #grandchild.x > (570)
+  #grandchild.x{grx} := #grandchild.x - 555
+  glx = #grandchild.x < (10)
+  #grandchild.x{glx} := #grandchild.x + 555
+  gdy = #grandchild.y > (320)
+  #grandchild.y{gdy} := #grandchild.y - 310
+  guy = #grandchild.y < (10)
+  #grandchild.y{guy} := #grandchild.y + 310
