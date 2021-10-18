@@ -8,10 +8,10 @@ Turn Ship and set Acceleration
   down = #html/event/key-down.key == "ArrowDown"
   #spaceship.orientation{turnleft} := #spaceship.orientation - 10
   #spaceship.orientation{turnright} := #spaceship.orientation + 10
-  #spaceship.vy{up} := #spaceship.vy + 1
-  #spaceship.vy{down} := #spaceship.vy - 1
-  #spaceship.vx{left} := #spaceship.vx - 1
-  #spaceship.vx{right} := #spaceship.vx + 1
+  #spaceship.vy{up} := #spaceship.vy + 0.75
+  #spaceship.vy{down} := #spaceship.vy - 0.75
+  #spaceship.vx{left} := #spaceship.vx - 0.75
+  #spaceship.vx{right} := #spaceship.vx + 0.75
 
 Set Spaceship Velocity
   ~ #time/timer.ticks{1}

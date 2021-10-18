@@ -1,10 +1,38 @@
+Shoot first bullet  
   ~ #html/event/key-down
   shoot = #html/event/key-down.key == "s"
   #bullet.x{shoot} := #spaceship.x
   #bullet.y{shoot} := #spaceship.y
-  #bullet.vy{shoot} := 0 - 4
+  #bullet.vy{shoot} := 0 - 5
   #bullet.vx{shoot} := 0
 
+Move first bullet 
   ~ #time/timer.ticks{1}
   #bullet.x := #bullet.x + #bullet.vx
   #bullet.y := #bullet.y + #bullet.vy
+
+Shoot second bullet 
+  ~ #html/event/key-down
+  shot1 = #html/event/key-down.key == "s"
+  #bullet2.x{shot1} := #spaceship.x
+  #bullet2.y{shot1} := #spaceship.y
+  #bullet2.vy{shot1} := 0 - 5
+  #bullet2.vx{shot1} := 0
+
+Move second bullet
+  ~ #time/timer.ticks{1}
+  #bullet2.x := #bullet2.x + #bullet2.vx
+  #bullet2.y := #bullet2.y + #bullet2.vy
+
+Shoot third bullet 
+  ~ #html/event/key-down
+  shot2 = #html/event/key-down.key == "s"
+  #bullet3.x{shot2} := #spaceship.x
+  #bullet3.y{shot2} := #spaceship.y
+  #bullet3.vy{shot2} := 0 - 5
+  #bullet3.vx{shot2} := 0
+
+Move third bullet
+  ~ #time/timer.ticks{1}
+  #bullet3.x := #bullet3.x + #bullet3.vx
+  #bullet3.y := #bullet3.y + #bullet3.vy

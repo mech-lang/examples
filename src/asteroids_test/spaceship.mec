@@ -8,7 +8,7 @@
     orientation: 0
     lives: 3
     points: 0
-    friction: 0.97
+    friction: 0.98
   ]
   
   #spaceship/thruster = 0

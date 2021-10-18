@@ -10,6 +10,8 @@
      #child-drawing
      #grandchild-drawing
      #bullet-drawing
+     #bullet2-drawing
+     #bullet3-drawing
     ]
     parameters: [
       width: 600
