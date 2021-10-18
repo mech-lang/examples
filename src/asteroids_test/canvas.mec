@@ -14,7 +14,7 @@
      #bullet3-drawing
     ]
     parameters: [
-      width: 600
+      width: 800
       height: 400
     ]
   ] 

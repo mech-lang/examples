@@ -12,6 +12,15 @@
   game-info = [
     "text" [x: 180 y: 380 text: "ASTEROIDS" font: [size: 40 face: "Courier"]]
   ]
+  debug-info = [
+    "text" [x: 610 y: 100 text: "Debugging" font: [size: 12 face: "Arial"]]
+    "text" [x: 610 y: 120 text: "Direction" font: [size: 12 face: "Arial"]]
+    "text" [x: 670 y: 120 text: #spaceship.direction font: [size: 12 face: "Arial"]]
+    "text" [x: 610 y: 140 text: "X Velocity" font: [size: 12 face: "Arial"]]
+    "text" [x: 670 y: 140 text: #spaceship.vx font: [size: 12 face: "Arial"]]
+    "text" [x: 610 y: 160 text: "Y Velocity" font: [size: 12 face: "Arial"]]
+    "text" [x: 670 y: 160 text: #spaceship.vy font: [size: 12 face: "Arial"]]
+  ]
   dx = #spaceship.x
   dy = #spaceship.y
   star1 = [
@@ -55,6 +64,7 @@
     point-info
     lives-info
     game-info
+    debug-info
     star1
     star2
     star3

@@ -3,8 +3,8 @@ Shoot first bullet
   shoot = #html/event/key-down.key == "s"
   #bullet.x{shoot} := #spaceship.x
   #bullet.y{shoot} := #spaceship.y
-  #bullet.vy{shoot} := 0 - 5
-  #bullet.vx{shoot} := 0
+  #bullet.vy{shoot} := (0 - 5) * math/sin(angle: #spaceship.direction)
+  #bullet.vx{shoot} := 5 * math/cos(angle: #spaceship.direction)
 
 Move first bullet 
   ~ #time/timer.ticks{1}
@@ -36,3 +36,14 @@ Move third bullet
   ~ #time/timer.ticks{1}
   #bullet3.x := #bullet3.x + #bullet3.vx
   #bullet3.y := #bullet3.y + #bullet3.vy
+
+Make sure bullets stop off screen
+  ~ #time/timer.ticks{1}
+  brx = #bullet.x > (600)
+  #bullet.vx{brx} := 0
+  blx = #bullet.x < (10)
+  #bullet.vx{alx} := 0
+  bdy = #bullet.y > (400)
+  #bullet.vy{ady} := 0
+  buy = #bullet.y < (0)
+  #bullet.vy{auy} := 0
