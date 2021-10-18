@@ -9,8 +9,62 @@
     "text" [x: 10 y: 370 text: "LIVES:" font: [size: 25 face: "Arial"]]
     "text" [x: 100 y: 370 text: #spaceship.lives font: [size: 25 face: "Arial"]]
   ]
+  game-info = [
+    "text" [x: 180 y: 380 text: "ASTEROIDS" font: [size: 40 face: "Courier"]]
+  ]
+  dx = #spaceship.x
+  dy = #spaceship.y
+  star1 = [
+      "arc" [center-x: 50 center-y: 50 radius: 2 starting-angle: 0 ending-angle: 360 fill: 0xFFFFFF stroke: 0xFFFFFF line-width: 3]
+  ]
+  star2 = [
+      "arc" [center-x: 500 center-y: 120 radius: 2 starting-angle: 0 ending-angle: 360 fill: 0xFFFFFF stroke: 0xFFFFFF line-width: 3]
+  ]
+  star3 = [
+      "arc" [center-x: 250 center-y: 275 radius: 2 starting-angle: 0 ending-angle: 360 fill: 0xFFFFFF stroke: 0xFFFFFF line-width: 3]
+  ]
+  star4 = [
+      "arc" [center-x: 75 center-y: 225 radius: 2 starting-angle: 0 ending-angle: 360 fill: 0xFFFFFF stroke: 0xFFFFFF line-width: 3]
+  ]
+  star5 = [
+      "arc" [center-x: 540 center-y: 300 radius: 2 starting-angle: 0 ending-angle: 360 fill: 0xFFFFFF stroke: 0xFFFFFF line-width: 3]
+  ]
+  star6 = [
+      "arc" [center-x: 260 center-y: 175 radius: 2 starting-angle: 0 ending-angle: 360 fill: 0xFFFFFF stroke: 0xFFFFFF line-width: 3]
+  ]
+  star7 = [
+      "arc" [center-x: 300 center-y: 100 radius: 2 starting-angle: 0 ending-angle: 360 fill: 0xFFFFFF stroke: 0xFFFFFF line-width: 3]
+  ]
+  star8 = [
+      "arc" [center-x: 400 center-y: 200 radius: 2 starting-angle: 0 ending-angle: 360 fill: 0xFFFFFF stroke: 0xFFFFFF line-width: 3]
+  ]
+  star9 = [
+      "arc" [center-x: 500 center-y: 25 radius: 2 starting-angle: 0 ending-angle: 360 fill: 0xFFFFFF stroke: 0xFFFFFF line-width: 3]
+  ]
+  star10 = [
+      "arc" [center-x: 25 center-y: 300 radius: 2 starting-angle: 0 ending-angle: 360 fill: 0xFFFFFF stroke: 0xFFFFFF line-width: 3]
+  ]
+  star11 = [
+      "arc" [center-x: 100 center-y: 100 radius: 2 starting-angle: 0 ending-angle: 360 fill: 0xFFFFFF stroke: 0xFFFFFF line-width: 3]
+  ]
+  star12 = [
+      "arc" [center-x: 350 center-y: 60 radius: 2 starting-angle: 0 ending-angle: 360 fill: 0xFFFFFF stroke: 0xFFFFFF line-width: 3]
+  ]
   #canvas-elements = [
     game-board
     point-info
     lives-info
+    game-info
+    star1
+    star2
+    star3
+    star4
+    star5
+    star6
+    star7
+    star8
+    star9
+    star10
+    star11
+    star12
   ]

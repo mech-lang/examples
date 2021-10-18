@@ -1,21 +1,58 @@
+Turn Ship and set Acceleration
   ~ #html/event/key-down
-  up = #html/event/key-down.key == "ArrowUp"
-  down = #html/event/key-down.key == "ArrowDown"
   left = #html/event/key-down.key == "ArrowLeft"
   right = #html/event/key-down.key == "ArrowRight"
-  #spaceship.vy{up} := 5
-  #spaceship.vx{right} := 5
-  #spaceship.vy{down} := -5
-  #spaceship.vx{left} := -5
+  up = #html/event/key-down.key == "ArrowUp"
+  down = #html/event/key-down.key == "ArrowDown"
+  #spaceship.vx{left} := #spaceship.vx - 1
+  #spaceship.vx{right} := #spaceship.vx + 1
+  #spaceship.vy{up} := #spaceship.vy + 1
+  #spaceship.vy{down} := #spaceship.vy - 1
 
+Set Spaceship Velocity
+  ~ #time/timer.ticks{1}
+  #spaceship.vy := #spaceship.vy + #spaceship.ay 
+  #spaceship.vx := #spaceship.vx + #spaceship.ax
+
+Set acceleration to 0 on Key up
   ~ #html/event/key-up
-  up = #html/event/key-up.key == "ArrowUp"
-  down = #html/event/key-up.key == "ArrowDown"
-  left = #html/event/key-up.key == "ArrowLeft"
-  right = #html/event/key-up.key == "ArrowRight"
-  #spaceship.vx{left | right} := 0
-  #spaceship.vy{up | down} := 0
+  upup = #html/event/key-up.key == "ArrowUp"
+  downup = #html/event/key-up.key == "ArrowDown"
+  #spaceship.ay{upup} := 0
+  #spaceship.ax{upup} := 0
+  #spaceship.ay{downup} := 0
+  #spaceship.ax{downup} := 0
 
+Slow down ship with friction
+  ~ #time/timer.ticks{1}
+  #spaceship.vy := #spaceship.vy * #spaceship.friction
+  #spaceship.vx := #spaceship.vx * #spaceship.friction
+
+Move ship and asteroid
   ~ #time/timer.ticks{1}
   #spaceship.x := #spaceship.x + #spaceship.vx
-  #spaceship.y := #spaceship.y + #spaceship.vy
+  #spaceship.y := #spaceship.y - #spaceship.vy
+  #asteroid.x := #asteroid.x + 0.5
+  #asteroid.y := #asteroid.y - 0.5
+
+Change postion when ship goes off screen
+  ~ #time/timer.ticks{1}
+  srx = #spaceship.x > (570)
+  #spaceship.x{srx} := #spaceship.x - 555
+  slx = #spaceship.x < (10)
+  #spaceship.x{slx} := #spaceship.x + 555
+  sdy = #spaceship.y > (320)
+  #spaceship.y{sdy} := #spaceship.y - 310
+  suy = #spaceship.y < (10)
+  #spaceship.y{suy} := #spaceship.y + 310
+ 
+Change position when asteroid goes off screen 
+  ~ #time/timer.ticks{1}
+  arx = #asteroid.x > (570)
+  #asteroid.x{arx} := #asteroid.x - 555
+  alx = #asteroid.x < (10)
+  #asteroid.x{alx} := #asteroid.x + 555
+  ady = #asteroid.y > (320)
+  #asteroid.y{ady} := #asteroid.y - 310
+  auy = #asteroid.y < (10)
+  #asteroid.y{auy} := #asteroid.y + 310
