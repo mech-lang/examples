@@ -1,10 +1,18 @@
+Booleans for shot bullets
+  #first-shot = false
+  #second-shot = false
+  #third-shot = false 
+
 Shoot first bullet  
   ~ #html/event/key-down
   shoot = #html/event/key-down.key == "s"
+  #first-shot := true
+  #second-shot := false
+  #third-shot := false 
   #bullet.x{shoot} := #spaceship.x
   #bullet.y{shoot} := #spaceship.y
-  #bullet.vy{shoot} := (0 - 5) * math/sin(angle: #spaceship.direction)
-  #bullet.vx{shoot} := 5 * math/cos(angle: #spaceship.direction)
+  #bullet.vy{shoot} := 0 - 5
+  #bullet.vx{shoot} := 0
 
 Move first bullet 
   ~ #time/timer.ticks{1}
@@ -14,6 +22,9 @@ Move first bullet
 Shoot second bullet 
   ~ #html/event/key-down
   shot1 = #html/event/key-down.key == "s"
+  #first-shot := true
+  #second-shot := true
+  #third-shot := false 
   #bullet2.x{shot1} := #spaceship.x
   #bullet2.y{shot1} := #spaceship.y
   #bullet2.vy{shot1} := 0 - 5
@@ -27,6 +38,9 @@ Move second bullet
 Shoot third bullet 
   ~ #html/event/key-down
   shot2 = #html/event/key-down.key == "s"
+  #first-shot := false
+  #second-shot := true
+  #third-shot := true 
   #bullet3.x{shot2} := #spaceship.x
   #bullet3.y{shot2} := #spaceship.y
   #bullet3.vy{shot2} := 0 - 5
@@ -37,13 +51,35 @@ Move third bullet
   #bullet3.x := #bullet3.x + #bullet3.vx
   #bullet3.y := #bullet3.y + #bullet3.vy
 
-Make sure bullets stop off screen
+Make sure first bullet stops off screen
   ~ #time/timer.ticks{1}
   brx = #bullet.x > (600)
   #bullet.vx{brx} := 0
   blx = #bullet.x < (10)
-  #bullet.vx{alx} := 0
+  #bullet.vx{blx} := 0
   bdy = #bullet.y > (400)
-  #bullet.vy{ady} := 0
+  #bullet.vy{bdy} := 0
   buy = #bullet.y < (0)
-  #bullet.vy{auy} := 0
+  #bullet.vy{buy} := 0
+
+Make sure second bullet stops off screen
+  ~ #time/timer.ticks{1}
+  brx1 = #bullet1.x > (600)
+  #bullet1.vx{brx1} := 0
+  blx1 = #bullet1.x < (10)
+  #bullet1.vx{blx1} := 0
+  bdy1 = #bullet1.y > (400)
+  #bullet1.vy{bdy1} := 0
+  buy1 = #bullet1.y < (0)
+  #bullet1.vy{buy1} := 0
+
+Make sure third bullet stops off screen
+  ~ #time/timer.ticks{1}
+  brx2 = #bullet2.x > (600)
+  #bullet2.vx{brx2} := 0
+  blx2 = #bullet2.x < (10)
+  #bullet2.vx{blx2} := 0
+  bdy2 = #bullet2.y > (400)
+  #bullet2.vy{bdy2} := 0
+  buy2 = #bullet2.y < (0)
+  #bullet2.vy{buy2} := 0

@@ -6,19 +6,19 @@ Turn Ship and set Acceleration
   right = #html/event/key-down.key == "ArrowRight"
   up = #html/event/key-down.key == "ArrowUp"
   down = #html/event/key-down.key == "ArrowDown"
-  #spaceship.orientation{turnleft} := #spaceship.orientation - 10
-  #spaceship.orientation{turnright} := #spaceship.orientation + 10
-  #spaceship.direction{turnleft} := #spaceship.direction + 10
-  #spaceship.direction{turnright} := #spaceship.direction - 10
-  #spaceship.vy{up} := #spaceship.vy + 0.75
-  #spaceship.vy{down} := #spaceship.vy - 0.75
-  #spaceship.vx{left} := #spaceship.vx - 0.75
-  #spaceship.vx{right} := #spaceship.vx + 0.75
+  #spaceship.oa{turnleft} := -1.5
+  #spaceship.oa{turnright} := 1.5
+  #spaceship.vy{up} := #spaceship.vy + 0.8
+  #spaceship.vy{down} := #spaceship.vy - 0.8
+  #spaceship.vx{left} := #spaceship.vx - 0.8
+  #spaceship.vx{right} := #spaceship.vx + 0.8
 
-Set Spaceship Velocity
+Set Spaceship Velocity and Turn Speed
   ~ #time/timer.ticks{1}
   #spaceship.vy := #spaceship.vy + #spaceship.ay 
   #spaceship.vx := #spaceship.vx + #spaceship.ax
+  #spaceship.orientation := #spaceship.orientation + #spaceship.oa
+  #spaceship.direction := #spaceship.direction - #spaceship.oa
 
 Set acceleration to 0 on Key up
   ~ #html/event/key-up
@@ -32,7 +32,8 @@ Set acceleration to 0 on Key up
 Slow down ship with friction
   ~ #time/timer.ticks{1}
   #spaceship.vy := #spaceship.vy * #spaceship.friction
-  #spaceship.vx := #spaceship.vx * #spaceship.friction
+  #spaceship.vx := #spaceship.vx * 0.97
+  #spaceship.oa := #spaceship.oa * 0.97
 
 Move ship and asteroid
   ~ #time/timer.ticks{1}
