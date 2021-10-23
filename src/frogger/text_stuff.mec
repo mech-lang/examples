@@ -19,25 +19,31 @@
 ## End the game if Frogger has no lives
   #is-game-over{#life == 0} := true
   #game-over-x-text{#is-game-over} := 10
-  #game-over-y-text{#is-game-over} := 400
+  #game-over-y-text{#is-game-over} := 500
 
 ## Create the text elements for the game
+  title = [
+    "text" [x: 10 y: 50 text: "Frogger!" fill: 0xB4D144 font: [size: 50 face: "Arial"]]
+    "text" [x: 210 y: 50 text: "(but in Mech)" fill: 0xEFC162 font: [size: 30 face: "Arial"]]
+    "text" [x: 400 y: 50 text: "developed by Sean Hong" font: [size: 20 face: "Arial"]]
+  ]
   frog-location = [
-    "text" [x: 10 y: 100 text: "Frogger's X Position:" font: [size: 40 face: "Arial"]]
-    "text" [x: 400 y: 100 text: #frogger.x font: [size: 40 face: "Arial"]]
-    "text" [x: 10 y: 150 text: "Frogger's Y Position:" font: [size: 40 face: "Arial"]]
-    "text" [x: 400 y: 150 text: #frogger.y font: [size: 40 face: "Arial"]]
+    "text" [x: 10 y: 150 text: "Frogger's X Position:" font: [size: 40 face: "Arial"]]
+    "text" [x: 400 y: 150 text: #frogger.x font: [size: 40 face: "Arial"]]
+    "text" [x: 10 y: 200 text: "Frogger's Y Position:" font: [size: 40 face: "Arial"]]
+    "text" [x: 400 y: 200 text: #frogger.y font: [size: 40 face: "Arial"]]
   ]
   game-elements = [
-    "text" [x: 10 y: 250 text: "Score:" font: [size: 40 face: "Arial"]]
-    "text" [x: 150 y: 250 text: #score font: [size: 40 face: "Arial"]]
-    "text" [x: 10 y: 300 text: "Life:" font: [size: 40 face: "Arial"]]
-    "text" [x: 150 y: 300 text: #life font: [size: 40 face: "Arial"]]
-    "text" [x: 10 y: 350 text: "Time:" font: [size: 40 face: "Arial"]]
-    "text" [x: 150 y: 350 text: #time font: [size: 40 face: "Arial"]]
+    "text" [x: 10 y: 300 text: "Score:" font: [size: 40 face: "Arial"]]
+    "text" [x: 150 y: 300 text: #score font: [size: 40 face: "Arial"]]
+    "text" [x: 10 y: 350 text: "Life:" font: [size: 40 face: "Arial"]]
+    "text" [x: 150 y: 350 text: #life font: [size: 40 face: "Arial"]]
+    "text" [x: 10 y: 400 text: "Time:" font: [size: 40 face: "Arial"]]
+    "text" [x: 150 y: 400 text: #time font: [size: 40 face: "Arial"]]
     "text" [x: #game-over-x-text y: #game-over-y-text fill: 0xFF0000 text: "GAME OVER. YOU RAN OUT OF LIVES. REFRESH THE PAGE TO PLAY AGAIN." font: [size: 15 face: "Arial"]]
   ]
   #game-text = [
+    title
     frog-location
     game-elements
   ]
