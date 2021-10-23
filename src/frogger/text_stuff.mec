@@ -1,3 +1,6 @@
+## Boolean to stop game if Frogger runs out of lives
+  #is-game-over = false
+
 ## Values to hold the score, life and time for the game
   #score = 0
   #life = 3
@@ -7,9 +10,12 @@
   ~ #time/timer.ticks{1}
   #time := #time - 1
 
-## Reset the timer if it goes below 0
+## Reset the timer if it goes below 0 and take away a life
   #time{#time <= 0} := 15
   #life{#time <= 0} := #life - 1
+
+## End the game if Frogger has no lives
+  #is-game-over{#life <= 0} := true
 
 ## Create the text elements for the game
   frog-location = [
