@@ -10,15 +10,14 @@
 
 ## Update the time per tick
   ~ #time/timer.ticks{1}
-  #time := #time - 1
+  #time{!#is-game-over} := #time - 1
 
 ## Reset the timer if it goes below 0 and take away a life
-  #time{#time == 0} := 15
-  #life{#time == 0} := #life - 1
+  #time{#time == 0 & !#is-game-over} := 15
+  #life{#time == 0 & !#is-game-over} := #life - 1
 
 ## End the game if Frogger has no lives
   #is-game-over{#life == 0} := true
-  #time{#is-game-over} := 15
   #game-over-x-text{#is-game-over} := 10
   #game-over-y-text{#is-game-over} := 400
 
