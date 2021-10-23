@@ -10,9 +10,11 @@
   #life = 3
   #time = 15
 
-## Update the time per tick
+## Update the time per tick and animate the "game over" image to appear (if the game is over)
   ~ #time/timer.ticks{1}
   #time{!#is-game-over} := #time - 1
+  #game-over-x-image-pos{#is-game-over & #game-over-x-image-pos != 325} := #game-over-x-image-pos + 25
+  #game-over-y-image-pos{#is-game-over & #game-over-y-image-pos != 525} := #game-over-y-image-pos + 25
 
 ## Reset the timer if it equals 0 and take away a life
   #time{#time == 0 & !#is-game-over} := 15
@@ -20,11 +22,6 @@
 
 ## End the game if Frogger has no lives
   #is-game-over{#life == 0} := true
-
-## Animate the "game over" image to appear
-  ~ #time/timer.ticks{1}
-  #game-over-x-image-pos{#is-game-over & #game-over-x-image-pos != 325} := #game-over-x-image-pos + 25
-  #game-over-y-image-pos{#is-game-over & #game-over-y-image-pos != 525} := #game-over-y-image-pos + 25
 
 ## Create the text elements for the game
   title = [
