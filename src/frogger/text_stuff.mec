@@ -1,5 +1,7 @@
 ## Boolean to stop game if Frogger runs out of lives
   #is-game-over = false
+  #game-over-x-text = 0
+  #game-over-y-text = 0
 
 ## Values to hold the score, life and time for the game
   #score = 0
@@ -16,6 +18,9 @@
 
 ## End the game if Frogger has no lives
   #is-game-over{#life <= 0} := true
+  #time{#is-game-over} := 15
+  #game-over-x-text{#is-game-over} := 10
+  #game-over-y-text{#is-game-over} := 400
 
 ## Create the text elements for the game
   frog-location = [
@@ -31,6 +36,7 @@
     "text" [x: 150 y: 300 text: #life font: [size: 40 face: "Arial"]]
     "text" [x: 10 y: 350 text: "Time:" font: [size: 40 face: "Arial"]]
     "text" [x: 150 y: 350 text: #time font: [size: 40 face: "Arial"]]
+    "text" [x: #game-over-x-text y: #game-over-y-text text: "GAME OVER. YOU RAN OUT OF LIVES. REFRESH THE PAGE TO PLAY AGAIN." font: [size: 15 face: "Arial"]]
   ]
   #game-text = [
     frog-location
