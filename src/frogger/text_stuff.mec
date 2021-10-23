@@ -1,0 +1,32 @@
+## Values to hold the score, life and time for the game
+  #score = 0
+  #life = 3
+  #time = 15
+
+## Update the time per tick
+  ~ #time/timer.ticks{1}
+  #time := #time - 1
+
+## Reset the timer if it goes below 0
+  #time{#time <= 0} := 15
+  #life{#time <= 0} := #life - 1
+
+## Create the text elements for the game
+  frog-location = [
+    "text" [x: 10 y: 100 text: "Frogger's X Position:" font: [size: 40 face: "Arial"]]
+    "text" [x: 400 y: 100 text: #frogger.x font: [size: 40 face: "Arial"]]
+    "text" [x: 10 y: 150 text: "Frogger's Y Position:" font: [size: 40 face: "Arial"]]
+    "text" [x: 400 y: 150 text: #frogger.y font: [size: 40 face: "Arial"]]
+  ]
+  game-elements = [
+    "text" [x: 10 y: 250 text: "Score:" font: [size: 40 face: "Arial"]]
+    "text" [x: 150 y: 250 text: #score font: [size: 40 face: "Arial"]]
+    "text" [x: 10 y: 300 text: "Life:" font: [size: 40 face: "Arial"]]
+    "text" [x: 150 y: 300 text: #life font: [size: 40 face: "Arial"]]
+    "text" [x: 10 y: 350 text: "Time:" font: [size: 40 face: "Arial"]]
+    "text" [x: 150 y: 350 text: #time font: [size: 40 face: "Arial"]]
+  ]
+  #game-text = [
+    frog-location
+    game-elements
+  ]

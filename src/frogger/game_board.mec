@@ -20,8 +20,7 @@
     type: "canvas"
     contains: [
       |shape parameters|
-      "text" [x: 10 y: 100 text: #frogger.x font: [size: 60 face: "Arial"]]
-      "text" [x: 10 y: 150 text: #frogger.y font: [size: 60 face: "Arial"]]
+      #game-text
     ]
     parameters: [
       width: 700
