@@ -14,7 +14,7 @@
   ~ #time/timer.ticks{1}
   #time{!#is-game-over} := #time - 1
 
-## Reset the timer if it goes equals 0 and take away a life
+## Reset the timer if it equals 0 and take away a life
   #time{#time == 0 & !#is-game-over} := 15
   #life{#time == 0 & !#is-game-over} := #life - 1
 
