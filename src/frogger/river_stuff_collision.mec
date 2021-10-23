@@ -1,17 +1,14 @@
 ## Check if Frogger is on any of the objects on the river
   #is-colliding = false
 
-## Attach Frogger to the first log if he touches it
-  ix = #frogger.x < (#log-1-data.x + #log-1-data.width) & (#frogger.x + #frogger.width) > #log-1-data.x
-  iy = #frogger.y < (#log-1-data.y + #log-1-data.height) & (#frogger.y + #frogger.height) > #log-1-data.y
-  #is-colliding{ix & iy} := true
-  #frogger.vx{ix & iy} := #log-1-data.vx
-
-## Attach Frogger to the second log if he touches it
-  ix = #frogger.x < (#log-2-data.x + #log-2-data.width) & (#frogger.x + #frogger.width) > #log-2-data.x
-  iy = #frogger.y < (#log-2-data.y + #log-2-data.height) & (#frogger.y + #frogger.height) > #log-2-data.y
-  #is-colliding{ix & iy} := true
-  #frogger.vx{ix & iy} := #log-2-data.vx
+## Attach Frogger to the river stuff if he touches it
+  log-1-x = #frogger.x < (#log-1-data.x + #log-1-data.width) & (#frogger.x + #frogger.width) > #log-1-data.x
+  log-1-y = #frogger.y < (#log-1-data.y + #log-1-data.height) & (#frogger.y + #frogger.height) > #log-1-data.y
+  log-2-x = #frogger.x < (#log-2-data.x + #log-2-data.width) & (#frogger.x + #frogger.width) > #log-2-data.x
+  log-2-y = #frogger.y < (#log-2-data.y + #log-2-data.height) & (#frogger.y + #frogger.height) > #log-2-data.y
+  #is-colliding{(log-1-x & log-1-y) | (log-2-x & log-2-y)} := true
+  #frogger.vx{log-1-x & log-1-y} := #log-1-data.vx
+  #frogger.vx{log-2-x & log-2-y} := #log-2-data.vx
 
 ## Allow Frogger to move horizontally on the objects of the river
   ~ #html/event/key-down

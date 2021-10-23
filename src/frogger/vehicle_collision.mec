@@ -1,4 +1,4 @@
-## Reset Frogger if he touches any of the vehicles
+## Reset Frogger if he touches any of the vehicles and take away a life
   car-1-x = #frogger.x < (#vehicle-1-data.x + #vehicle-1-data.width) & (#frogger.x + #frogger.width) > #vehicle-1-data.x
   car-1-y = #frogger.y < (#vehicle-1-data.y + #vehicle-1-data.height) & (#frogger.y + #frogger.height) > #vehicle-1-data.y
   car-2-x = #frogger.x < (#vehicle-2-data.x + #vehicle-2-data.width) & (#frogger.x + #frogger.width) > #vehicle-2-data.x
