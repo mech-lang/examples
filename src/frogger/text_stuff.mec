@@ -20,8 +20,11 @@
 
 ## End the game if Frogger has no lives
   #is-game-over{#life == 0} := true
-  #game-over-x-image-pos{#is-game-over} := 325
-  #game-over-y-image-pos{#is-game-over} := 525
+
+## Animate the "game over" image to appear
+  ~ #time/timer.ticks{1}
+  #game-over-x-image-pos{#is-game-over & #game-over-x-image-pos != 325} := #game-over-x-image-pos + 25
+  #game-over-y-image-pos{#is-game-over & #game-over-y-image-pos != 525} := #game-over-y-image-pos + 25
 
 ## Create the text elements for the game
   title = [
