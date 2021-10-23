@@ -34,5 +34,5 @@
 
 ## Update Frogger's position per tick
   ~ #time/timer.ticks{1}
-  #frogger.x := #frogger.x + #frogger.vx
-  #frogger.y := #frogger.y + #frogger.vy
+  #frogger.x{!#is-game-over} := #frogger.x + #frogger.vx
+  #frogger.y{!#is-game-over} := #frogger.y + #frogger.vy
