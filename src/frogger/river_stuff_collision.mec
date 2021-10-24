@@ -16,8 +16,8 @@
   down = #html/event/key-up.key == "ArrowDown"
   left = #html/event/key-down.key == "ArrowLeft"
   right = #html/event/key-down.key == "ArrowRight"
-  #frogger.x{left & #is-colliding} := #frogger.x - 50
-  #frogger.x{right & #is-colliding} := #frogger.x + 50
+  #frogger.x{left & #is-colliding & !#is-game-over} := #frogger.x - 50
+  #frogger.x{right & #is-colliding & !#is-game-over} := #frogger.x + 50
   #is-colliding{(up | down | left | right) & #is-colliding} := false
 
 ## Reset the collision boolean when an arrow key is released
@@ -31,9 +31,3 @@
 ## Reset Frogger and his horizontal velocity if he is in the water
   #frogger.y{#frogger.y > 10 & #frogger.y < 260 & !#is-colliding} := 610
   #frogger.vx{#frogger.y > 10 & #frogger.y < 260 & !#is-colliding} := 0
-
-## Attach Frogger to the first set of turtles if he touches it
-## ix = #frogger.x < (#turtle-1-data.x + #turtle-1-data.width) & (#frogger.x + #frogger.width) > #turtle-1-data.x
-## iy = #frogger.y < (#turtle-1-data.y + #turtle-1-data.height) & (#frogger.y + #frogger.height) > #turtle-1-data.y
-## is-colliding{ix & iy} := true
-## frogger.vx{ix & iy} := #turtle-1-data.vx
