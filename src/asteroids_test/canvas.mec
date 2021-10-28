@@ -4,7 +4,6 @@
     type: "canvas"
     contains: [
      |shape parameters|
-     #game-over
      #canvas-elements
      #user
      #asteroid-drawing
@@ -13,6 +12,7 @@
      #bullet-drawing
      #bullet2-drawing
      #bullet3-drawing
+     #game-over
     ]
     parameters: [
       width: 800

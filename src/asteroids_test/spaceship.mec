@@ -11,6 +11,7 @@
     lives: 3
     points: 0
     friction: 0.98
+    mult: 1
   ]
   
   #spaceship/thruster = 0

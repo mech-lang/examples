@@ -21,8 +21,13 @@
     "text" [x: 610 y: 160 text: "Y Velocity" font: [size: 12 face: "Arial"]]
     "text" [x: 670 y: 160 text: #spaceship.vy font: [size: 12 face: "Arial"]]
   ]
+  gox = #info.x
+  goy = #info.y
+  gox1 = #info.x1
+  goy1 = #info.y1
   #game-over = [
-      "text" [x: 180 y: 800 text: "GAME OVER" fill: 0xFF0000 font: [size: 60 face: "Courier"]]
+      "text" [x: gox y: goy text: "GAME OVER" fill: 0xFF0000 font: [size: 60 face: "Courier"]]
+      "text" [x: gox1 y: goy1 text: "Play Again" fill: 0xFFFFFF font: [size: 25 face: "Courier"]]
   ]
   dx = #spaceship.x
   dy = #spaceship.y
