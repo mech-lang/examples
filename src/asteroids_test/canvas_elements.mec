@@ -21,6 +21,9 @@
     "text" [x: 610 y: 160 text: "Y Velocity" font: [size: 12 face: "Arial"]]
     "text" [x: 670 y: 160 text: #spaceship.vy font: [size: 12 face: "Arial"]]
   ]
+  #game-over = [
+      "text" [x: 180 y: 800 text: "GAME OVER" fill: 0xFF0000 font: [size: 60 face: "Courier"]]
+  ]
   dx = #spaceship.x
   dy = #spaceship.y
   star1 = [
@@ -61,9 +64,9 @@
   ]
   #canvas-elements = [
     game-board
+    game-info
     point-info
     lives-info
-    game-info
     debug-info
     star1
     star2

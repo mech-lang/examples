@@ -4,6 +4,7 @@
     type: "canvas"
     contains: [
      |shape parameters|
+     #game-over
      #canvas-elements
      #user
      #asteroid-drawing
