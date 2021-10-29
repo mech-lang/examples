@@ -16,9 +16,10 @@
   #game-over-x-image-pos{#is-game-over & #game-over-x-image-pos != 325} := #game-over-x-image-pos + 25
   #game-over-y-image-pos{#is-game-over & #game-over-y-image-pos != 525} := #game-over-y-image-pos + 25
 
-## Reset the timer if it equals 0 and take away a life
+## Reset the timer if it equals 0, take away a life and move Frogger to the start location
   #time{#time == 0 & !#is-game-over} := 15
   #life{#time == 0 & !#is-game-over} := #life - 1
+  #frogger.y{#time == 0 & !#is-game-over} := 610
 
 ## End the game if Frogger has no lives
   #is-game-over{#life == 0} := true
