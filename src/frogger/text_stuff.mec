@@ -2,17 +2,23 @@
   #is-game-over = false
 
 ## The position of the "game over" image
-  #game-over-x-image-pos = -100
-  #game-over-y-image-pos = -100
+  #game-over-image-pos = [
+    x: -100
+    y: -100
+  ]
 
 ## Value to hold the score, life and time for the game
-  #game-elements = [|score life time| 0 3 15]
+  #game-elements = [
+    score: 0
+    life: 3
+    time: 15
+  ]
 
 ## Update the time per tick and animate the "game over" image to appear (if the game is over)
   ~ #time/timer.ticks{1}
   #game-elements.time{!#is-game-over} := #game-elements.time - 1
-  #game-over-x-image-pos{#is-game-over & #game-over-x-image-pos != 325} := #game-over-x-image-pos + 25
-  #game-over-y-image-pos{#is-game-over & #game-over-y-image-pos != 525} := #game-over-y-image-pos + 25
+  #game-over-image-pos.x{#is-game-over & #game-over-image-pos.x != 325} := #game-over-image-pos.x + 25
+  #game-over-image-pos.y{#is-game-over & #game-over-image-pos.y != 525} := #game-over-image-pos.y + 25
 
 ## Reset the timer if it equals 0 and take away a life
   #game-elements.time{#game-elements.time == 0 & !#is-game-over} := 15
@@ -41,7 +47,7 @@
     "text" [x: 150 y: 350 text: #game-elements.life font: [size: 40 face: "Arial"]]
     "text" [x: 10 y: 400 text: "Time:" font: [size: 40 face: "Arial"]]
     "text" [x: 150 y: 400 text: #game-elements.time font: [size: 40 face: "Arial"]]
-    "image" [x: #game-over-x-image-pos y: #game-over-y-image-pos rotate: 0 source: "https://text2image.com/user_images/202110/text2image_T4106774_20211023_180335.png"]
+    "image" [x: #game-over-image-pos.x y: #game-over-image-pos.y rotate: 0 source: "https://text2image.com/user_images/202110/text2image_T4106774_20211023_180335.png"]
   ]
   #game-text = [
     title

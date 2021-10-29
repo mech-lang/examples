@@ -1,5 +1,10 @@
 ## Booleans to avoid diagonal movement
-  #arrow-key = [|is-up is-down is-left is-right| false false false false]
+  #arrow-key = [
+    is-up: false
+    is-down: false
+    is-left: false
+    is-right: false
+  ]
 
 ## Execute Frogger's movement when an arrow key is pressed
   ~ #html/event/key-down
