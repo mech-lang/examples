@@ -5,23 +5,21 @@
   #game-over-x-image-pos = -100
   #game-over-y-image-pos = -100
 
-## Values to hold the score, life and time for the game
-  #score = 0
-  #life = 3
-  #time = 15
+## Value to hold the score, life and time for the game
+  #game-elements = [|score life time| 0 3 15]
 
 ## Update the time per tick and animate the "game over" image to appear (if the game is over)
   ~ #time/timer.ticks{1}
-  #time{!#is-game-over} := #time - 1
+  #game-elements.time{!#is-game-over} := #game-elements.time - 1
   #game-over-x-image-pos{#is-game-over & #game-over-x-image-pos != 325} := #game-over-x-image-pos + 25
   #game-over-y-image-pos{#is-game-over & #game-over-y-image-pos != 525} := #game-over-y-image-pos + 25
 
 ## Reset the timer if it equals 0 and take away a life
-  #time{#time == 0 & !#is-game-over} := 15
-  #life{#time == 0 & !#is-game-over} := #life - 1
+  #game-elements.time{#game-elements.time == 0 & !#is-game-over} := 15
+  #game-elements.life{#game-elements.time == 0 & !#is-game-over} := #game-elements.life - 1
 
 ## End the game if Frogger has no lives
-  #is-game-over{#life == 0} := true
+  #is-game-over{#game-elements.life == 0} := true
 
 ## Create the text elements for the game
   title = [
@@ -38,11 +36,11 @@
   game-elements = [
     "rectangle" [x: 5 y: 260 width: 300 height: 150 fill: 0xFFFFFF line-width: 3]
     "text" [x: 10 y: 300 text: "Score:" font: [size: 40 face: "Arial"]]
-    "text" [x: 150 y: 300 text: #score font: [size: 40 face: "Arial"]]
+    "text" [x: 150 y: 300 text: #game-elements.score font: [size: 40 face: "Arial"]]
     "text" [x: 10 y: 350 text: "Life:" font: [size: 40 face: "Arial"]]
-    "text" [x: 150 y: 350 text: #life font: [size: 40 face: "Arial"]]
+    "text" [x: 150 y: 350 text: #game-elements.life font: [size: 40 face: "Arial"]]
     "text" [x: 10 y: 400 text: "Time:" font: [size: 40 face: "Arial"]]
-    "text" [x: 150 y: 400 text: #time font: [size: 40 face: "Arial"]]
+    "text" [x: 150 y: 400 text: #game-elements.time font: [size: 40 face: "Arial"]]
     "image" [x: #game-over-x-image-pos y: #game-over-y-image-pos rotate: 0 source: "https://text2image.com/user_images/202110/text2image_T4106774_20211023_180335.png"]
   ]
   #game-text = [

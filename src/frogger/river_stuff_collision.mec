@@ -16,8 +16,8 @@
   down = #html/event/key-up.key == "ArrowDown"
   left = #html/event/key-down.key == "ArrowLeft"
   right = #html/event/key-down.key == "ArrowRight"
-  #frogger.x{left & !#is-up & !#is-down & #is-colliding & !#is-game-over} := #frogger.x - 50
-  #frogger.x{right & !#is-up & !#is-down & #is-colliding & !#is-game-over} := #frogger.x + 50
+  #frogger.x{left & !#arrow-key.is-up & !#arrow-key.is-down & #is-colliding & !#is-game-over} := #frogger.x - 50
+  #frogger.x{right & !#arrow-key.is-up & !#arrow-key.is-down & #is-colliding & !#is-game-over} := #frogger.x + 50
   #is-colliding{(up | down | left | right) & #is-colliding} := false
 
 ## Reset the collision boolean when an arrow key is released

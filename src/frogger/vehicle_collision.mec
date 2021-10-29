@@ -10,4 +10,4 @@
   car-5-x = #frogger.x < (#vehicle-5-data.x + #vehicle-5-data.width) & (#frogger.x + #frogger.width) > #vehicle-5-data.x
   car-5-y = #frogger.y < (#vehicle-5-data.y + #vehicle-5-data.height) & (#frogger.y + #frogger.height) > #vehicle-5-data.y
   #frogger.y{(car-1-x & car-1-y) | (car-2-x & car-2-y) | (car-3-x & car-3-y) | (car-4-x & car-4-y) | (car-5-x & car-5-y)} := 610
-  #life{(car-1-x & car-1-y) | (car-2-x & car-2-y) | (car-3-x & car-3-y) | (car-4-x & car-4-y) | (car-5-x & car-5-y)} := #life - 1
+  #game-elements.life{(car-1-x & car-1-y) | (car-2-x & car-2-y) | (car-3-x & car-3-y) | (car-4-x & car-4-y) | (car-5-x & car-5-y)} := #game-elements.life - 1
