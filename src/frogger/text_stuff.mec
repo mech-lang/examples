@@ -7,7 +7,7 @@
     y: -100
   ]
 
-## Value to hold the score, life and time for the game
+## Table to hold the score, life and time for the game
   #game-elements = [
     score: 0
     life: 3

@@ -1,4 +1,4 @@
-## Booleans to avoid diagonal movement
+## Table of booleans to avoid diagonal movement
   #arrow-key = [
     is-up: false
     is-down: false
