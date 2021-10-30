@@ -1,0 +1,12 @@
+## Create attributes for the fourth fly
+  #fly-4-data = [
+    width: 50
+    height: 50
+    x: 360
+    y: 10
+  ]
+
+## Create the fourth fly
+  #fly-4 = [
+    "rectangle" [x: #fly-4-data.x y: #fly-4-data.y width: #fly-4-data.width height: #fly-4-data.height fill: 0xDD5931 stroke: 0x74C1DE line-width: 2]
+  ]
