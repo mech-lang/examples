@@ -21,7 +21,7 @@
   #game-over-image-pos.y{#is-game-over & #game-over-image-pos.y != 525} := #game-over-image-pos.y + 25
 
 ## Reset the timer if it equals 0, take away a life and recalibrate Frogger's position and horizontal velocity
-  #game-elements.time{#game-elements.time == 0 & !#is-game-over} := 15
+  #game-elements.time{#game-elements.time == 0 & !#is-game-over} := 155
   #game-elements.life{#game-elements.time == 0 & !#is-game-over} := #game-elements.life - 1
   #frogger.y{#game-elements.time == 0 & !#is-game-over} := 610
   #frogger.vx{#game-elements.time == 0 & !#is-game-over} := 0
