@@ -12,5 +12,5 @@
   fly-6-x = #frogger.x < (#fly-6-data.x + #fly-6-data.width) & (#frogger.x + #frogger.width) > #fly-6-data.x
   fly-6-y = #frogger.y < (#fly-6-data.y + #fly-6-data.height) & (#frogger.y + #frogger.height) > #fly-6-data.y
   #frogger.y{(fly-1-x & fly-1-y) | (fly-2-x & fly-2-y) | (fly-3-x & fly-3-y) | (fly-4-x & fly-4-y) | (fly-5-x & fly-5-y) | (fly-6-x & fly-6-y)} := 610
-  #game-elements.time{(fly-1-x & fly-1-y) | (fly-2-x & fly-2-y) | (fly-3-x & fly-3-y) | (fly-4-x & fly-4-y) | (fly-5-x & fly-5-y) | (fly-6-x & fly-6-y)} := 1555
-  #game-elements.score{(fly-1-x & fly-1-y) | (fly-2-x & fly-2-y) | (fly-3-x & fly-3-y) | (fly-4-x & fly-4-y) | (fly-5-x & fly-5-y) | (fly-6-x & fly-6-y)} := #game-elements.score + 100
+  #game-elements.time{(fly-1-x & fly-1-y) | (fly-2-x & fly-2-y) | (fly-3-x & fly-3-y) | (fly-4-x & fly-4-y) | (fly-5-x & fly-5-y) | (fly-6-x & fly-6-y)} := 155
+  #game-elements.score{(fly-1-x & fly-1-y) | (fly-2-x & fly-2-y) | (fly-3-x & fly-3-y) | (fly-4-x & fly-4-y) | (fly-5-x & fly-5-y) | (fly-6-x & fly-6-y)} := #game-elements.score + #game-elements.time
