@@ -11,7 +11,7 @@
   #game-elements = [
     score: 0
     life: 3
-    time: 1555
+    time: 155
   ]
 
 ## Update the time per tick and animate the "game over" image to appear (if the game is over)
@@ -20,9 +20,11 @@
   #game-over-image-pos.x{#is-game-over & #game-over-image-pos.x != 325} := #game-over-image-pos.x + 25
   #game-over-image-pos.y{#is-game-over & #game-over-image-pos.y != 525} := #game-over-image-pos.y + 25
 
-## Reset the timer if it equals 0 and take away a life
+## Reset the timer if it equals 0, take away a life and recalibrate Frogger's position and horizontal velocity
   #game-elements.time{#game-elements.time == 0 & !#is-game-over} := 15
   #game-elements.life{#game-elements.time == 0 & !#is-game-over} := #game-elements.life - 1
+  #frogger.y{#game-elements.time == 0 & !#is-game-over} := 610
+  #frogger.vx{#game-elements.time == 0 & !#is-game-over} := 0
 
 ## End the game if Frogger has no lives
   #is-game-over{#game-elements.life == 0} := true
@@ -40,7 +42,7 @@
     "text" [x: 400 y: 200 text: #frogger.y font: [size: 40 face: "Arial"]]
   ]
   game-elements-text = [
-    "rectangle" [x: 5 y: 260 width: 300 height: 150 fill: 0xFFFFFF line-width: 3]
+    "rectangle" [x: 5 y: 260 width: 500 height: 150 fill: 0xFFFFFF line-width: 3]
     "text" [x: 10 y: 300 text: "Score:" font: [size: 40 face: "Arial"]]
     "text" [x: 150 y: 300 text: #game-elements.score font: [size: 40 face: "Arial"]]
     "text" [x: 10 y: 350 text: "Life:" font: [size: 40 face: "Arial"]]
