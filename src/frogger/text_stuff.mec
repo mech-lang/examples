@@ -39,7 +39,7 @@
     "text" [x: 10 y: 200 text: "Frogger's Y Position:" font: [size: 40 face: "Arial"]]
     "text" [x: 400 y: 200 text: #frogger.y font: [size: 40 face: "Arial"]]
   ]
-  game-elements = [
+  game-elements-text = [
     "rectangle" [x: 5 y: 260 width: 300 height: 150 fill: 0xFFFFFF line-width: 3]
     "text" [x: 10 y: 300 text: "Score:" font: [size: 40 face: "Arial"]]
     "text" [x: 150 y: 300 text: #game-elements.score font: [size: 40 face: "Arial"]]
@@ -52,5 +52,5 @@
   #game-text = [
     title
     frog-location
-    game-elements
+    game-elements-text
   ]
