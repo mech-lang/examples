@@ -2,19 +2,19 @@ Spawn Children Asteroids
   ix = #bullet.x < (#asteroid.x + #asteroid.size) & #bullet.x > (#asteroid.x - #asteroid.size)
   iy = #bullet.y < (#asteroid.y + #asteroid.size) & #bullet.y > (#asteroid.y - #asteroid.size)
   #asteroid.size{ix & iy} := 0
-  #spaceship.points{ix & iy} := #spaceship.points + 100
+  #spaceship.points{ix & iy} := #spaceship.points + (100 * #spaceship.mult)
 
 Spawn Grandchildren Asteroids 
   ix = #bullet.x < (#child.x + #child.size) & #bullet.x > (#child.x - #child.size)
   iy = #bullet.y < (#child.y + #child.size) & #bullet.y > (#child.y - #child.size)
   #child.size{ix & iy} := 0
-  #spaceship.points{ix & iy} := #spaceship.points + 50
+  #spaceship.points{ix & iy} := #spaceship.points + (50 * #spaceship.mult)
 
 Destroy Grandchildren
   ix = #bullet.x < (#grandchild.x + #grandchild.size) & #bullet.x > (#grandchild.x - #grandchild.size)
   iy = #bullet.y < (#grandchild.y + #grandchild.size) & #bullet.y > (#grandchild.y - #grandchild.size)
   #grandchild.size{ix & iy} := 0
-  #spaceship.points{ix & iy} := #spaceship.points + 25
+  #spaceship.points{ix & iy} := #spaceship.points + (25 * #spaceship.mult)
 
 Destory Spaceship
   ix = #spaceship.x < (#asteroid.x + #asteroid.size) & #spaceship.x > (#asteroid.x - #asteroid.size)

@@ -1,0 +1,26 @@
+Table for bullets
+  
+  #bullet = [
+    x: 0
+    y: 0
+    vx: 0
+    vy: 0
+  ]
+
+  bullet-x = #bullet.x
+  bullet-y = #bullet.y
+  #bullet-draw = [
+    "rectangle" [x: bullet-x y: bullet-y width: 4 height: 4 fill: 0xFFFFFF stroke: 0xFFFFFF line-width: 3]
+  ]
+
+  #bullet-table = [|b1 b2 b3 b4 b5 b6 b7 b8 b9 b10|
+    #bullet-draw
+    #bullet-draw
+    #bullet-draw
+    #bullet-draw
+    #bullet-draw
+    #bullet-draw
+    #bullet-draw
+    #bullet-draw
+    #bullet-draw
+    #bullet-draw]

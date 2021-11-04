@@ -1,0 +1,57 @@
+Table for storing asteroids
+
+  #asteroid = [
+    x: 0
+    y: 0
+    vx: 0
+    vy: 0
+    size: 35
+    orientation: 180
+  ]
+  #child = [
+    x: 0
+    y: 0
+    vx: 0
+    vy: 0
+    size: 22
+    orientation: 180
+  ]
+  #grandchild = [
+    x: 0
+    y: 0
+    vx: 0
+    vy: 0
+    size: 12
+    orientation: 180
+  ]
+
+
+  asteroid-x = #asteroid.x
+  asteroid-y = #asteroid.y  
+  asteroid-size = #asteroid.size
+  child-x = #child.x
+  child-y = #child.y  
+  child-size = #child.size
+  grandchild-x = #grandchild.x
+  grandchild-y = #grandchild.y  
+  grandchild-size = #grandchild.size
+  #asteroid-parent = [
+      "arc" [center-x: asteroid-x center-y: asteroid-y radius: asteroid-size starting-angle: 0 ending-angle: 360 fill: 0x000000 stroke: 0xFFFFFF line-width: 3]
+  ]
+  #asteroid-child = [
+      "arc" [center-x: child-x center-y: child-y radius: child-size starting-angle: 0 ending-angle: 360 fill: 0x000000 stroke: 0xFFFFFF line-width: 3]
+  ]
+  #asteroid-grandchild = [
+      "arc" [center-x: grandchild-x center-y: grandchild-y radius: grandchild-size starting-angle: 0 ending-angle: 360 fill: 0x000000 stroke: 0xFFFFFF line-width: 3]
+  ]
+
+  
+  #asteroid-table = [|parent child1 child2 grandchild1 grandchild2 grandchild3 grandchild4|
+    #asteroid-parent
+    #asteroid-child 
+    #asteroid-child
+    #asteroid-grandchild 
+    #asteroid-grandchild 
+    #asteroid-grandchild 
+    #asteroid-grandchild
+    ]
