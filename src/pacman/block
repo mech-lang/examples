@@ -1,0 +1,6 @@
+  block
+    corner = "corner.png"
+    top = "top_1.png"
+    shorttop = "top_2.png"
+    topwedge = "top_wedge.png"
+    top_layout = [corner top topwedge shorttop topwedge top corner]

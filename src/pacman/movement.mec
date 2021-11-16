@@ -15,10 +15,10 @@ Set speed on keydown
   down = #html/event/key-down.key == "ArrowDown"
   left = #html/event/key-down.key == "ArrowLeft"
   right = #html/event/key-down.key == "ArrowRight"
-  #pacman.vx{left} := -5
-  #pacman.vx{right} := 5
-  #pacman.vy{up} := -5
-  #pacman.vy{down} := 5
+  #pacman.vx{left} := -2
+  #pacman.vx{right} := 2
+  #pacman.vy{up} := -2
+  #pacman.vy{down} := 2
 
 Stop pacman on keyup
   ~ #html/event/key-up

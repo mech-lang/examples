@@ -1,0 +1,10 @@
+# Ghost
+
+Define Ghost
+  #ghost = [
+    x: 200
+    y: 200
+    vx: 0
+    vy: 0
+  ]
+  #ghost/direction = 0
