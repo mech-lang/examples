@@ -1,18 +1,13 @@
 Turn Ship and set Acceleration
   ~ #html/event/key-down
-  turnleft = #html/event/key-down.key == "a"
-  turnright = #html/event/key-down.key == "d"
   left = #html/event/key-down.key == "ArrowLeft"
   right = #html/event/key-down.key == "ArrowRight"
   up = #html/event/key-down.key == "ArrowUp"
-  down = #html/event/key-down.key == "ArrowDown"
-  #spaceship.oa{turnleft} := -1.5
-  #spaceship.oa{turnright} := 1.5
-  #spaceship.vy{up} := #spaceship.vy + 0.8
-  #spaceship.vy{down} := #spaceship.vy - 0.8
-  #spaceship.vx{left} := #spaceship.vx - 0.8
-  #spaceship.vx{right} := #spaceship.vx + 0.8
-
+  #spaceship.oa{left} := -1.5
+  #spaceship.oa{right} := 1.5
+  #spaceship.vy{up} := #spaceship.vy + math/sin(angle: 180 - #spaceship.orientation) * 0.8
+  #spaceship.vx{up} := #spaceship.vx - math/sin(angle: 90 - #spaceship.orientation) * 0.8
+ 
 Set Spaceship Velocity and Turn Speed
   ~ #time/timer.ticks{1}
   #spaceship.vy := #spaceship.vy + #spaceship.ay 

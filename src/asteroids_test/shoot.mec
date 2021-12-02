@@ -11,8 +11,8 @@ Shoot first bullet
   #third-shot := false 
   #bullet.x{shoot} := #spaceship.x
   #bullet.y{shoot} := #spaceship.y
-  #bullet.vy{shoot} := 0 - 5
-  #bullet.vx{shoot} := 0
+  #bullet.vy{shoot} := 0 - math/sin(angle: 180 - #spaceship.orientation) * 5
+  #bullet.vx{shoot} := 0 - math/sin(angle: 90 - #spaceship.orientation) * 5
 
 Move first bullet 
   ~ #time/timer.ticks{1}
@@ -25,10 +25,6 @@ Shoot second bullet
   #first-shot := true
   #second-shot := true
   #third-shot := false 
-  #bullet2.x{shot1} := #spaceship.x
-  #bullet2.y{shot1} := #spaceship.y
-  #bullet2.vy{shot1} := 0 - 5
-  #bullet2.vx{shot1} := 0
 
 Move second bullet
   ~ #time/timer.ticks{1}
@@ -41,10 +37,6 @@ Shoot third bullet
   #first-shot := false
   #second-shot := true
   #third-shot := true 
-  #bullet3.x{shot2} := #spaceship.x
-  #bullet3.y{shot2} := #spaceship.y
-  #bullet3.vy{shot2} := 0 - 5
-  #bullet3.vx{shot2} := 0
 
 Move third bullet
   ~ #time/timer.ticks{1}
