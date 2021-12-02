@@ -2,13 +2,16 @@
   #is-colliding = false
 
 ## Attach Frogger to the river stuff if he touches it
+  turtle-1-x = #frogger.x < (#turtle-1-sub-data.x + #turtle-1-sub-data.width) & (#frogger.x + #frogger.width) > #turtle-1-sub-data.x
+  turtle-1-y = #frogger.y < (#turtle-1-sub-data.y + #turtle-1-sub-data.height) & (#frogger.y + #frogger.height) > #turtle-1-sub-data.y
   log-1-x = #frogger.x < (#log-1-data.x + #log-1-data.width) & (#frogger.x + #frogger.width) > #log-1-data.x
   log-1-y = #frogger.y < (#log-1-data.y + #log-1-data.height) & (#frogger.y + #frogger.height) > #log-1-data.y
   log-2-x = #frogger.x < (#log-2-data.x + #log-2-data.width) & (#frogger.x + #frogger.width) > #log-2-data.x
   log-2-y = #frogger.y < (#log-2-data.y + #log-2-data.height) & (#frogger.y + #frogger.height) > #log-2-data.y
   log-3-x = #frogger.x < (#log-3-data.x + #log-3-data.width) & (#frogger.x + #frogger.width) > #log-3-data.x
   log-3-y = #frogger.y < (#log-3-data.y + #log-3-data.height) & (#frogger.y + #frogger.height) > #log-3-data.y
-  #is-colliding{(log-1-x & log-1-y) | (log-2-x & log-2-y) | (log-3-x & log-3-y)} := true
+  #is-colliding{(turtle-1-x & turtle-1-y) | (log-1-x & log-1-y) | (log-2-x & log-2-y) | (log-3-x & log-3-y)} := true
+  #frogger.vx{turtle-1-x & turtle-1-y} := #turtle-1-sub-data.vx
   #frogger.vx{log-1-x & log-1-y} := #log-1-data.vx
   #frogger.vx{log-2-x & log-2-y} := #log-2-data.vx
   #frogger.vx{log-3-x & log-3-y} := #log-3-data.vx
@@ -32,5 +35,5 @@
   #is-colliding{(up | down | left | right) & #is-colliding} := false
 
 ## Reset Frogger and his horizontal velocity if he is in the water
-  #frogger.y{#frogger.y > 10 & #frogger.y < 260 & !#is-colliding} := 610
-  #frogger.vx{#frogger.y > 10 & #frogger.y < 260 & !#is-colliding} := 0
+  #frogger.y{#frogger.y > 10 & #frogger.y < 310 & !#is-colliding} := 610
+  #frogger.vx{#frogger.y > 10 & #frogger.y < 310 & !#is-colliding} := 0
