@@ -1,0 +1,38 @@
+# Frogger! by Sean Hong (seh422@lehigh.edu)
+
+## Description
+Frogger! is a rudimentary Mech program that loosely emulates the original 1981 arcade action game developed by Konami.
+The objective of this game is to guide a frog to the top of the game board and get the highest score within a certain timeframe by eating the flies.
+
+## Program Overview
+There are 30 files that make up this game (not including this index.mec file). In total, Frogger! in Mech contains 507 lines of code.
+Each file will have comments indicating the functionality of a certain block.
+Since a lot of the files are interconnected, you may need to browse through each one to understand how they all work together.
+
+## Problems
+Here are 3 issues I constantly ran into:
+
+- Runtime errors
+Problem: I oftentimes ran into runtime errors as the code for the Frogger! game got bigger and bigger. After discussion, it was presumed that
+the root cause of these errors might have stemmed from a race condition where many reads and writes to the same table caused an unforeseen problem.
+
+Solution: I remember Professor Montella said the issue most likely stems from the way hashtables are written in the Mech source code. This should be
+looked into as Mech programs get progressively larger.
+
+- Sparse documentation
+Problem: Documentation for the Mech programming language was sparse. There are information out there that Professor Montella created
+such as some explanations of the language on the mech-lang website, despite it being somewhat outdated. There are also some example code
+in the Mech 'examples' repository with vague comments about what is going on. Formulating the entire code for the game required me to put tons of
+hours into building each element of the game piece-by-piece.
+
+Solution: I suggest adding comments for each block of code in each file to explain what is going on there. I can kind of presume what is going on
+based on the context of the file and the surrounding code, but it took a while for me to fully comprehend its connection between other files.
+Also, as time goes on, Mech will get progressively bigger. I suggest creating documentation as you go so that it doesn't have to be a nuisance later on.
+
+- Navigating the Mech repository
+Problem: When I first started to code the game, I had to fully understand how each repository connected between each other first. Otherwise, I would be cloning
+unnesscary ones onto my computer. Mech's codebase is large and there's not much of an explanation describing what they do. I guess the purpose of each repository
+can be deduced, but it was still hard to remember what they were for.
+
+Solution: Add information to the README files that describe the purpose of each repository so that it's easier to navigate Mech's codebase. Otherwise,
+I would be endlessly clicking through each one before finding the correct one to analyze in order to understand the Mech programming language a little better.
