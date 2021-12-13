@@ -1,16 +1,20 @@
-## Check if the turtles or the logs reach the board boundaries
+## Check if turtle 1 reaches the board boundaries
   #turtle-1-data.vx{#turtle-1-data.x > 460} := -50
   #turtle-1-data.vx{#turtle-1-data.x < 60} := 50
 
+## Check if log 1 reaches the board boundaries
   #log-1-data.vx{#log-1-data.x > 510} := -50
   #log-1-data.vx{#log-1-data.x < 60} := 50
 
+## Check if log 2 reaches the board boundaries
   #log-2-data.vx{#log-2-data.x > 410} := -50
   #log-2-data.vx{#log-2-data.x < 60} := 50
 
+## Check if turtle 2 reaches the board boundaries
   #turtle-2-data.vx{#turtle-2-data.x > 510} := -50
   #turtle-2-data.vx{#turtle-2-data.x < 60} := 50
 
+## Check if log 3 reaches the board boundaries
   #log-3-data.vx{#log-3-data.x > 460} := -50
   #log-3-data.vx{#log-3-data.x < 60} := 50
 
