@@ -1,4 +1,4 @@
-## Create the elements that compose the map of the game
+## Create the elements that produce the map of the game
   board-boundary = [
     "rectangle" [x: 10 y: 10 width: 650 height: 650 fill: 0xFFFFFF line-width: 7]
   ]
@@ -12,7 +12,7 @@
     "rectangle" [x: 10 y: 610 width: 650 height: 50 fill: 0x4297E3]
     "rectangle" [x: 10 y: 310 width: 650 height: 50 fill: 0x4297E3]
   ]
-  grassland = [
+  grass = [
     "rectangle" [x: 10 y: 10 width: 650 height: 50 fill: 0x5BBD38]
   ]
   #field = [
@@ -20,5 +20,5 @@
     water
     road
     sidewalks
-    grassland
+    grass
   ]

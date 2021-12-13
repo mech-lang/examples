@@ -14,7 +14,7 @@
     time: 155
   ]
 
-## Update the time per tick and animate the "game over" image to appear (if the game is over)
+## Update the round's time per tick and animate the "game over" image to appear (if the game is over)
   ~ #time/timer.ticks{1}
   #game-elements.time{!#is-game-over} := #game-elements.time - 1
   #game-over-image-pos.x{#is-game-over & #game-over-image-pos.x != 325} := #game-over-image-pos.x + 25

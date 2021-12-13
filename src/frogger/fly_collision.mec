@@ -1,4 +1,4 @@
-## Reset Frogger and the time if he touches any of the flies, as well as adding points to the score
+## Reset Frogger and the time if it touches any of the flies, as well as adding points to the score
   fly-1-x = #frogger.x < (#fly-1-data.x + #fly-1-data.width) & (#frogger.x + #frogger.width) > #fly-1-data.x
   fly-1-y = #frogger.y < (#fly-1-data.y + #fly-1-data.height) & (#frogger.y + #frogger.height) > #fly-1-data.y
   fly-2-x = #frogger.x < (#fly-2-data.x + #fly-2-data.width) & (#frogger.x + #frogger.width) > #fly-2-data.x
