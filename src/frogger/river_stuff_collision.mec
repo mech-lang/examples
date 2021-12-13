@@ -1,7 +1,7 @@
 ## Check if Frogger is on any of the objects on the river
   #is-colliding = false
 
-## Attach Frogger to the river stuff if he touches it
+## Attach Frogger to the river stuff if it touches them
   turtle-1-x = #frogger.x < (#turtle-1-sub-data.x + #turtle-1-sub-data.width) & (#frogger.x + #frogger.width) > #turtle-1-sub-data.x
   turtle-1-y = #frogger.y < (#turtle-1-sub-data.y + #turtle-1-sub-data.height) & (#frogger.y + #frogger.height) > #turtle-1-sub-data.y
   log-1-x = #frogger.x < (#log-1-data.x + #log-1-data.width) & (#frogger.x + #frogger.width) > #log-1-data.x
@@ -37,6 +37,6 @@
   right = #html/event/key-down.key == "ArrowRight"
   #is-colliding{(up | down | left | right) & #is-colliding} := false
 
-## Reset Frogger and his horizontal velocity if he is in the water
+## Reset Frogger and its horizontal velocity if it is in the water
   #frogger.y{#frogger.y > 10 & #frogger.y < 310 & !#is-colliding} := 610
   #frogger.vx{#frogger.y > 10 & #frogger.y < 310 & !#is-colliding} := 0
