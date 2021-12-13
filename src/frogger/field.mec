@@ -15,10 +15,4 @@
   grass = [
     "rectangle" [x: 10 y: 10 width: 650 height: 50 fill: 0x5BBD38]
   ]
-  #field = [
-    board-boundary
-    water
-    road
-    sidewalks
-    grass
-  ]
+  #field = [board-boundary; water; road; sidewalks; grass]
