@@ -23,7 +23,7 @@ looked into as Mech programs get progressively larger.
 Problem: Documentation for the Mech programming language was sparse. There are information out there that Professor Montella created
 such as some explanations of the language on the mech-lang website, despite it being somewhat outdated. There are also some example code
 in the Mech 'examples' repository with vague comments about what is going on. Formulating the entire code for the game required me to put tons of
-hours into building each element of the game piece-by-piece.
+hours into building each element piece-by-piece.
 
 Solution: I suggest adding comments for each block of code in each file to explain what is going on there. I can kind of presume what is going on
 based on the context of the file and the surrounding code, but it took a while for me to fully comprehend its connection between other files.
@@ -31,8 +31,8 @@ Also, as time goes on, Mech will get progressively bigger. I suggest creating do
 
 - Navigating the Mech repository
 Problem: When I first started to code the game, I had to fully understand how each repository connected between each other first. Otherwise, I would be cloning
-unnesscary ones onto my computer. Mech's codebase is large and there's not much of an explanation describing what they do. I guess the purpose of each repository
+unnecessary ones onto my computer. Mech's codebase is large and there's not much of an explanation describing what they do. I guess the purpose of each repository
 can be deduced, but it was still hard to remember what they were for.
 
 Solution: Add information to the README files that describe the purpose of each repository so that it's easier to navigate Mech's codebase. Otherwise,
-I would be endlessly clicking through each one before finding the correct one to analyze in order to understand the Mech programming language a little better.
+I would be endlessly clicking through each one before finding the correct one to analyze in order to understand how to make the Frogger! game.
