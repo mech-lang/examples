@@ -36,3 +36,7 @@ can be deduced, but it was still hard to remember what they were for.
 
 Solution: Add information to the README files that describe the purpose of each repository so that it's easier to navigate Mech's codebase. Otherwise,
 I would be endlessly clicking through each one before finding the correct one to analyze in order to understand how to make the Frogger! game.
+
+## Postscript
+I think you should also continue developing the Mech VS Code extension. I didn't realize it existed until I randomly typed in "Mech" within the search bar under the extension store.
+It proved to be a valuable tool, despite it only performing syntax highlighting.
