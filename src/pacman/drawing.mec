@@ -37,6 +37,7 @@ Draw a Pacman
       |shape parameters|
       #field 
       #pacman/drawing
+      #ghost
       ] 
     parameters: [width: 1100 height: 950]
   ]
