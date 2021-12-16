@@ -1,6 +1,6 @@
 # Pacman
 
-Define Pacman
+Define Pacman and properties
   #pacman = [
     x: 50
     y: 50
