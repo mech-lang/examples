@@ -1,3 +1,4 @@
+Bullet
   #bullet = [
     x: 750
     y: 750
@@ -5,8 +6,11 @@
     vy: 0
   ]
 
+Position References
   bullet-x = #bullet.x
   bullet-y = #bullet.y
+  
+Draw Bullet  
   #bullet-drawing = [
     "rectangle" [x: bullet-x y: bullet-y width: 4 height: 4 fill: 0xFFFFFF stroke: 0xFFFFFF line-width: 3]
   ]

@@ -1,3 +1,4 @@
+Drawing elements
   game-board = [
     "rectangle" [x: 10 y: 10 width: 580 height: 330 fill: 0x000000 stroke: 0xACACAC line-width: 10]
   ]

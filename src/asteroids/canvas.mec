@@ -1,7 +1,31 @@
-  board-boundary = [
-    "rectangle" [x: 10 y: 10 width: 790 height: 790 fill: 0x000000 stroke: 0xACACAC line-width: 10]
-  ]
-
-  #canvas-elements = [
-    board-boundary
+Timer
+  #time/timer += [period: 16]
+  
+Add elements to canvas  
+  canvas = [
+    type: "canvas"
+    contains: [
+     |shape parameters|
+     #canvas-elements
+     #user
+     #asteroid-drawing
+     #child-drawing
+     #grandchild-drawing
+     #bullet-drawing
+     #bullet2-drawing
+     #bullet3-drawing
+     #game-over
+    ]
+    parameters: [
+      width: 800
+      height: 400
+    ]
+  ] 
+  #html/app = [
+   root: "mech-root"
+   contains: [
+     type: canvas
+     contains: _
+     parameters: _
+    ]
   ]
