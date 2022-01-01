@@ -1,0 +1,77 @@
+Booleans for shot bullets
+  #first-shot = false
+  #second-shot = false
+  #third-shot = false 
+
+Shoot first bullet  
+  ~ #html/event/key-down
+  shoot = #html/event/key-down.key == "s"
+  #first-shot := true
+  #second-shot := false
+  #third-shot := false 
+  #bullet.x{shoot} := #spaceship.x
+  #bullet.y{shoot} := #spaceship.y
+  #bullet.vy{shoot} := 0 - math/sin(angle: 180 - #spaceship.orientation) * 5
+  #bullet.vx{shoot} := 0 - math/sin(angle: 90 - #spaceship.orientation) * 5
+
+Move first bullet 
+  ~ #time/timer.ticks{1}
+  #bullet.x := #bullet.x + #bullet.vx
+  #bullet.y := #bullet.y + #bullet.vy
+
+Shoot second bullet 
+  ~ #html/event/key-down
+  shot1 = #html/event/key-down.key == "s"
+  #first-shot := true
+  #second-shot := true
+  #third-shot := false 
+
+Move second bullet
+  ~ #time/timer.ticks{1}
+  #bullet2.x := #bullet2.x + #bullet2.vx
+  #bullet2.y := #bullet2.y + #bullet2.vy
+
+Shoot third bullet 
+  ~ #html/event/key-down
+  shot2 = #html/event/key-down.key == "s"
+  #first-shot := false
+  #second-shot := true
+  #third-shot := true 
+
+Move third bullet
+  ~ #time/timer.ticks{1}
+  #bullet3.x := #bullet3.x + #bullet3.vx
+  #bullet3.y := #bullet3.y + #bullet3.vy
+
+Make sure first bullet stops off screen
+  ~ #time/timer.ticks{1}
+  brx = #bullet.x > (600)
+  #bullet.vx{brx} := 0
+  blx = #bullet.x < (10)
+  #bullet.vx{blx} := 0
+  bdy = #bullet.y > (400)
+  #bullet.vy{bdy} := 0
+  buy = #bullet.y < (0)
+  #bullet.vy{buy} := 0
+
+Make sure second bullet stops off screen
+  ~ #time/timer.ticks{1}
+  brx1 = #bullet1.x > (600)
+  #bullet1.vx{brx1} := 0
+  blx1 = #bullet1.x < (10)
+  #bullet1.vx{blx1} := 0
+  bdy1 = #bullet1.y > (400)
+  #bullet1.vy{bdy1} := 0
+  buy1 = #bullet1.y < (0)
+  #bullet1.vy{buy1} := 0
+
+Make sure third bullet stops off screen
+  ~ #time/timer.ticks{1}
+  brx2 = #bullet2.x > (600)
+  #bullet2.vx{brx2} := 0
+  blx2 = #bullet2.x < (10)
+  #bullet2.vx{blx2} := 0
+  bdy2 = #bullet2.y > (400)
+  #bullet2.vy{bdy2} := 0
+  buy2 = #bullet2.y < (0)
+  #bullet2.vy{buy2} := 0

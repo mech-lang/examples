@@ -1,0 +1,33 @@
+## Asteroids problems and concerns going forward
+
+## 1. Fixing math libraries and acceleration
+
+The asteroids game relies heavily on certain mathematical operations. Such as utilizing
+the sin and cosin functions. The cos function needs to be updated and there has to be a fix 
+to the way velocity is handled in the game. There should be an acceleration variable for x and 
+y that has a direct impact on the ships velocity, as of right now the speed is kept in check 
+with friction and doesn't surpass a certain point but it can be cleaner.
+
+## 2. Shooting multiple bullets
+
+As of now the user can only shoot one bullet at a time. I tried to set up boolean conditions
+to shoot the second bullet if the first is shot...the third if the second was shot...etc. For 
+this to work effectively a table of bullets needs to be implemented that moves bullets as they 
+are shot and has a fixed size (i.e 100). This can also be achieved by assuming only ~5 bullets 
+will be on a screen at one time and rotating through those 5 bullets.
+
+## 3. Asteroid spawning
+
+As of right now only 3 asteroids are on the screen and they respawn when the user shoots them 
+all. To fix this, a table of asteroids (along with their children and grandchildren) must be kept.
+An asteroid has 2 children and 4 grandchildren, as a table of asteroid tables (2D array?). There is 
+also the issue of randomly spawning asteroids which can be solved with an updated random numer
+generator, the random generator can be checked every timer tick and spawn asteroids if the number is 
+under a certain target, this target can be raised during the game to increase spawns...etc.
+
+## Special Mention
+
+The game is in need of the UFO feature from the original asteroids game. This will need to utilize
+the random generator as well. I would recommend using an image for this instead of drawing it on canvas.
+The UFO must track users position and their trajectory to shoot bullets where the user is 
+supposed to be, not where it is currently.

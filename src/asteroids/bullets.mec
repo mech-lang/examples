@@ -1,0 +1,42 @@
+Bullet
+  #bullet = [
+    x: 750
+    y: 750
+    vx: 0
+    vy: 0
+  ]
+
+Position References
+  bullet-x = #bullet.x
+  bullet-y = #bullet.y
+  
+Draw Bullet  
+  #bullet-drawing = [
+    "rectangle" [x: bullet-x y: bullet-y width: 4 height: 4 fill: 0xFFFFFF stroke: 0xFFFFFF line-width: 3]
+  ]
+  
+  #bullet2 = [
+    x: 750
+    y: 750
+    vx: 0
+    vy: 0
+  ]
+
+  bullet2-x = #bullet2.x
+  bullet2-y = #bullet2.y
+  #bullet2-drawing = [
+    "rectangle" [x: bullet2-x y: bullet2-y width: 4 height: 4 fill: 0xFFFFFF stroke: 0xFFFFFF line-width: 3]
+  ]
+
+  #bullet3 = [
+    x: 750
+    y: 750
+    vx: 0
+    vy: 0
+  ]
+
+  bullet3-x = #bullet3.x
+  bullet3-y = #bullet3.y
+  #bullet3-drawing = [
+    "rectangle" [x: bullet3-x y: bullet3-y width: 4 height: 4 fill: 0xFFFFFF stroke: 0xFFFFFF line-width: 3]
+  ]
