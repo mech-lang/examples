@@ -9,23 +9,25 @@ Set direction up
 Set direction down
   #pacman/direction{#pacman.vy < 0} := 270
 
-Set speed on keydown
+Set keydown events
   ~ #html/event/key-down
   up = #html/event/key-down.key == "ArrowUp"
   down = #html/event/key-down.key == "ArrowDown"
   left = #html/event/key-down.key == "ArrowLeft"
   right = #html/event/key-down.key == "ArrowRight"
+Set speed on each keystroke
   #pacman.vx{left} := -5
   #pacman.vx{right} := 5
   #pacman.vy{up} := -5
   #pacman.vy{down} := 5
 
-Stop pacman on keyup
+Stop keyup events
   ~ #html/event/key-up
   up = #html/event/key-up.key == "ArrowUp"
   down = #html/event/key-up.key == "ArrowDown"
   left = #html/event/key-up.key == "ArrowLeft"
   right = #html/event/key-up.key == "ArrowRight"
+Set speed on each keystroke
   #pacman.vx{left | right} := 0
   #pacman.vy{up | down} := 0
 

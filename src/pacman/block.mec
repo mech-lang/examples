@@ -1,0 +1,17 @@
+# Drawing Tiled Pictures (provided by Montella)
+
+Set up drawing elements
+  width = 220 / 2
+  height = 277 / 2
+  parameters = [|source x y rotate|
+    "https://www.w3schools.com/graphics/pic_the_scream.jpg", width * 1, height * 1,  0
+    "https://www.w3schools.com/graphics/pic_the_scream.jpg", width * 3, height * 1,  0
+    "https://www.w3schools.com/graphics/pic_the_scream.jpg", width * 5, height * 1,  0
+    "https://www.w3schools.com/graphics/pic_the_scream.jpg", width * 1, height * 3,  0
+    "https://www.w3schools.com/graphics/pic_the_scream.jpg", width * 3, height * 3,  0
+    "https://www.w3schools.com/graphics/pic_the_scream.jpg", width * 5, height * 3,  0
+  ]
+  #tiles = [
+    shape: "image" 
+    parameters: [|source x y rotate| parameters]
+  ]

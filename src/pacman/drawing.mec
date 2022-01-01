@@ -15,7 +15,7 @@ Set up drawing elements
   x = #pacman.x
   y = #pacman.y
   shapes = [|shape   parameters|
-             "arc"   [center-x: 0 center-y: 0 starting-angle: #pacman/mouth ending-angle: -#pacman/mouth radius: 25]
+             "arc"   [center-x: 0 center-y: 0 starting-angle: #pacman/mouth ending-angle: -#pacman/mouth radius: 15]
              "line"  [x: 0 y: 0]]
   #pacman/drawing = [
     shape: "path" 
@@ -33,8 +33,13 @@ Set up drawing elements
 Draw a Pacman
   canvas = [
     type: "canvas" 
-    contains: [|shape parameters| #pacman/drawing] 
-    parameters: [width: 500 height: 500]
+    contains: [
+      |shape parameters|
+      #field 
+      #pacman/drawing
+      #ghost
+      ] 
+    parameters: [width: 1100 height: 950]
   ]
   #html/app = [
     root: "mech-root" 
