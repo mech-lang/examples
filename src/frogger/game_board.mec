@@ -1,0 +1,38 @@
+## Update the timer
+  #time/timer += [period: 175]
+
+## Draw the game
+  game-canvas = [
+    type: "canvas"
+    contains: [
+      |shape parameters|
+      #field
+      #river-stuff
+      #flies
+      #the-frog
+      #cars
+    ]
+    parameters: [
+      width: 700
+      height: 700
+    ]
+  ]
+  text-canvas = [
+    type: "canvas"
+    contains: [
+      |shape parameters|
+      #game-text
+    ]
+    parameters: [
+      width: 700
+      height: 700
+    ]
+  ]
+  #html/app = [
+    root: "mech-root"
+    contains: [
+      |type contains parameters|
+      game-canvas _ _
+      text-canvas _ _
+    ]
+  ]

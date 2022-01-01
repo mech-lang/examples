@@ -1,0 +1,13 @@
+## Reset Frogger if it touches any of the vehicles and take away a life
+  car-1-x = #frogger.x < (#vehicle-1-data.x + #vehicle-1-data.width) & (#frogger.x + #frogger.width) > #vehicle-1-data.x
+  car-1-y = #frogger.y < (#vehicle-1-data.y + #vehicle-1-data.height) & (#frogger.y + #frogger.height) > #vehicle-1-data.y
+  car-2-x = #frogger.x < (#vehicle-2-data.x + #vehicle-2-data.width) & (#frogger.x + #frogger.width) > #vehicle-2-data.x
+  car-2-y = #frogger.y < (#vehicle-2-data.y + #vehicle-2-data.height) & (#frogger.y + #frogger.height) > #vehicle-2-data.y
+  car-3-x = #frogger.x < (#vehicle-3-data.x + #vehicle-3-data.width) & (#frogger.x + #frogger.width) > #vehicle-3-data.x
+  car-3-y = #frogger.y < (#vehicle-3-data.y + #vehicle-3-data.height) & (#frogger.y + #frogger.height) > #vehicle-3-data.y
+  car-4-x = #frogger.x < (#vehicle-4-data.x + #vehicle-4-data.width) & (#frogger.x + #frogger.width) > #vehicle-4-data.x
+  car-4-y = #frogger.y < (#vehicle-4-data.y + #vehicle-4-data.height) & (#frogger.y + #frogger.height) > #vehicle-4-data.y
+  car-5-x = #frogger.x < (#vehicle-5-data.x + #vehicle-5-data.width) & (#frogger.x + #frogger.width) > #vehicle-5-data.x
+  car-5-y = #frogger.y < (#vehicle-5-data.y + #vehicle-5-data.height) & (#frogger.y + #frogger.height) > #vehicle-5-data.y
+  #frogger.y{(car-1-x & car-1-y) | (car-2-x & car-2-y) | (car-3-x & car-3-y) | (car-4-x & car-4-y) | (car-5-x & car-5-y)} := 610
+  #game-elements.life{(car-1-x & car-1-y) | (car-2-x & car-2-y) | (car-3-x & car-3-y) | (car-4-x & car-4-y) | (car-5-x & car-5-y)} := #game-elements.life - 1

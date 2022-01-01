@@ -1,0 +1,13 @@
+## Create attributes for the second log
+  #log-2-data = [
+    width: 200
+    height: 50
+    x: 10
+    y: 160
+    vx: 50
+  ]
+
+## Create the second log
+  #log-2 = [
+    "rectangle" [x: #log-2-data.x y: #log-2-data.y width: #log-2-data.width height: #log-2-data.height fill: 0xB7614B line-width: 2]
+  ]

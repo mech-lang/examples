@@ -1,0 +1,14 @@
+## Create Frogger's attributes
+  #frogger = [
+    width: 50
+    height: 50
+    x: 310
+    y: 610
+    vx: 0
+    vy: 0
+  ]
+
+## Create Frogger
+  #the-frog = [
+    "rectangle" [x: #frogger.x y: #frogger.y width: #frogger.width height: #frogger.height fill: 0xE1DF49 stroke: 0x5CBF38 line-width: 3]
+  ]

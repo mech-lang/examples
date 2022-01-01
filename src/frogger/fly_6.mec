@@ -1,0 +1,12 @@
+## Create attributes for the sixth fly
+  #fly-6-data = [
+    width: 50
+    height: 50
+    x: 560
+    y: 10
+  ]
+
+## Create the sixth fly
+  #fly-6 = [
+    "rectangle" [x: #fly-6-data.x y: #fly-6-data.y width: #fly-6-data.width height: #fly-6-data.height fill: 0xDD5931 stroke: 0x74C1DE line-width: 2]
+  ]

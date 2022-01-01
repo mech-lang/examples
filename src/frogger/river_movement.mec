@@ -1,0 +1,27 @@
+## Check if turtle 1 reaches the board boundaries and change its velocity appropriately
+  #turtle-1-data.vx{#turtle-1-data.x > 460} := -50
+  #turtle-1-data.vx{#turtle-1-data.x < 60} := 50
+
+## Check if log 1 reaches the board boundaries and change its velocity appropriately
+  #log-1-data.vx{#log-1-data.x > 510} := -50
+  #log-1-data.vx{#log-1-data.x < 60} := 50
+
+## Check if log 2 reaches the board boundaries and change its velocity appropriately
+  #log-2-data.vx{#log-2-data.x > 410} := -50
+  #log-2-data.vx{#log-2-data.x < 60} := 50
+
+## Check if turtle 2 reaches the board boundaries and change its velocity appropriately
+  #turtle-2-data.vx{#turtle-2-data.x > 510} := -50
+  #turtle-2-data.vx{#turtle-2-data.x < 60} := 50
+
+## Check if log 3 reaches the board boundaries and change its velocity appropriately
+  #log-3-data.vx{#log-3-data.x > 460} := -50
+  #log-3-data.vx{#log-3-data.x < 60} := 50
+
+## Update the positions of all the turtles and logs on the river per tick
+  ~ #time/timer.ticks{1}
+  #turtle-1-data.x{!#is-game-over} := #turtle-1-data.x + #turtle-1-data.vx
+  #log-1-data.x{!#is-game-over} := #log-1-data.x + #log-1-data.vx
+  #log-2-data.x{!#is-game-over} := #log-2-data.x + #log-2-data.vx
+  #turtle-2-data.x{!#is-game-over} := #turtle-2-data.x + #turtle-2-data.vx
+  #log-3-data.x{!#is-game-over} := #log-3-data.x + #log-3-data.vx

@@ -1,0 +1,22 @@
+## Create attributes for the first turtle
+  #turtle-1-data = [
+    width: 150
+    height: 50
+    x: 510
+    y: 260
+    vx: -50
+  ]
+
+## Create the first turtle
+  #turtle-1 = [
+    "rectangle" [x: #turtle-1-data.x y: #turtle-1-data.y width: #turtle-1-data.width height: #turtle-1-data.height fill: 0xCE2B1E stroke: 0x61B837 line-width: 2]
+  ]
+
+## Create a dependency table for use in river_stuff_collision.mec
+  #turtle-1-sub-data = [
+    width: #turtle-1-data.width
+    height: #turtle-1-data.height
+    x: #turtle-1-data.x
+    y: #turtle-1-data.y
+    vx: #turtle-1-data.vx
+  ]

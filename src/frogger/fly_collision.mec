@@ -1,0 +1,16 @@
+## Reset Frogger and the time if it touches any of the flies, as well as adding points to the score
+  fly-1-x = #frogger.x < (#fly-1-data.x + #fly-1-data.width) & (#frogger.x + #frogger.width) > #fly-1-data.x
+  fly-1-y = #frogger.y < (#fly-1-data.y + #fly-1-data.height) & (#frogger.y + #frogger.height) > #fly-1-data.y
+  fly-2-x = #frogger.x < (#fly-2-data.x + #fly-2-data.width) & (#frogger.x + #frogger.width) > #fly-2-data.x
+  fly-2-y = #frogger.y < (#fly-2-data.y + #fly-2-data.height) & (#frogger.y + #frogger.height) > #fly-2-data.y
+  fly-3-x = #frogger.x < (#fly-3-data.x + #fly-3-data.width) & (#frogger.x + #frogger.width) > #fly-3-data.x
+  fly-3-y = #frogger.y < (#fly-3-data.y + #fly-3-data.height) & (#frogger.y + #frogger.height) > #fly-3-data.y
+  fly-4-x = #frogger.x < (#fly-4-data.x + #fly-4-data.width) & (#frogger.x + #frogger.width) > #fly-4-data.x
+  fly-4-y = #frogger.y < (#fly-4-data.y + #fly-4-data.height) & (#frogger.y + #frogger.height) > #fly-4-data.y
+  fly-5-x = #frogger.x < (#fly-5-data.x + #fly-5-data.width) & (#frogger.x + #frogger.width) > #fly-5-data.x
+  fly-5-y = #frogger.y < (#fly-5-data.y + #fly-5-data.height) & (#frogger.y + #frogger.height) > #fly-5-data.y
+  fly-6-x = #frogger.x < (#fly-6-data.x + #fly-6-data.width) & (#frogger.x + #frogger.width) > #fly-6-data.x
+  fly-6-y = #frogger.y < (#fly-6-data.y + #fly-6-data.height) & (#frogger.y + #frogger.height) > #fly-6-data.y
+  #frogger.y{(fly-1-x & fly-1-y) | (fly-2-x & fly-2-y) | (fly-3-x & fly-3-y) | (fly-4-x & fly-4-y) | (fly-5-x & fly-5-y) | (fly-6-x & fly-6-y)} := 610
+  #game-elements.time{(fly-1-x & fly-1-y) | (fly-2-x & fly-2-y) | (fly-3-x & fly-3-y) | (fly-4-x & fly-4-y) | (fly-5-x & fly-5-y) | (fly-6-x & fly-6-y)} := 155
+  #game-elements.score{(fly-1-x & fly-1-y) | (fly-2-x & fly-2-y) | (fly-3-x & fly-3-y) | (fly-4-x & fly-4-y) | (fly-5-x & fly-5-y) | (fly-6-x & fly-6-y)} := #game-elements.score + #game-elements.time

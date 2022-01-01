@@ -1,0 +1,59 @@
+## Boolean to stop the game if Frogger runs out of lives
+  #is-game-over = false
+
+## The position of the "game over" image
+  #game-over-image-pos = [
+    x: -100
+    y: -100
+  ]
+
+## Table to hold the score, life and time for the game
+  #game-elements = [
+    score: 0
+    life: 3
+    time: 155
+  ]
+
+## Update the round's time per tick and animate the "game over" image to appear (if the game is over)
+  ~ #time/timer.ticks{1}
+  #game-elements.time{!#is-game-over} := #game-elements.time - 1
+  #game-over-image-pos.x{#is-game-over & #game-over-image-pos.x != 325} := #game-over-image-pos.x + 25
+  #game-over-image-pos.y{#is-game-over & #game-over-image-pos.y != 525} := #game-over-image-pos.y + 25
+
+## Reset the timer if it equals 0, take away a life and recalibrate Frogger's position and horizontal velocity
+  #game-elements.time{#game-elements.time == 0 & !#is-game-over} := 155
+  #game-elements.life{#game-elements.time == 0 & !#is-game-over} := #game-elements.life - 1
+  #frogger.y{#game-elements.time == 0 & !#is-game-over} := 610
+  #frogger.vx{#game-elements.time == 0 & !#is-game-over} := 0
+
+## End the game if Frogger has no lives
+  #is-game-over{#game-elements.life == 0} := true
+
+## Create the text elements for the game
+  title = [
+    "text" [x: 10 y: 50 text: "Frogger!" fill: 0xB4D144 font: [size: 50 face: "Arial"]]
+    "text" [x: 210 y: 50 text: "(but in Mech)" fill: 0xEFC162 font: [size: 30 face: "Arial"]]
+    "text" [x: 400 y: 50 text: "developed by Sean Hong" font: [size: 20 face: "Arial"]]
+  ]
+  frog-location = [
+    "text" [x: 10 y: 150 text: "Frogger's X Position:" font: [size: 40 face: "Arial"]]
+    "text" [x: 400 y: 150 text: #frogger.x font: [size: 40 face: "Arial"]]
+    "text" [x: 10 y: 200 text: "Frogger's Y Position:" font: [size: 40 face: "Arial"]]
+    "text" [x: 400 y: 200 text: #frogger.y font: [size: 40 face: "Arial"]]
+  ]
+  game-elements-text = [
+    "rectangle" [x: 5 y: 260 width: 350 height: 150 fill: 0xFFFFFF line-width: 3]
+    "text" [x: 10 y: 300 text: "Score:" font: [size: 40 face: "Arial"]]
+    "text" [x: 150 y: 300 text: #game-elements.score font: [size: 40 face: "Arial"]]
+    "text" [x: 10 y: 350 text: "Life:" font: [size: 40 face: "Arial"]]
+    "text" [x: 150 y: 350 text: #game-elements.life font: [size: 40 face: "Arial"]]
+    "text" [x: 10 y: 400 text: "Time:" font: [size: 40 face: "Arial"]]
+    "text" [x: 150 y: 400 text: #game-elements.time font: [size: 40 face: "Arial"]]
+    "rectangle" [x: 375 y: 260 width: 300 height: 150 fill: 0xFFFFFF line-width: 3]
+    "text" [x: 490 y: 290 text: "HELP" font: [size: 30 face: "Arial"]]
+    "text" [x: 385 y: 320 text: "* Arrow Keys - Move" font: [size: 23 face: "Arial"]]
+    "text" [x: 385 y: 355 text: "* Earn points by eating flies" font: [size: 23 face: "Arial"]]
+    "text" [x: 385 y: 390 text: "* Refresh page to restart" font: [size: 23 face: "Arial"]]
+    "image" [x: #game-over-image-pos.x y: #game-over-image-pos.y rotate: 0 source: "https://text2image.com/user_images/202110/text2image_T4106774_20211023_180335.png"]
+  ]
+  #game-text = [title; frog-location; game-elements-text]
