@@ -3,7 +3,7 @@
 Define the environment
   #ball = [|x   y   vx vy|
             10  10  20  0]
-  #time/timer += [period: 15, ticks: 0]
+  #time/timer += [period: 15<ms>]
   #gravity = 1
   #boundary = [width: 500 height: 500]
 
@@ -40,7 +40,7 @@ Keep the balls within the boundary height
   ~ #ball.y
   iy = #ball.y > #boundary.height
   #ball.y{iy} := #boundary.height
-  #ball.vy{iy} := -#ball.vy * 0.80
+  #ball.vy{iy} := #ball.vy * -0.80
 
 Keep the balls within the boundary width
   ~ #ball.x
@@ -48,7 +48,7 @@ Keep the balls within the boundary width
   ixx = #ball.x < 0
   #ball.x{ix} := #boundary.width
   #ball.x{ixx} := 0
-  #ball.vx{ix | ixx} := -#ball.vx * 0.80
+  #ball.vx{ix | ixx} := #ball.vx * -0.80
 
 ## Drawing
 
