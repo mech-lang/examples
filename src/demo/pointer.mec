@@ -1,26 +1,31 @@
-# Pointer
+## Pinter Events
 
-Keep track of which balls are clicked
-  #clicked = logic/false(rows: 3, columns: 1)
-
-Determine if the pointer is within the ball's area
-  ~ #timer
-  dx = #io/pointer.x - #balls.x
-  dy = #io/pointer.y - #balls.y
+Determine if the pointer is within the ball's hitbox
+  dx = #html/event/pointer-move.x - #balls.x
+  dy = #html/event/pointer-move.y - #balls.y
   #hover = ((dx ^ 2 + dy ^ 2) ^ 0.5) < #balls.radius
 
+Change color of hovered balls
+  ~ #time/timer.ticks
+  #balls.color{#hover} := 0x00A000
+  #balls.color{¬#hover} := 0xA00000
+
 Click the circle
-  ~ #io/pointer-down
-  #clicked{#hover} := true
+  ~ #html/event/pointer-down
+  #balls.clicked{#hover} := true
+  #balls.a{#hover} := 0
+  #balls.x{#hover} := #html/event/pointer-down.x
+  #balls.y{#hover} := #html/event/pointer-down.y
+  #balls.vy{#hover} := 0
+  #balls.vx{#hover} := 0
 
 Un-click the circle
-  ~ #io/pointer-up
-  #clicked{#hover} := false
+  ~ #html/event/pointer-up
+  #balls.clicked{#hover} := false
+  #balls.a{#hover} := 1
 
 Move the circle to the pointer if it's clicked
-  #balls{#clicked} := [
-    x: #io/pointer.x 
-    y: #io/pointer.y 
-    vx: 0 
-    vy: 0
-  ]
+  ~ #html/event/pointer-move
+  ix = #balls.clicked
+  #balls.x{ix} := #html/event/pointer-move.x
+  #balls.y{ix} := #html/event/pointer-move.y
