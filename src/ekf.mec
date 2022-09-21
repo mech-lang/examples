@@ -1,0 +1,30 @@
+Extended Kalman Filter Localization
+====================================
+
+robot-hat = [x: 23.6217, y: 18.1877, θ: -0.5135]
+z = 0.4056  
+σ = 0.0524
+Σ = [100   0      0
+       0 100      0
+       0   0 0.1542]
+camera = [x: 30.5069 y: 21.6590]
+
+1. Time Update
+---------------
+
+2. Measurement Update
+----------------------
+
+μ = [robot-hat.x
+     robot-hat.y 
+     robot-hat.θ]
+Δy = camera.y - robot-hat.y
+Δx = camera.x - robot-hat.x
+z-p = math/atan(angle: Δy / Δx) - robot-hat.θ  -- Expected Measurement
+q = Δx ^ 2 + Δy ^ 2
+H = [Δy / q, -Δx / q, -1]                      -- Measurement Jacobian
+Z = H ** Σ ** H' + σ                           -- Measurement Covariance
+K = Σ ** H' / Z                                -- Kalman Gain
+
+#μ2 = μ + K * (z - z-p)
+#Σ2 = ([1 0 0; 0 1 0; 0 0 1] - K ** H) ** Σ
