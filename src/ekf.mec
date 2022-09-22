@@ -1,56 +1,66 @@
 Extended Kalman Filter Localization
 ====================================
 
-robot = [x: 15, y: 15, θ: 0]
-robot-hat = [x: 25, y: 25, θ: 0.3927]
-control = [v: 5, w: 0]
-z = 0.4056  
-σ = 0.0524
-Q = [0.0225 0
-     0      0.0305]
-Σ = [100   0      0
-       0 100      0
-       0   0 0.1542]
-camera = [x: 30.5069 y: 21.6590]
-Δt = 0.1
-
+block
+  #time/timer += [period: 1<s>]
+  #robot = [x: 15, y: 15, θ: 0]
+  #robot-hat = [x: 25, y: 25, θ: 0.3927]
+  #control = [v: 5, ω: 0]
+  #camera = [x: 40 y: 17]
+  #Σ = [100   0 0
+          0 100 0
+          0   0 0.1542]
+   
 1. Time Update
 ---------------
+  
+  ~ #time/timer
+  Δt = 0.1
+  Q = [0.0225 0
+       0      0.0305]
+  v-p = #control.v + Q{1,1}
+  ω-p = #control.ω + Q{2,2}
+  x-p = #robot.x + #control.v * math/cos(angle: #robot.θ) * Δt
+  y-p = #robot.y + #control.v * math/sin(angle: #robot.θ) * Δt
+  θ-p = #robot.θ + #control.ω * Δt
+  x-hat-p = #robot-hat.x + v-p * math/cos(angle: #robot-hat.θ) * Δt
+  y-hat-p = #robot-hat.y + v-p * math/sin(angle: #robot-hat.θ) * Δt
+  θ-hat-p = #robot-hat.θ + ω-p * Δt
+  Gv = [1  0  -v-p * math/sin(angle: θ-p) * Δt
+        0  1   v-p * math/cos(angle: θ-p) * Δt
+        0  0   1]
 
-v-p = control.v + Q{1,1}
-w-p = control.w + Q{2,2}
-
-x-p = robot.x + control.v * math/cos(angle: robot.θ) * Δt
-y-p = robot.y + control.v * math/sin(angle: robot.θ) * Δt
-θ-p = robot.θ + control.w * Δt
-
-x-hat-p = robot-hat.x + v-p * math/cos(angle: robot-hat.θ) * Δt
-y-hat-p = robot-hat.y + v-p * math/sin(angle: robot-hat.θ) * Δt
-θ-hat-p = robot-hat.θ + w-p * Δt
-
-Gv = [1  0  -v-p * math/sin(angle: θ-p) * Δt
-       0  1  v-p * math/cos(angle: θ-p) * Δt
-       0  0  1]
-
-Gu = [math/cos(angle: θ-p) * Δt  0
-      math/sin(angle: θ-p) * Δt  0
-      0                          Δt]
-
-#P2 = Gv ** Σ ** Gv' + Gu ** Q ** Gu'
+  Gu = [math/cos(angle: θ-p) * Δt  0
+        math/sin(angle: θ-p) * Δt  0
+        0                          Δt]
+  #robot.x := x-p
+  #robot.y := y-p
+  #robot.θ := θ-p
+  #robot-hat.x := x-hat-p
+  #robot-hat.y := y-hat-p
+  #robot-hat.θ := θ-hat-p
+  #Σ := Gv ** #Σ ** Gv' + Gu ** Q ** Gu'
 
 2. Measurement Update
 ----------------------
 
-μ = [robot-hat.x
-     robot-hat.y 
-     robot-hat.θ]
-Δy = camera.y - robot-hat.y
-Δx = camera.x - robot-hat.x
-z-p = math/atan(angle: Δy / Δx) - robot-hat.θ  -- Expected Measurement
-q = Δx ^ 2 + Δy ^ 2
-H = [Δy / q, -Δx / q, -1]                      -- Measurement Jacobian
-Z = H ** Σ ** H' + σ                           -- Measurement Covariance
-K = Σ ** H' / Z                                -- Kalman Gain
-
-#μ2 = μ + K * (z - z-p)
-#Σ2 = ([1 0 0; 0 1 0; 0 0 1] - K ** H) ** Σ
+  ~ #time/timer
+  σ = 0.0524
+  μ = [#robot-hat.x
+       #robot-hat.y 
+       #robot-hat.θ]
+  Δy-p = #camera.y - #robot-hat.y
+  Δx-p = #camera.x - #robot-hat.x
+  z-p = math/atan(angle: Δy-p / Δx-p) - #robot-hat.θ  
+  Δy = #camera.y - #robot.y
+  Δx = #camera.x - #robot.x
+  z = math/atan(angle: Δy / Δx) - #robot.θ  
+  q = Δx-p ^ 2 + Δy-p ^ 2
+  H = [Δy-p / q, -Δx-p / q, -1]                      
+  Z = H ** #Σ ** H' + σ                           
+  K = #Σ ** H' / Z
+  μ-p = μ + K * (z - z-p)
+  #robot-hat.x := μ-p{1}
+  #robot-hat.y := μ-p{2}
+  #robot-hat.θ := μ-p{3}
+  #Σ := ([1 0 0; 0 1 0; 0 0 1] - K ** H) ** #Σ
