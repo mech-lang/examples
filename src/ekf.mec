@@ -1,16 +1,42 @@
 Extended Kalman Filter Localization
 ====================================
 
-robot-hat = [x: 23.6217, y: 18.1877, θ: -0.5135]
+robot = [x: 15, y: 15, θ: 0]
+robot-hat = [x: 25, y: 25, θ: 0.3927]
+control = [v: 5, w: 0]
 z = 0.4056  
 σ = 0.0524
+Q = [0.0225 0
+     0      0.0305]
 Σ = [100   0      0
        0 100      0
        0   0 0.1542]
 camera = [x: 30.5069 y: 21.6590]
+Δt = 0.1
 
 1. Time Update
 ---------------
+
+v-p = control.v + Q{1,1}
+w-p = control.w + Q{2,2}
+
+x-p = robot.x + control.v * math/cos(angle: robot.θ) * Δt
+y-p = robot.y + control.v * math/sin(angle: robot.θ) * Δt
+θ-p = robot.θ + control.w * Δt
+
+x-hat-p = robot-hat.x + v-p * math/cos(angle: robot-hat.θ) * Δt
+y-hat-p = robot-hat.y + v-p * math/sin(angle: robot-hat.θ) * Δt
+θ-hat-p = robot-hat.θ + w-p * Δt
+
+Gv = [1  0  -v-p * math/sin(angle: θ-p) * Δt
+       0  1  v-p * math/cos(angle: θ-p) * Δt
+       0  0  1]
+
+Gu = [math/cos(angle: θ-p) * Δt  0
+      math/sin(angle: θ-p) * Δt  0
+      0                          Δt]
+
+#P2 = Gv ** Σ ** Gv' + Gu ** Q ** Gu'
 
 2. Measurement Update
 ----------------------
