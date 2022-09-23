@@ -1,16 +1,16 @@
-Extended Kalman Filter Localization
-====================================
+EKF Localization
+=================
 
-block
-  #time/timer += [period: 1<s>]
-  #robot = [x: 15, y: 15, θ: 0]
-  #robot-hat = [x: 25, y: 25, θ: 0.3927]
-  #control = [v: 5, ω: 0]
+Initialize the simulation
+  #time/timer += [period: 1<ms>]
+  #robot = [x: 250, y: 15, θ: 0]
+  #robot-hat = [x: 250, y: 25, θ: 0.3927]
+  #control = [v: 5, ω: 0.05]
   #camera = [x: 40 y: 17]
   #Σ = [100   0 0
           0 100 0
           0   0 0.1542]
-   
+
 1. Time Update
 ---------------
   
@@ -51,10 +51,10 @@ block
        #robot-hat.θ]
   Δy-p = #camera.y - #robot-hat.y
   Δx-p = #camera.x - #robot-hat.x
-  z-p = math/atan(angle: Δy-p / Δx-p) - #robot-hat.θ  
+  z-p = math/atan2(y: Δy-p, x: Δx-p) - #robot-hat.θ  
   Δy = #camera.y - #robot.y
   Δx = #camera.x - #robot.x
-  z = math/atan(angle: Δy / Δx) - #robot.θ  
+  z = math/atan2(y: Δy, x: Δx) - #robot.θ  
   q = Δx-p ^ 2 + Δy-p ^ 2
   H = [Δy-p / q, -Δx-p / q, -1]                      
   Z = H ** #Σ ** H' + σ                           
@@ -64,3 +64,39 @@ block
   #robot-hat.y := μ-p{2}
   #robot-hat.θ := μ-p{3}
   #Σ := ([1 0 0; 0 1 0; 0 0 1] - K ** H) ** #Σ
+
+3. Draw
+--------
+
+Define the shapes
+  #robot-drawing = [
+    shape: "circle" 
+    parameters: [
+      center-x: #robot.x
+      center-y: #robot.y + 250
+      radius: 10.0      
+      fill: 0xFF0000    
+      line-width: 1.0
+    ]
+  ]
+  #robot-hat-drawing = [
+    shape: "circle" 
+    parameters: [
+      center-x: #robot-hat.x
+      center-y: #robot-hat.y + 250
+      radius: 10.0      
+      fill: 0x00FF00    
+      line-width: 1.0
+    ]
+  ]
+Draw a shape to the canvas
+  shapes = [#robot-drawing; #robot-hat-drawing]
+  canvas = [
+    kind: "canvas" 
+    contains: [|shape parameters| shapes] 
+    parameters: [width: 500.0 height: 500.0]
+  ]
+  #html/app = [
+    root: "mech-root" 
+    contains: [|kind contains parameters| canvas]
+  ]
