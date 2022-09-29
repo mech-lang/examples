@@ -1,4 +1,5 @@
-## Pinter Events
+3. Pointer Events
+------------------
 
 Determine if the pointer is within the ball's hitbox
   dx = #html/event/pointer-move.x - #balls.x

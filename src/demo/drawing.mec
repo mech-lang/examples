@@ -1,4 +1,5 @@
-## Drawing
+4. Drawing
+-----------
 
 Set up drawing elements 
   #circle = [
@@ -14,7 +15,7 @@ Set up drawing elements
 
 Draw to canvas
   #canvas = [
-    type: "canvas" 
+    kind: "canvas" 
     contains: [|shape parameters| #circle] 
     parameters: [width: 1000 height: 500]
   ]
@@ -22,5 +23,5 @@ Draw to canvas
 Attach game to root
   #html/app = [
     root: "mech-root" 
-    contains: [|type contains parameters| #canvas]
+    contains: [|kind contains parameters| #canvas]
   ]

@@ -1,4 +1,5 @@
-## Motion Model
+1. Motion Model
+----------------
 
 Move the ball with every tick of the timer
   ~ #time/timer.ticks

@@ -1,4 +1,5 @@
-# Mech Demo
+Mech Demo
+==========
 
 Game elements
   #balls = [|x  y   vx vy radius color  a clicked| 
