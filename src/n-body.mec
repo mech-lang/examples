@@ -47,10 +47,19 @@ Offset momentum
 -----------
 
 Advance velocities
-  ~ #time/timer.ticks
+  ~ #iter
   mag = #dt / #distance ^ 3
   #b.vx,vy,vz{#ix1} :-= #Δ * #b.mass{#ix2} * mag
   #b.vx,vy,vz{#ix2} :+= #Δ * #b.mass{#ix1} * mag
 
 Advance positions
   #b.x,y,z :+= #b.vx,vy,vz * #dt
+
+4. Run the sim
+---------------
+
+#iter = 1 ~> #iter + 1
+
+Mark the simulation as done after N iterations
+  |~ #iter > 1e8
+  #system/exit += 0
