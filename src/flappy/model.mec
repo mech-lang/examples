@@ -1,0 +1,12 @@
+1. Motion Model
+----------------
+
+Move the ball with every tick of the timer
+  ~ #time/timer.ticks
+  #bird.y := #bird.y + #bird.vy
+  #bird.vy := #bird.vy + #gravity
+
+Keep the balls within the boundary width
+  ~ #time/timer.ticks
+  ix = #bird.y > 500
+  #game-over = true

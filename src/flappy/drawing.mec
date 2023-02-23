@@ -1,0 +1,27 @@
+4. Drawing
+-----------
+
+Set up drawing elements 
+  #circle = [
+    shape: "circle" 
+    parameters: [
+      center-x: 50
+      center-y: #bird.y 
+      radius: 10
+      fill: 0xFF0000 
+      line-width: 3
+    ]
+  ]
+
+Draw to canvas
+  #canvas = [
+    kind: "canvas" 
+    contains: [|shape parameters| #circle] 
+    parameters: [width: 1000 height: 500]
+  ]
+
+Attach game to root
+  #html/app = [
+    root: "mech-root" 
+    contains: [|kind contains parameters| #canvas]
+  ]

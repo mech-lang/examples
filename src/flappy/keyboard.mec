@@ -1,0 +1,7 @@
+2. Keyboard Events
+-------------------
+
+Move the ball with the keyboard
+  ~ #html/event/key-down
+  space = #html/event/key-down.key == "ArrowUp"
+  #bird.vy{space} := -5

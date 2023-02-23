@@ -1,0 +1,12 @@
+Flappy Mech
+============
+
+Game elements
+  #bird = [|y  vy| 
+            10  0]
+
+  #gravity = 0.1
+  #game-over = false
+
+Add a game timer
+  #time/timer += [period: 16<ms>]
