@@ -1,6 +1,7 @@
-# Pong
+Pong Server
+============
 
 Create the client packet
-  ~ 100Hz
+  ~ #time/timer.ticks
   #client = [|x y vx vy left right| #ball #paddles.y']
 

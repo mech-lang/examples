@@ -1,4 +1,5 @@
-# Pong
+Pong Game Logic
+================
 
 Game elements
   #game = [width: 1000 height: 500]
@@ -8,32 +9,36 @@ Game elements
                940 300]
   #score = [left: 0 right: 0]
 
-## Movement
+2. Ball Movement
+-----------------
 
 Move the ball with every tick of the timer
-  ~ 60Hz
-  #ball := [x: #ball.x + #ball.vx
-            y: #ball.y + #ball.vy]
+  ~ #time/timer.ticks
+  #ball.x,y :+= #ball.vx,vy
 
-### Game Boundary Interactions
+3. Game Boundary Interactions
+------------------------------
 
 Bounce right
   ix = #ball.x > (#game.width - 15)
   #ball{ix} := [x: #game.width - 15, vx: -#ball.vx]
-  #score.right{ix} := #score.right + 1
+  #score.right{ix} :+= 1
 
 Bounce left
   ix = #ball.x < 15
   #ball{ix} := [x: 15 vx: -#ball.vx]
-  #score.left{ix} := #score.left + 1
+  #score.left{ix} :+= 1
 
 Bounce bottom
-  #ball{.y > (#game.height - 15)} := [y: #game.height - 15 vy: -#ball.vy]
+  ix = #ball.y > (#game.height - 15)
+  #ball{ix} := [y: #game.height - 15 vy: -#ball.vy]
   
 Bounce top
-  #ball{.y < 15} := [y: 15 vy: -#ball.vy]
+  ix = #ball.y < 15
+  #ball{ix} := [y: 15 vy: -#ball.vy]
 
-### Paddle Interactions
+4. Paddle Interactions
+-----------------------
 
 Map player position to paddle position. The player position comes from the client.
   #paddles.y := #players.position

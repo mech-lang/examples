@@ -1,9 +1,21 @@
-# Pong
+Pong Client
+============
 
-## Control
+Handles player control and game drawing.
+
+1. Control
+-----------
 
 Default to player one
   #control = 1
+  #game = [width: 1000 height: 500]
+  #ball = [x: 500 y: 250 vx: 5 vy: 5]
+  #paddles = [|x   y|
+               50  250
+               940 300]
+  #score = [left: 0 right: 0]
+  #html/location = [hash: "1"]
+  #html/event/pointer-move = [y: 200]
   #players = [|position| 200; 200]
 
 Set the player using the url hash string
@@ -15,7 +27,8 @@ Set the player using the url hash string
 Move the desired paddle width the mouse cursor
   #players.position{#control} := #html/event/pointer-move.y
 
-## Drawing
+2. Drawing
+-----------
 
 Compose the scene
   circle = [
