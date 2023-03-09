@@ -4,9 +4,64 @@
 Move the ball with every tick of the timer
   ~ #time/timer.ticks
   #bird.y := #bird.y + #bird.vy
-  #bird.vy := #bird.vy + #gravity
+  #bird.vy := #bird.vy + #bird.gravity
 
-Keep the balls within the boundary width
+Keep the pipes within the boundary width
   ~ #time/timer.ticks
-  ix = #bird.y > 500
-  #game-over = true
+  ix = #top-pipe.x < -65
+  #top-pipe.x{ix} := #gamebounds.width
+  iy = #bottom-pipe.x < -65
+  #bottom-pipe.x{iy} := #gamebounds.width
+
+Move the pipe as the time ticks  
+  ~ #time/timer.ticks
+  #top-pipe.x := #top-pipe.x - #bird.vx
+  #bottom-pipe.x := #bottom-pipe.x - #bird.vx
+
+End game if ball out of bounds
+  ~ #time/timer.ticks
+  ix = #bird.y < 0 | #bird.y > #gamebounds.height
+  #bird.vx{ix} := 0
+  #bird.vy{ix} := 0
+  #bird.gravity{ix} := 0
+  #bird.press{ix} := 0
+  #bird.over{ix} := 50
+
+End game on top pipe collision 
+  ~ #time/timer.ticks
+  ix1 = #top-pipe.x{1} > -34 & #top-pipe.x{1} < 70
+  iy1 = #top-pipe.height{1} > (#bird.y - 18)
+  #bird.vx{ix1 & iy1} := 0
+  #bird.vy{ix1 & iy1} := 0
+  #bird.gravity{ix1 & iy1} := 0
+  #bird.press{ix1 & iy1} := 0
+  #bird.over{ix1 & iy1} := 50
+  ix2 = #top-pipe.x{2} > -34 & #top-pipe.x{2} < 70
+  iy2 = #top-pipe.height{2} > (#bird.y - 18)
+  #bird.vx{ix2 & iy2} := 0
+  #bird.vy{ix2 & iy2} := 0
+  #bird.gravity{ix2 & iy2} := 0
+  #bird.press{ix2 & iy2} := 0
+  #bird.over{ix2 & iy2} := 50
+
+End game on bottom pipe collision 
+  ~ #time/timer.ticks
+  ix1 = #bottom-pipe.x{1} > -34 & #bottom-pipe.x{1} < 70
+  iy1 = #bottom-pipe.y{1} < (#bird.y + 18) 
+  #bird.vx{ix1 & iy1} := 0
+  #bird.vy{ix1 & iy1} := 0
+  #bird.gravity{ix1 & iy1} := 0
+  #bird.press{ix1 & iy1} := 0
+  #bird.over{ix1 & iy1} := 50
+  ix2 = #bottom-pipe.x{2} > -34 & #bottom-pipe.x{2} < 70
+  iy2 = #bottom-pipe.y{2} < (#bird.y + 18) 
+  #bird.vx{ix2 & iy2} := 0
+  #bird.vy{ix2 & iy2} := 0
+  #bird.gravity{ix2 & iy2} := 0
+  #bird.press{ix2 & iy2} := 0
+  #bird.over{ix2 & iy2} := 50
+
+Increment score
+  ~ #time/timer.ticks
+  ix = #top-pipe.x < -65
+  #top-pipe.score{ix} := #top-pipe.score + 1 

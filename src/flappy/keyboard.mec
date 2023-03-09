@@ -3,5 +3,14 @@
 
 Move the ball with the keyboard
   ~ #html/event/key-down
-  space = #html/event/key-down.key == "ArrowUp"
-  #bird.vy{space} := -5
+  up = #html/event/key-down.key == "ArrowUp"
+  #bird.vy{up} := #bird.press
+
+  ~ #html/event/key-down
+  restart = #html/event/key-down.key == "Enter"
+  #bird.y{restart} := 30
+  #bird.vx{restart} := 2
+  #bird.vy{restart} := .1
+  #bird.gravity{restart} := .1
+  #bird.press{restart} := -3
+  #bird.over{restart} := 0
