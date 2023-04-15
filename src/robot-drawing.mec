@@ -1,11 +1,13 @@
-# Robot Arm Drawing
+Robot Arm Drawing
+==================
 
 This is where the drawing is added to the DOM
   #app/main = [|root      contains|
                 "drawing" [#robot-controls]
                 "drawing" [#robot-animation]]
 
-## Logic       
+Logic       
+------
 
 Set up the parameters
   #x = [400 matrix/zeros(5)]
@@ -19,7 +21,8 @@ Calculate the robot arm link coordiantes
   #x{i} := #x{i - 1} + link-length{ir} * math/sin(degrees: #angle{ir})
   #y{i} := #y{i - 1} - link-length{ir} * math/cos(degrees: #angle{ir})
 
-## Layout
+Layout
+-------
 
 Use the linkage coordinates to define image position and rotation
   url = "https://mech-lang.org/img/robotarm/"
