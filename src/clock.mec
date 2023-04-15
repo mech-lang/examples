@@ -1,4 +1,5 @@
-# Clock
+Clock
+======
 
 Create a timer that ticks every second. This is the time source.
   #time/timer = [period: 1000, tick: 0, hours: 0, minutes: 0, seconds: 0]
@@ -12,7 +13,8 @@ Set up a clock hands table. Degrees is the deflection from noon.
                   0       0 0  0x023963
                   0       0 0  0xce0b46]
 
-## Update the clock
+Update the clock
+------------------
 
 Calculate clock hand angles based on the current time.
   time = [#time/timer.hours; #time/timer.minutes; #time/timer.seconds]
@@ -24,7 +26,8 @@ Calculate x and y endpoints
   #clock-hands.x := 150 + (75 * math/sin(degrees: angle))
   #clock-hands.y := 150 - (75 * math/cos(degrees: angle))
   
-## Drawing
+Drawing
+---------
 
 Set up clock drawing elements
   #clock = [|shape    parameters|
