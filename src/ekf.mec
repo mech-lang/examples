@@ -1,64 +1,75 @@
 EKF Localization
-=================
+==================
 
 Initialize the simulation
-  #time/timer += [period: 10<ms>]
-  #robot = [x: 45, y: 15, θ: 0]
-  #μ = [x: 55, y: 25, θ: 0.3927]
-  #u = [v: 5, ω: 0.00]
-  #camera = [x: 140 y: 12]
-  #Σ = [100   0 0
-          0 100 0
-          0   0 0.1542]
+
+#Δt = 10<ms>
+#sim-timer = time/timer(period: #Δt)
+#robot = [x<m>: 45, y<m>: 15, θ<rad>: 0]
+#μ = [x<m>: 55, y<m>: 25, θ<rad>: 0.4 ]
+#u = [v<m/s>: 1, ω<rad/s>: 0]
+#camera = [x<m/s>: 140 y<m/s>: 12]
+#Σ = [100   0 0
+        0 100 0
+        0   0 0.15]
 
 1. Time Update
----------------
-  
-  ~ #time/timer
-  θ =  #μ.θ
-  Gt = [1  0 -#u.v * math/sin(angle: θ) * Δt
-        0  1  #u.v * math/cos(angle: θ) * Δt
-        0  0  1]
-  Vt = [math/cos(angle: θ) * Δt  0
-        math/sin(angle: θ) * Δt  0
-        0                        Δt]
-  #μ := #μ + #u.v,v,ω * [math/cos(angle: θ), math/sin(angle: θ), 1] * Δt
-  #Σ := Gt ** #Σ ** Gt' + Vt ** #Q ** Vt'      
+----------------
 
+(μ, Σ) = time-update(μ, Σ, u, Δt, Q)
+  θ =  μ.θ
+  Gt = [1  0 -u.v * math/sin(θ) * Δt
+        0  1  u.v * math/cos(θ) * Δt
+        0  0  1]
+  Vt = [math/cos(θ) * Δt  0
+        math/sin(θ) * Δt  0
+        0                 Δt]
+  μ := μ + u.v,v,ω * [math/cos(θ), math/sin(θ), 1] * Δt
+  Σ := Gt ** Σ ** Gt' + Vt ** Q ** Vt'      
 
 2. Measurement Update
-----------------------
+-----------------------
 
-  ~ #time/timer
-  Δy = #camera.y - #μ.y
-  Δx = #camera.x - #μ.x
+(μ, Σ) = measurement-update(μ, Σ, camera, z, Q)
+  Δy = camera.y - μ.y
+  Δx = camera.x - μ.x
   q = Δx ^ 2 + Δy ^ 2
-  Ẑ = math/atan2(y: Δy, x: Δx) - #μ.θ
+  Ẑ = math/atan2(y: Δy, x: Δx) - μ.θ
   H = [Δy / q, -Δx / q, -1]
-  S = H ** #Σ ** H' + Q
-  K = #Σ ** H' / S
-  #μ := (#μ + K * (#z -  Ẑ))
-  #Σ := ([1 0 0; 0 1 0; 0 0 1] - K ** H) ** Σ
+  S = H ** Σ ** H' + Q
+  K = Σ ** H' / S
+  μ := (μ + K * (z -  Ẑ))
+  Σ := ([1 0 0; 0 1 0; 0 0 1] - K ** H) ** Σ
 
 3. Controller
---------------
+---------------
 
-block
-  ~ #time/timer
-  #x :+= 1
+Switch the robot control when it hits particular 
 
-block
-  switch = #x > 400 & #x < 700
-  #control.v{switch} := 0.0
-  #control.ω{switch} := 0.05
+When sim timer changes, update robot. 
+Match any timer update, integrate robot positoin.
 
-block
-  switch = #x > 700 & #x < 800
-  #control.v{switch} := 5.0
-  #control.ω{switch} := 0
+#sim-timer => #robot ? _ => #robot + #u.v,v,ω * [math/cos(#robot.θ), math/sin(#robot.θ), 1] * #Δt
+
+When robot changes, update position estimate and position covariance
+Match any robot position, run time update and then measurement update.
+
+#robot => (#μ, #Σ) ?
+  _ => time-update(#μ, #Σ, #u, #Δt, #Q)
+    => measurement-update(#μ, #Σ, #camera, #z, #Q)
+
+When robot changes, update control
+Match x < 400m, set linear velocity to 1m/s
+Match x > 400m turn in place
+Match θ > 1.52, stop and continue forward    
+
+#robot => (#u.v, #u.ω) ?
+  (< 400<m>,_) => (1.0<m/s>, 0.0<rad/s>)
+  (> 400<m>,_) => (0.0<m/s>, 0.1<rad/s>)
+  (_,>1.52<rad>)=> (1.0<m/s>, 0.0<rad/s>)
 
 5. Draw
---------
+---------
 
 Calculate the major and minor axes of the covariance ellipse
   a = #Σ{1,1}
