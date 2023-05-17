@@ -1,0 +1,66 @@
+Vending Machine Simulation
+============================
+
+1. Model
+----------
+
+<button> = `Coffee | `Tea | `Cancel | `Waiting
+<control> = `Vending | `Refunding | `Success | `Fail |
+
+#vending-button<button> = `Waiting,
+
+#vending-machine = [
+  coffee<_u8> = 10,
+  tea<_u8> = 10,
+  credit<$> = $0.00,
+  cash<$> = $0.00,
+]
+
+2. Controller
+---------------
+
+We implement a state machine, which dictates how the #vending-machine changes state after each button press.
+
+(#vending-button, #vending-machine) ? 
+  (`Coffee, [_,_, >= $1.00,_]) => #vend-coffee?
+  (`Tea,    [_,_, >= $0.50,_]) => #vend-tea?
+  (`Coffee, [0,_,_        ,_]) | 
+  (`Tea,    [_,0,_        ,_]) => #out-of-stock?
+  (`Coffee, [_,_, < $1.00 ,_]) |
+  (`Tea,    [_,_, < $0.50 ,_]) => #insufficient-credit?
+  (`Cancel, [_,_, credit  ,_]) => #refund-credit?
+  _ => _
+
+#vend-coffee<control> ?
+  `Vending => controller(mode: 0x01, data: 0x01) => 10<s> => `Fail`
+  `Success => 
+    price = $1.00
+    #vending-machine += [-1,_,-price, price,`Waiting].
+  `Fail => io/out(text: "Vending Failed.").
+
+#vend-tea<control> ?
+  `Vending => controller(mode: 0x01, data: 0x02) => 10<s> => `Fail`
+  `Success => #vending-machine += [_,-1,-$0.50,$0.50,`Waiting].
+  `Fail => io/out(text: "Vending Failed.") => #refund-credit?.
+
+#refund-credit<control> ?
+  `Refunding => controller(mode: 0x02, data: #message.credit) => 10<s> => `Fail`
+  `Success => #vending-machine := [_,_,$0.00,_,`Waiting].
+  `Fail => io/out(text: "Vending Failed.").
+
+3. Interface
+--------------
+
+We'll use the keyboard to control the vending machine for now.
+  
+#keyboard.key => #vending-machine.button ?
+  `q => `Coffee
+  `a => `Tea
+  `z => `Cancel
+   _ => _
+
+#keyboard.key => #vending-machine.credit ?
+  `w => += $0.25
+  `s => += $1.00
+   _ => _
+
