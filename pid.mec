@@ -14,7 +14,7 @@ PID Controller
   error = #set-point - #current-temp
   derivative = error - #prev-error
   control = #Kp * error + #Ki * #integral + #Kd * derivative 
-  (+= error, error, control)
+  #prev-error := error
 
 Interface
 -----------

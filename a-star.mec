@@ -1,0 +1,31 @@
+
+
+
+#a* -> <u8> :=
+   | Initialize(u8, u8, u8, u8)
+   | Evaluate(u8, ix, u8, u8)
+   | Expand(u8, ix, u8, u8)
+   | Done(u8)
+
+#a*(arr: u8-1xn, start: ix-1x1, goal: ix) => Initialize(arr, start, goal, {})
+    
+    -- Initialize the open list with the starting node.
+    Initialize(arr, start, goal, open) => Evaluate(arr, start, goal, open)
+    
+    -- Evaluate the node with the lowest f score.
+    Evaluate(arr, goal, goal, open) => {
+        if current == goal => Done(arr)
+        else => Expand(arr, current, goal, open)
+    }
+
+    -- Expand the current node and add its neighbors to the open list.
+    Expand(arr, current, goal, open) => {
+        for n in neighbors(current) {
+            if n not in open {
+                open := open ∪ n
+            }
+        } => { [head, tail] := open } => Evaluate(arr, head, goal, tail)
+    }
+
+    -- Output the shortest path from the start to the goal.
+    Done(arr) -> arr.
