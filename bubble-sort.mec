@@ -17,6 +17,7 @@ b) Pseudocode
 - Compare adjacent elements and swap them if they are in the wrong order.
 - Repeat this process for each pair of adjacent elements in the list until no swaps are needed.
 
+
 2. Complexity Analysis
 ------------------------
 
@@ -30,21 +31,25 @@ b) Space Complexity
 
 In all cases, space complexity is **O(1)** because Bubble Sort is an in-place sorting algorithm.
 
+
 3. Further Considerations
 ---------------------------
 
 Bubble Sort is not suitable for large datasets due to its quadratic time complexity. It is often used as a teaching tool due to its simplicity, but it's rarely used in practice for real-world applications where efficiency is critical.
+
 
 4. Implementation
 ------------------
 
 We implement bubble sort as a finite state machine with the following states:
 
-#bubble-sort(arr<u8>) -> <u8> :=
-    | Start(<u8>,<ix>)
-    | Comparion(<u8>,<ix>) 
-    | Check(<u8>,<ix>)
-    | Done.
+<arr> := u8[1xn]
+
+#bubble-sort(arr) -> arr :=
+    | Start(arr,ix)
+    | Comparion(arr,ix) 
+    | Check(arr,ix)
+    | Done(arr).
 
 Here's the implementation of the machine:
 
@@ -70,6 +75,7 @@ Here's the implementation of the machine:
     Check(arr, swaps) => Start(arr,0)
     
     Done(arr) -> arr.
+
 
 5. Interface
 --------------
