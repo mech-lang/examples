@@ -30,34 +30,34 @@ In all cases, space complexity is **O(1)** because insertion sort is an in-place
 
 We implement insertion sort as a finite state machine with the following states:
 
-#insertion-sort -> <u8> :=
-    | Compare(<u8>,<ix>)
-    | Insert(<u8>,<ix>)
-    | Shift(<u8>,<ix>,<u8>)
-    | Done(<u8>).
+<arr> := u8[1xn]
 
-#insertion-sort(arr<u8>) => Compare(arr, 0)
+#insertion-sort(arr) -> arr :=
+    ├ Compare(arr,ix)
+    ├ Insert(arr,ix)
+    ├ Shift(arr,ix,arr)
+    └ Done(arr).
+
+#insertion-sort(arr) => Compare(arr, 0)
 
     -- Check if we have iterated through the entire array. If not, we move to the Insertion state.
-    Compare(arr, i) => {
-        if i >= length(arr) => Done(arr)
-        else => Insert(arr, i)
-    }
+    Compare(arr, i) =>
+        ├ i >= length(arr) => Done(arr)
+        └ _ => Insert(arr, i)
 
     -- Compare the element at index i with the preceding elements. If necessary, we shift elements to make space for the current element.
     Insert([], i) => Compare([], i + 1)
-    Insert([head, tail], i) => {
-        if head > arr[i] => Shift([head, tail], i, head)
-        else => Compare([head, tail], i + 1)
-    }
+    Insert([head, tail], i) =>
+        ├ head > arr[i] => Shift([head, tail], i, head)
+        └ _ => Compare([head, tail], i + 1)
+    
 
     -- Handles the shifting of elements to the right to insert the current element into its correct position.
-    Shift([head, tail], j, key) => {
-        if (j == 0 | arr[j-1] <= key) => arr[j] = key
-                                      => Compare([head, tail], j + 1)
-        else => arr[j] = arr[j - 1]
-             => Shift([head, tail], j - 1, key)
-    }
+    Shift([head, tail], j, key) =>
+        ├ (j == 0 | arr[j-1] <= key) => arr[j] = key 
+        │                            => Compare([head, tail], j + 1)
+        └ _ => arr[j] = arr[j - 1]
+            => Shift([head, tail], j - 1, key)
     
     -- Output the sorted array.
     Done(arr) -> arr.
