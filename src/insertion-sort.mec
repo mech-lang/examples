@@ -6,7 +6,7 @@ Insertion Sort Algorithm
 
 Insertion Sort is a simple comparison-based sorting algorithm that builds the final sorted array one element at a time. It iterates through the input array, comparing each element with the elements before it and inserting it into its correct position in the sorted subarray.
 
-a) Key Features
+(a) Key Features
 
 - In-place, meaning it sorts the array by modifying the input array itself without requiring additional space.
 - Stable, meaning the relative order of equal elements is preserved in the sorted output.
@@ -15,13 +15,13 @@ a) Key Features
 2. Complexity Analysis
 ------------------------
 
-a) Time Complexity:
+(a) Time Complexity
 
 Best-case: **O(n)** when the input array is already sorted. In this case, only one comparison is needed for each element.
 
 Average-case and worst-case: **O(n^2)**, where n is the number of elements in the input array. In the worst case, when the input array is in reverse order, Insertion Sort requires maximum comparisons and swaps.
 
-b) Space Complexity: 
+(b) Space Complexity 
 
 In all cases, space complexity is **O(1)** because insertion sort is an in-place sorting algorithm
 
@@ -30,9 +30,7 @@ In all cases, space complexity is **O(1)** because insertion sort is an in-place
 
 We implement insertion sort as a finite state machine with the following states:
 
-<arr> := u8[1xn]
-
-#insertion-sort(arr) -> arr :=
+#insertion-sort(arr<u8x4>) -> <u8x4> :=
     ├ Compare(arr,ix)
     ├ Insert(arr,ix)
     ├ Shift(arr,ix,arr)
@@ -43,21 +41,18 @@ We implement insertion sort as a finite state machine with the following states:
     -- Check if we have iterated through the entire array. If not, we move to the Insertion state.
     Compare(arr, i) =>
         ├ i >= length(arr) => Done(arr)
-        └ _ => Insert(arr, i)
+        └ * => Insert(arr, i)
 
     -- Compare the element at index i with the preceding elements. If necessary, we shift elements to make space for the current element.
     Insert([], i) => Compare([], i + 1)
     Insert([head, tail], i) =>
         ├ head > arr[i] => Shift([head, tail], i, head)
-        └ _ => Compare([head, tail], i + 1)
-    
-
+        └ * => Compare([head, tail], i + 1)
+  
     -- Handles the shifting of elements to the right to insert the current element into its correct position.
     Shift([head, tail], j, key) =>
-        ├ (j == 0 | arr[j-1] <= key) => arr[j] = key 
-        │                            => Compare([head, tail], j + 1)
-        └ _ => arr[j] = arr[j - 1]
-            => Shift([head, tail], j - 1, key)
+        ├ (j == 0 | arr[j - 1] <= key) => arr[j] = key => Compare([head, tail], j + 1)
+        └ * => arr[j] = arr[j - 1] => Shift([head, tail], j - 1, key)
     
     -- Output the sorted array.
     Done(arr) -> arr.

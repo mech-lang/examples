@@ -1,7 +1,0 @@
-Pong Server
-============
-
-Create the client packet
-  ~ #time/timer.ticks
-  #client = [|x y vx vy left right| #ball #paddles.y']
-

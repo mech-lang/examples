@@ -16,7 +16,7 @@ Initialize the simulation
 1. Time Update
 ----------------
 
-(μ, Σ) = time-update(μ, Σ, u, Δt, Q)
+(μ, Σ) = time-update(μ, Σ, u, Δt, Q) :=
   θ =  μ.θ
   Gt = [1  0 -u.v * math/sin(θ) * Δt
         0  1  u.v * math/cos(θ) * Δt
@@ -30,7 +30,7 @@ Initialize the simulation
 2. Measurement Update
 -----------------------
 
-(μ, Σ) = measurement-update(μ, Σ, camera, z, Q)
+(μ, Σ) = measurement-update(μ, Σ, camera, z, Q) :=
   Δy = camera.y - μ.y
   Δx = camera.x - μ.x
   q = Δx ^ 2 + Δy ^ 2
@@ -54,19 +54,24 @@ Match any timer update, integrate robot positoin.
 When robot changes, update position estimate and position covariance
 Match any robot position, run time update and then measurement update.
 
-#robot => (#μ, #Σ) ?
-  _ => time-update(#μ, #Σ, #u, #Δt, #Q)
-    => measurement-update(#μ, #Σ, #camera, #z, #Q)
+#extened-kalman-filter(#μ, #Σ, #camera, #u, #Δt, #Q) -> (#μ, #Σ) :=
+  | Time-Update(#μ, #Σ) => Measurement-Update(#μ, #Σ)
+  | Measurement-Update(#μ, #Σ) => Done
+  | Done -> (#μ, #Σ).
+
+#extended-kalman-filter(#μ, #Σ)
+  => time-update(#μ, #Σ, #u, #Δt, #Q)
+  => measurement-update(#μ, #Σ, #camera, #z, #Q)
 
 When robot changes, update control
 Match x < 400m, set linear velocity to 1m/s
 Match x > 400m turn in place
 Match θ > 1.52, stop and continue forward    
 
-(#robot.x,#robot.θ) => (#u.v, #u.ω) ?
-  (< 400<m>,_) => (1.0<m/s>, 0.0<rad/s>)
-  (> 400<m>,_) => (0.0<m/s>, 0.1<rad/s>)
-  (_,>1.52<rad>)=> (1.0<m/s>, 0.0<rad/s>)
+(#robot.x,#robot.θ) -> (<m/s>, <rad/s>) 
+  (< 400<m>,_)   -> (1.0<m/s>, 0.0<rad/s>)
+  (> 400<m>,_)   -> (0.0<m/s>, 0.1<rad/s>)
+  (_,>1.52<rad>) -> (1.0<m/s>, 0.0<rad/s>)
 
 5. Draw
 ---------
