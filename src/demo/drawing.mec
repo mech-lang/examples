@@ -1,27 +1,27 @@
 4. Drawing
------------
+-------------------------------------------------------------------------------
 
 Set up drawing elements 
-  #circle = [
+  circle := {
     shape: "circle" 
-    parameters: [
-      center-x: #balls.x 
-      center-y: #balls.y 
-      radius: #balls.radius
-      fill: #balls.color 
+    parameters: {
+      center-x: balls.x 
+      center-y: balls.y 
+      radius: balls.radius
+      fill: balls.color 
       line-width: 3
-    ]
-  ]
+    }
+  }
 
 Draw to canvas
-  #canvas = [
+  canvas := {
     kind: "canvas" 
-    contains: [|shape parameters| #circle] 
-    parameters: [width: 1000 height: 500]
-  ]
+    contains: {shape parameters| circle}
+    parameters: {width: 1000 height: 500}
+  }
 
 Attach game to root
-  #html/app = [
+  html/app := {
     root: "mech-root" 
-    contains: [|kind contains parameters| #canvas]
-  ]
+    contains: {kind contains parameters| canvas}
+  }
