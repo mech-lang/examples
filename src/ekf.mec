@@ -47,7 +47,7 @@ measurement-update(μ<[f32]:3>, Σ<[f32]:3,3>) = (μ<[f32]:3>, Σ<[f32]:3,3>) :=
 Switch the robot control when it hits particular 
 
 When sim timer changes, update robot. 
-Match any timer update, integrate robot positoin.
+Match any timer update, integrate robot position.
 
 #sim-timer => #robot + u.v,v,ω * [math/cos(robot.θ), math/sin(robot.θ), 1] * Δt
 
@@ -157,7 +157,5 @@ Draw a shape to the canvas
     contains: {shape parameters| shapes} 
     parameters: {width: 800.0, height: 800.0}
   }
-  html/app := {
-    root: `MechRoot 
-    contains: {kind contains parameters| canvas}
-  }
+  app := {root: "mech-root"contains: {kind contains parameters| canvas}}
+  ~app -> #html/app

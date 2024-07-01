@@ -52,7 +52,7 @@ critical.
 
 We implement bubble sort as a finite state machine with the following states:
 
-#bubble-sort(<[number]>,<usize>) => <[number]> :=
+#bubble-sort(arr<[number]>,ix<usize>) => <[number]> :=
    ├ `Start(arr,ix)
    ├ `Comparison(arr,ix) 
    ├ `Check(arr,ix)
