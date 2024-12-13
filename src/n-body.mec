@@ -33,7 +33,7 @@ Distance
 Energy
   e1 := 0.5 * p.mass * (p.vx ^ 2 + p.vy ^ 2 + p.vz ^ 2)
   ep := stats/sum(e1)
-  masses^2 := p.mass[ix1] * p.massp[ix2]
+  masses^2 := p.mass[ix1] * p.mass[ix2]
   e2 := masses^2 / distance
   em := stats/sum(e2)
   energy := ep - em
@@ -41,7 +41,7 @@ Energy
 Offset momentum
   ps := stats/sum(p.vx,vy,vz * p.mass)
   offset := ps / -solar-mass
-  p.vx,vy,vz[1] := offset
+  p.vx,vy,vz[1] = offset
 
 3. Advance
 -------------------------------------------------------------------------------
@@ -53,12 +53,3 @@ Advance velocities
 
 Advance positions
   p.x,y,z += p.vx,vy,vz * Δt
-
-4. Run the sim
--------------------------------------------------------------------------------
-
-iter := 1 ~> iter + 1
-
-Mark the simulation as done after N iterations
-  |~ #iter > 1e8
-  system/exit += 0
