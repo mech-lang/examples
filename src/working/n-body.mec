@@ -1,3 +1,9 @@
+N-Body Simulation
+===============================================================================
+
+1. Setup
+-------------------------------------------------------------------------------
+
 days-per-year := 365.24
 π := 3.141592654
 solar-mass := 4 * π ^ 2
@@ -14,7 +20,12 @@ ix1 := [1 1 1 1 2 2 2 3 3 4]'
 ix2 := [2 3 4 5 3 4 5 4 5 5]'  
 Δt  := 0.01
 
+2. Momentum and Energy
+-------------------------------------------------------------------------------
+
 x := p[:,[1,2,3]]
+v := p[:,[4,5,6]]
+m := p[:,7]
 
 Δ := (x[ix1,:] - x[ix2,:]) ^ 2
 
@@ -22,10 +33,17 @@ distance := stats/sum/column(Δ) ^ 0.5
 
 v := p[:,[4,5,6]]
 
-e1 := 0.5 * p[:,7] * stats/sum/column(v ^ 2)  
-ep := stats/sum/row(e1)
-masses^2 := p[ix1,7] * p[ix2,7]
-e2 := masses^2 / distance
-em := stats/sum/row(e2)
-energy := ep - em
+Energy:
+  e1 := 0.5 * p[:,7] * stats/sum/column(v ^ 2)  
+  ep := stats/sum/row(e1)
+  masses^2 := p[ix1,7] * p[ix2,7]
+  e2 := masses^2 / distance
+  em := stats/sum/row(e2)
+  energy := ep - em
 
+ps := stats/sum/column(v) * p[:,7]
+offset := ps / -solar-mass
+
+mag := Δt / distance ^ 3
+m2 := m[ix2]
+Δ * [m2 m2 m2] * [mag mag mag]
