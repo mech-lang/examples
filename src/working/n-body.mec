@@ -31,8 +31,6 @@ m := p[:,7]
 
 distance := stats/sum/column(Δ) ^ 0.5
 
-v := p[:,[4,5,6]]
-
 Energy:
   e1 := 0.5 * p[:,7] * stats/sum/column(v ^ 2)  
   ep := stats/sum/row(e1)
@@ -44,6 +42,10 @@ Energy:
 ps := stats/sum/column(v) * p[:,7]
 offset := ps / -solar-mass
 
-mag := Δt / distance ^ 3
-m2 := m[ix2]
-Δ * [m2 m2 m2] * [mag mag mag]
+Advance velocities:
+  mag := Δt / distance ^ 3
+  Δ * m[ix2] * mag
+  Δ * m[ix1] * mag
+
+Advance positions:
+  v * Δt
