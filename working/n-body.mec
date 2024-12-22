@@ -42,6 +42,9 @@ Energy:
 ps := stats/sum/column(v) * m
 offset := ps / -solar-mass
 
+3. Advance Simulation
+-------------------------------------------------------------------------------
+
 Advance velocities:
   mag := Δt / distance ^ 3
   v[ix1,:] -= Δ * m[ix2] * mag
