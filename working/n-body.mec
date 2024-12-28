@@ -16,28 +16,27 @@ solar-mass := 4 * π ^ 2
 
 p := [☉; ♃; ♄; ♅; ♆]
 
-ix1 := [1 1 1 1 2 2 2 3 3 4]'
-ix2 := [2 3 4 5 3 4 5 4 5 5]'  
+ix1 := [1 1 1 1 2 2 2 3 3 4]
+ix2 := [2 3 4 5 3 4 5 4 5 5]  
 Δt  := 0.01
 
 2. Momentum and Energy
 -------------------------------------------------------------------------------
 
-x := p[:,[1,2,3]]
-v := p[:,[4,5,6]]
+~x := p[:,[1,2,3]]
+~v := p[:,[4,5,6]]
 m := p[:,7]
 
 Δ := (x[ix1,:] - x[ix2,:]) ^ 2
 
-distance := stats/sum/column(Δ) ^ 0.5
+distance := stats/sum/column(Δ)
 
 Energy:
-  kinetic-energy := 0.5 * m * stats/sum/column(v ^ 2)  
-  masses^2 := m[ix1] * m[ix2]
-  potential-energy := masses^2 / distance
-  ek := stats/sum/row(kinetic-energy)
-  em := stats/sum/row(potential-energy)
-  energy := ek - em
+  kinetic := 0.5 * m * stats/sum/column(v ^ 2)  
+  potential := m[ix1] * m[ix2] / distance ^ 0.5
+  ek := stats/sum/row(kinetic)
+  em := stats/sum/row(potential)
+  total-energy := ek - em
 
 ps := stats/sum/column(v) * m
 offset := ps / -solar-mass
@@ -46,7 +45,7 @@ offset := ps / -solar-mass
 -------------------------------------------------------------------------------
 
 Advance velocities:
-  mag := Δt / distance ^ 3
+  mag := Δt * distance ^ -1.5
   v[ix1,:] -= Δ * m[ix2] * mag
   v[ix2,:] += Δ * m[ix1] * mag
 
