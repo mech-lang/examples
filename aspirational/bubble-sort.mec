@@ -70,8 +70,8 @@ Here's the implementation of the machine:
     -- Compare adjacent elements in the array and decide what to do based on 
     -- the result.
     `Comparison([a, b, tail], swaps)
-        ├ a > b -> Comparison([b, a, tail], swaps + 1)
-        └ * -> Comparison(tail, swaps)
+        ├ a > b -> `Comparison([b, a, tail], swaps + 1)
+        └ * -> `Comparison(tail, swaps)
     -- If no swaps were made during the sorting process, the array is sorted, 
     -- so signal that the sort is done.
     `Check(arr, 0) -> `Done(arr)
