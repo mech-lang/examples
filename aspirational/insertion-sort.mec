@@ -50,22 +50,22 @@ We implement insertion sort as a fsm with the following states:
 
     -- Check if we have iterated through the entire array. If not, we move to 
     -- the Insertion state.
-    `Compare(arr, i) ->
+    `Compare(arr, i)
         ├ i >= length(arr) -> `Done(arr)
         └ * -> `Insert(arr, i)
 
     -- Compare the element at index i with the preceding elements. If necessary, 
     -- we shift elements to make space for the current element.
     `Insert([], i) -> `Compare([], i + 1)
-    `Insert([head, tail], i) ->
+    `Insert([head, tail], i)
         ├ head > arr[i] -> `Shift([head, tail], i, head)
         └ * -> `Compare([head, tail], i + 1)
   
     -- Handles the shifting of elements to the right to insert the current 
     -- element into its correct position.
-    `Shift([head, tail], j, key) =>
-        ├ (j == 0 | arr[j - 1] <= key) -> arr[j] = key -> `Compare([head, tail], j + 1)
-        └ * => arr[j] = arr[j - 1] -> `Shift([head, tail], j - 1, key)
-    
+    `Shift([head, tail], j, key)
+        ├ (j == 0 | arr[j - 1] <= key) -> arr[j] = key -> `Compare([head, tail], j + 1)  
+        └ * -> arr[j] = arr[j - 1] -> `Shift([head, tail], j - 1, key)
+
     -- Output the sorted array.
     `Done(arr) => arr.
