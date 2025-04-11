@@ -10,10 +10,16 @@ This section initializes the constants, defines the solar system's parameters, a
 
 (a) Constants
 
-- days-per-year: Used to convert velocities from per day to per year for ease of computation.
-- π: Approximation of pi, critical for calculating circular orbital mechanics.
-- solar-mass: Normalized mass of the Sun, used as a reference unit.
-- Δt: Defines the simulation's time granularity.
+We start by defining the constants used in the simulation:
+
+| Symbol        | Description | Value |
+|---------------|-------------|-------|
+| days-per-year | Used to convert velocities from per day to per year for ease of computation | {days-per-year} |
+| π             | Approximation of pi, critical for calculating circular orbital mechanics | {π} |
+| solar-mass    | Normalized mass of the Sun, used as a reference unit | {solar-mass} |
+| Δt            | Defines the simulation's time granularity | {Δt} |
+
+Defined in code:
 
 days-per-year := 365.24
 π := 3.141592654
@@ -118,4 +124,6 @@ v[ix2,:] += Δ * m[ix1] * mag
 
 After updating velocities, positions are recalculated by moving each body according to its velocity and the time step. This step advances the simulation, showing how bodies evolve over time under gravitational influence.
 
+```mech
 x += v * Δt
+```
