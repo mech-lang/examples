@@ -1,0 +1,129 @@
+N-Body Simulation
+===============================================================================
+
+The program simulates the gravitational interactions between celestial bodies using numerical methods.
+
+1. Setup
+-------------------------------------------------------------------------------
+
+This section initializes the constants, defines the solar system's parameters, and organizes the celestial bodies into a matrix.
+
+(a) Constants
+
+We start by defining the constants used in the simulation:
+
+| Symbol        | Description | Value |
+|---------------|-------------|-------|
+| days-per-year | Used to convert velocities from per day to per year for ease of computation | {days-per-year} |
+| π             | Approximation of pi, critical for calculating circular orbital mechanics | {π} |
+| solar-mass    | Normalized mass of the Sun, used as a reference unit | {solar-mass} |
+| Δt            | Defines the simulation's time granularity | {Δt} |
+
+Defined in code:
+
+days-per-year := 365.24
+π := 3.141592654
+solar-mass := 4 * π ^ 2
+Δt := 0.01
+
+Each celestial body is represented as a vector:
+
+- Components 1 to 3: Position (x, y, z).
+- Components 4 to 6: Velocity (vx, vy, vz).
+- Component 7: Mass (m).
+
+Planets are initialized with a position position, velocity (scaled by days-per-year), and mass (solar-mass fraction). The planets matrix stores the positions, velocities, and masses of all celestial bodies.
+
+☉ := [0 0 0 0 0 0 solar-mass]'
+♃ := [4.84143144246472090, 
+      -1.16032004402742839, 
+      -0.103622044471123109, 
+       0.00166007664274403694 * days-per-year, 
+       0.00769901118419740425 * days-per-year, 
+      -0.0000690460016972063023 * days-per-year, 
+       0.000954791938424326609 * solar-mass]
+♄ := [8.34336671824457987, 
+      4.12479856412430479, 
+     -0.403523417114321381, 
+     -0.00276742510726862411 * days-per-year, 
+      0.00499852801234917238 * days-per-year, 
+      0.0000230417297573763929 * days-per-year, 
+      0.000285885980666130812 * solar-mass]
+♅ := [12.8943695621391310, 
+     -15.1111514016986312, 
+      -0.223307578892655734, 
+       0.00296460137564761618 * days-per-year, 
+       0.00237847173959480950 * days-per-year, 
+      -0.0000296589568540237556 * days-per-year, 
+       0.0000436624404335156298 * solar-mass]
+♆ := [15.3796971148509165, 
+      -25.9193146099879641, 
+        0.179258772950371181, 
+        0.00268067772490389322 * days-per-year, 
+        0.00162824170038242295 * days-per-year, 
+      -0.000095159225451971587 * days-per-year, 
+       0.0000515138902046611451 * solar-mass]
+
+planets := [☉ ♃ ♄ ♅ ♆]'
+
+(b) Indices
+
+ix1 := [1 1 1 1 2 2 2 3 3 4]
+ix2 := [2 3 4 5 3 4 5 4 5 5]  
+
+The index pairs ix1 and ix2 are used to represent all unique interactions between celestial bodies without repeating any calculations. Each pair of values from ix1 and ix2 identifies two bodies that interact with each other, ensuring that every combination of bodies is considered exactly once. 
+
+For example, if one pair specifies that body 1 interacts with body 2, there is no separate calculation for body 2 interacting with body 1, as the interaction is symmetric. This method simplifies the simulation by avoiding duplicate computations, making it efficient and easy to manage.
+
+
+2. Momentum and Energy
+-------------------------------------------------------------------------------
+
+This section calculates the momentum and energy of the system, ensuring accurate simulation of physical laws.
+
+~x := planets[:,[1,2,3]]
+~v := planets[:,[4,5,6]]
+m := planets[:,7]
+
+Squared differences in positions for all body pairs.
+
+Δ := (x[ix1,:] - x[ix2,:]) ^ 2
+distance := stats/sum/column(Δ)
+
+(a) Energy
+
+Caculate the system's total energy by summing kinetic and potential energies. Kinetic energy comes from each body's mass and velocity, while potential energy depends on gravitational interactions between body pairs based on their masses and distances. The total energy ensures the simulation conserves energy, reflecting physical accuracy.
+
+kinetic := 0.5 * m * stats/sum/column(v ^ 2)  
+potential := m[ix1] * m[ix2] / distance ^ 0.5
+ek := stats/sum/row(kinetic)
+em := stats/sum/row(potential)
+total-energy := ek - em
+
+(b) Momentum
+
+Calculates the total momentum of the system to ensure the center of mass remains stationary. It computes momentum as the product of each body's mass and velocity, summing across all bodies. An offset is applied to the Sun's velocity to balance the system, maintaining a stable reference frame.
+
+ps := stats/sum/column(v) * m
+offset := ps / -solar-mass
+
+3. Advance Simulation
+-------------------------------------------------------------------------------
+
+Updates the positions and velocities of celestial bodies over time based on gravitational forces.
+
+(a) Advance velocities
+
+Gravitational interactions between body pairs are calculated using their distances and masses. A scaling factor (magnitude) determines how much the velocities change, based on the inverse square of the distance. Velocities are adjusted for each pair, ensuring forces are applied equally and oppositely, maintaining symmetry.
+
+mag := Δt * distance ^ -1.5
+v[ix1,:] -= Δ * m[ix2] * mag
+v[ix2,:] += Δ * m[ix1] * mag
+
+(b) Advance positions
+
+After updating velocities, positions are recalculated by moving each body according to its velocity and the time step. This step advances the simulation, showing how bodies evolve over time under gravitational influence.
+
+```mech
+x += v * Δt
+```

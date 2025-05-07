@@ -1,6 +1,0 @@
-# Pong
-
-Create the client packet
-  ~ 100Hz
-  #client = [|x y vx vy left right| #ball #paddles.y']
-
