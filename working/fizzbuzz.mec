@@ -24,14 +24,19 @@ But in Mech we can achieve this in a more concise way. First get a vector of num
   x := 1..=1000
   ~y<[string]> := 1..=1000
 
-then replace the values based on the conditions specified using a feature called "logical indexing", which allows us to directly manipulate elements of a vector based on conditions. Broadcast operators allow us to apply operations across entire vectors without the need for explicit loops.
+then replace the values based on the conditions specified using a feature called "logical indexing", which allows us to directly manipulate elements of a vector based on conditions. First we can create an index for all the multiples of 3 and 5:
 
-  y[(x % 3) == 0] = "✨"
-  y[(x % 5) == 0] = "🐝"
-  y[((x % 5) == 0 & (x % 3) == 0)] = "✨🐝"
-  
+  ix3 := (x % 3) == 0
+  ix5 := (x % 5) == 0
+
+Then we can use these indices to replace the values in the vector `y`:
+
+  y[ix3] = "✨"
+  y[ix5] = "🐝"
+  y[ix3 & ix5] = "✨🐝"
+
+The statement `y[ix3] = "✨"` is equivalent to saying "for all elements in y where the corresponding element in ix3 is true, set that element to '✨'".
+
 Then we can print them all out at once:
 
-```mec
-  y'
-```
+io/println(y)
