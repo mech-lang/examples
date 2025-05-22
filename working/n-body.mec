@@ -3,6 +3,7 @@ N-Body Simulation
 
 The program simulates the gravitational interactions between celestial bodies using numerical methods.
 
+
 1. Setup
 -------------------------------------------------------------------------------
 
@@ -182,12 +183,13 @@ Compiled into one matrix:
 
 (1.3) Indices
 
-  ix1 := [1 1 1 1 2 2 2 3 3 4]
-  ix2 := [2 3 4 5 3 4 5 4 5 5]  
+  ixes := combinatorics/n-choose-k(1..=10,2)
+  ix1 := ixes[1,:]
+  ix2 := ixes[2,:]
 
 The index pairs `ix1` and `ix2` are used to represent all unique interactions between celestial bodies without repeating any calculations. Each pair of values from `ix1` and `ix2` identifies two bodies that interact with each other, ensuring that every combination of bodies is considered exactly once. 
 
-For example, if one pair specifies that body 1 interacts with body 2, there is no separate calculation for body 2 interacting with body 1, as the interaction is symmetric. This method simplifies the simulation by avoiding duplicate computations, making it efficient and easy to manage.
+For example, if one pair specifies that body 1 interacts with body 2, there is no separate calculation for body 2 interacting with body 1, as the interaction is symmetric according to Newton's third law of motion. This means that the gravitational force exerted by body 1 on body 2 is equal and opposite to the force exerted by body 2 on body 1.
 
 
 2. Momentum and Energy
@@ -220,6 +222,7 @@ Calculates the total momentum of the system to ensure the center of mass remains
 
   ps := stats/sum/column(v) * m
   offset := ps / -solar-mass
+
 
 3. Advance Simulation
 -------------------------------------------------------------------------------
