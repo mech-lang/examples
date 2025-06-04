@@ -6,9 +6,8 @@ Read about progress on our [blog](https://mech-lang.org/blog/), follow us on Twi
 
 ## Contents
 
-- clock.mec - A clock application demonstrating drawing shapes and reacting to time
-- bouncing-balls.mec - Demonstrates reacting to time, drawing on shapes, and interacting with the user through clicks and mouse movements.
-- robot-drawing.mec - Demonstrates drawing images with rotations, and reacting to changes to a slider control
+- aspirational - These programs don't yet work, but they will eventually once missing features are implemented.
+- working - These programs are functional and demonstrate features that are implemented so far.
 
 ## License
 
