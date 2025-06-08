@@ -11,7 +11,14 @@ This section initializes the constants, defines the solar system's parameters, a
 
 (1.1) Constants
 
+
+
 We start by defining the constants used in the simulation:
+
+  days-per-year := 365.24
+  π := 3.141592654
+  solar-mass := 4 * π ^ 2
+  Δt := 0.01;
 
 | Symbol        | Description                                                     | Value           |
 |---------------|-----------------------------------------------------------------|-----------------|
@@ -19,13 +26,6 @@ We start by defining the constants used in the simulation:
 | π             | Approximation of pi, critical for calculating orbital mechanics | {π}             |
 | solar-mass    | Normalized mass of the Sun, used as a reference unit            | {solar-mass}    |
 | Δt            | Defines the simulation's time granularity                       | {Δt}            |
-
-Defined in code:
-
-  days-per-year := 365.24
-  π := 3.141592654
-  solar-mass := 4 * π ^ 2
-  Δt := 0.01
 
 The expression `solar-mass := 4 * π ^ 2` is a result of using normalized astronomical units in conjunction with Kepler's Third Law. This result is derived from the gravitational constant $$G$$ and the mass of the Sun. In normalized units, we set $$G = 1$$ and define the mass of the Sun in such a way that it simplifies calculations in celestial mechanics.
 
