@@ -16,7 +16,7 @@ We start by defining the constants used in the simulation:
   days-per-year := 365.24
   π := 3.141592654
   solar-mass := 4 * π ^ 2
-  Δt := 0.01;
+  Δt := 0.01  -- This is equivalent to {1 / Δt} Hz.
 
 | Symbol        | Description                                                     | Value           |
 |:-------------:|-----------------------------------------------------------------|----------------:|
